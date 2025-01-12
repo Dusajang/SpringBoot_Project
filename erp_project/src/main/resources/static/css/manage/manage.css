@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import url(/manage/css/basic.css);
+
+/*도움말*/
+.helpComment { cursor:pointer; vertical-align: middle; margin-left:5px;}
+.helper{width:350px; height:auto; border:1px solid #a8b0bb; background:#f2f4f5; position:absolute; z-index:999; visibility:hidden; color:#39414e; }
+.helper div{border-top:#FFF 1px solid; border-left:#FFF 1px solid; padding:10px; }
+.helper .point{padding-top:10px; color:#f2145d;}
+.helper.size01 {width:250px;}
+
+/*관리자로그인*/
+#login{position:relative; width:100%; height:100%;}
+#login .title{position:relative; background:#323337; height:352px; width:100%; }
+#login .title h1{margin:0; text-align:center; padding:195px 0 23px; font-size:52px; letter-spacing:-2px; color:#fff; font-weight:normal; line-height:1; border-bottom:1px solid #3a3b3f;}
+#login .title h1 span{font-weight:bold;}
+#login .title p{font-size:16px; color:#999a9b; width:1000px; margin:0 auto; text-align:center; padding-top:15px;}
+
+#login .login{position:relative; width:576px; margin:50px auto;}
+
+
+/*아이디,비밀번호*/
+#login .infoBox{float:left; width:442px; margin-right:5px;}
+/*아이디,비밀번호 기본*/
+#login .infoBox dl{overflow:hidden; padding:13px 0; border:1px solid #dedede; box-sizing:border-box;background-color: #fff;}
+#login .infoBox dl:last-of-type {margin-top:5px;}
+#login .infoBox dt{float:left; width:60px; height:30px; padding:0 18px; border-right:1px solid #dedede; box-sizing:border-box; vertical-align:middle;}
+#login .infoBox dd{float:left; width: calc(100% - 60px); vertical-align:middle;}
+#login .infoBox dd input {width:calc(100% - 40px); height:30px; margin:0 20px; font-size:14px; border:0; color:#222;}
+#login .loginBtn {float:left; color:#fff; font-size:18px; border:0; width:127px; height:121px;}
+
+/*input*/
+#login .infoBox input{width:190px;  vertical-align:middle;}
+
+#login .joinList{padding:20px 0 0; clear:both;  overflow:hidden; color:#656565; line-height:100%; font-size:14px;}
+
+#login .footer{position:fixed; bottom:0; left:0; width:100%; height:20px; padding:10px 0; background:#e1e1e1; text-align:center; color:#797979; font-size:11px;}
+#login .footer a:link{font-size:10px; color:#656565;}
+#login .footer a:hover{font-size:10px; color:#d01b5d;}
+#login .footer a:visited{font-size:10px; color:#656565;}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>쌍용교육센터</title>
+<link href="/css/intro/style.css?v201803001" rel="stylesheet">
+<link href="/css/intro/widget_style.css?v201804010002" rel="stylesheet">
+<!-- ================== BEGIN BASE CSS STYLE ================== -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<link href="http://lms.atosoft.kr/worknet/assets/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet">
+<link href="http://lms.atosoft.kr/worknet/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/animate.min.css" rel="stylesheet">
+<link href="/css/style_student.css?v201803001" rel="stylesheet">
+<link href="/css/style-responsive.min.css" rel="stylesheet">
+<link href="/css/theme/default.css" rel="stylesheet" id="theme">
+<!-- ================== END BASE CSS STYLE ================== -->
+</head>
+
+<body class="gray-bg">
+	<div id="content" class="row" style="margin:0px;">
+		<div class="col-xs-12" style="margin:0px;">	
+		 <table border="0" align="center" style="margin-top:50px">
+			 <tbody><tr>
+			  <td colspan="3" align="center"> 
+				<h1><a href="http://lms1.sist.co.kr/"><img src="images/vendor_logo_intro.png"></a></h1>
+			  </td>
+			 </tr>
+			 <tr>
+			 
+				<td valign="top" colspan="3">
+				
+				 <form id="adminLogin" method="post" th:action="@{/go_managelogin}">
+									
+						<div class="login-layout">
+							<h2>관리자 로그인</h2>
+								 <div class="login-form">
+									<div class="login-input">
+										<div>
+											<input type="text" id="strLoginID" name="username" value="" placeholder="교·강사 아이디" class="form-control input-lg" style="margin-bottom:5px">
+										</div>
+										<div>
+											<input type="password" id="strLoginPwd" name="password" value="" placeholder="교·강사 비밀번호" class="form-control input-lg">
+										</div>
+									</div>
+									<div class="login-btn" style="margin-top:10px">
+										<input type="submit" value="로그인" class="btn btn-info block full-width" style="cursor:pointer;">
+									</div>
+								</div>
+								<div class="login-bottom"></div>
+							</div>
+						</form>
+						
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<div class="clear"></div>
+					<div class="copyright" align="center">
+						<p class="m-t">Copyright © 쌍용교육센터  All Rights Reserved.</p>
+					</div>
+				</td>
+			</tr>
+		</tbody></table>
+
+		
+  </div>
+</div>
+
+</body>
+
+
+</html>

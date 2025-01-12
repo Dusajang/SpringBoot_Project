@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>아이디/비밀번호 찾기</title>
+
+<!-- CSS -->
+<link th:href="@{/css/basic.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/board.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/layout.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/main.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/content.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/custom.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/montserrat.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/notosanskr.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/jquery.datetimepicker.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" media="all" />
+<link th:href="@{/css/mobile.css}" rel="stylesheet" media="all" />
+
+<style>
+/* 기본 스타일 */
+.login_wrap .login_tit {
+    color: #04264c;
+    writing-mode: horizontal-tb; /* 기본 가로쓰기 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+    text-align: center;
+}
+
+.findCon_wrap div {
+    margin: 0 auto;
+    width: 300px;
+    text-align: center;
+    font-size: 3em;
+    writing-mode: horizontal-tb; /* 기본 가로쓰기 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+</style>
+</head>
+<body>
+
+<div class="programCon">
+    <div class="login_wrap pd640">
+        <fieldset class="login">
+            <p class="login_tit"><span>SEARCH</span>아이디/비밀번호 찾기</p>
+
+            <div class="findCon_wrap no01">
+                <div> <span th:text="${name}"></span>님의 아이디는 <span th:text="${username}"></span> 입니다 </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+</body>
+</html>

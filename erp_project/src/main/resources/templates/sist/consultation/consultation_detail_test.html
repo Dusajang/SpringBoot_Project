@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>방문 상담 예약 - 상세보기</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">방문 상담 예약 - [상세보기]</h1>
+
+        <!-- 예약 정보 -->
+        <table class="table table-bordered">
+		    <tbody>
+		        <tr>
+		            <th>예약일시</th>
+		            <!-- 예약 날짜와 시간을 연결하여 출력 -->
+		            <td th:text="${consultationSchedule.reservationDate} + ' ' + ${consultationSchedule.reservationTime}"></td>
+		            <th>예약상태</th>
+		            <td th:text="${consultationSchedule.reservationStatus.description}"></td>
+		        </tr>
+		    </tbody>
+		</table>
+		
+		<!-- 예약자 정보 -->
+		<h5 class="mt-4">예약정보</h5>
+		<table class="table table-bordered">
+		    <tbody>
+		        <tr>
+		            <th>성명</th>
+		            <td th:text="${consultationSchedule.name}"></td>
+		            <th>이메일</th>
+		            <td th:text="${consultationSchedule.email}"></td>
+		        </tr>
+		        <tr>
+		            <th>연락처</th>
+		            <td th:text="${consultationSchedule.cell}"></td>
+		            <th>지점선택</th>
+		            <td th:text="${consultationSchedule.center.description}"></td>
+		        </tr>
+		        <tr>
+		            <th>전공유무</th>
+		            <td th:text="${consultationSchedule.edutype.description}"></td>
+		            <th>상담과목</th>
+		            <td th:text="${consultationSchedule.eduKind != null ? consultationSchedule.eduKind.description : 'N/A'}"></td>
+		        </tr>
+		        <tr>
+		            <th>등록일</th>
+		            <td th:text="${consultationSchedule.reservationDate} + ' ' + ${consultationSchedule.reservationTime}"></td>
+		            <th>내용</th>
+		            <td th:text="${consultationSchedule.etc != null ? consultationSchedule.etc : 'N/A'}"></td>
+		        </tr>
+		    </tbody>
+		</table>
+
+
+        <!-- 버튼 -->
+        <div class="d-flex justify-content-end mt-4">
+            <a href="/consultations" class="btn btn-secondary me-2">목록</a>
+            <button type="button" class="btn btn-danger me-2" th:onclick="'cancelReservation(' + ${consultationSchedule.id} + ')'">예약취소</button>
+            <a th:href="@{|/consultation_edit/${consultationSchedule.id}|}" class="btn btn-primary me-2">수정</a>
+            <button type="button" class="btn btn-danger" th:onclick="'deleteReservation(' + ${consultationSchedule.id} + ')'">삭제</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function cancelReservation(id) {
+            if (confirm('예약을 취소하시겠습니까?')) {
+                // 예약 취소 요청을 보낼 수 있는 코드 작성 (예: Ajax)
+                alert('예약이 취소되었습니다.');
+            }
+        }
+
+        function deleteReservation(id) {
+            if (confirm('예약을 삭제하시겠습니까?')) {
+                // 예약 삭제 요청을 보낼 수 있는 코드 작성 (예: Ajax)
+                alert('예약이 삭제되었습니다.');
+            }
+        }
+    </script>
+</body>
+</html>

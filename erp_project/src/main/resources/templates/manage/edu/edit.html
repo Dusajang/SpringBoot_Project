@@ -1,0 +1,1591 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+<title>쌍용교육센터</title>
+<meta http-equiv="X-UA-compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="description" content="페이지설명">
+<meta name="keywords" content="검색키워드등록">
+<meta name="classification" content="검색사이트 카테고리 등록">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<link href="/manage/css/nanumgothic.css" rel="stylesheet" type="text/css" />
+<link href="/manage/css/notosanskr.css" rel="stylesheet" type="text/css" />
+<link href="/css/poppins.css" rel="stylesheet" type="text/css" />
+<link rel='stylesheet' href='//cdn.jsdelivr.net/font-kopub/1.0/kopubdotum.css'>
+<link href='//cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css' rel='stylesheet' type='text/css'>
+<link href="/manage/css/basic.css" rel="stylesheet" type="text/css" />
+<link href="/manage/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="/manage/css/board.css" rel="stylesheet" type="text/css" />
+<link href="/manage/css/manage.css" rel="stylesheet" type="text/css" />
+<link href="/css/colorPicker.css" rel="stylesheet" type="text/css" />
+<link href="/summernote/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/js/jstree_/css/style.min.css" />
+<link rel="stylesheet" href="/css/jquery.datetimepicker.css" type="text/css" media="all" />
+
+<script type="text/javascript" src="/js/function.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+<script type="text/javascript" src="/js/calendar_beans_v2.0.js"></script>
+<script type="text/javascript" src="/js/jquery-1.8.0.min.js"></script>
+
+<!-- 달력 변경 jquery.js 버젼업, datetimepicker.full.js 달력 js -->
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery.datetimepicker.full.js"></script>
+<!-- 달력 변경 끝 -->
+<script src="/js/dev.js"></script>
+
+<script src="/js/jstree_/js/jstree.min.js"></script>
+<!-- summernote editor-->
+
+<link href="/summernote/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet">
+<link href="/summernote/summernote.css" rel="stylesheet">
+
+<script src="/summernote/bootstrap-3.3.2-dist/js/bootstrap.js"></script> 
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script src="/summernote/summernote.js"></script>
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
+
+<!-- include summernote css/js-->
+
+
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+<script type="text/javascript" src="/js/function_jquery.js"></script>
+
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"></script>
+<script type="text/javascript" src="/js/jquery.colorPicker.js"></script>
+<script type='text/javascript' src='/js/validationBind.js'></script> 
+
+
+<link rel="stylesheet/less" type="text/css" href="/manage/css/color.less">
+<script type="text/javascript" src="/manage/include/less.min.js"></script>
+
+
+<script type="text/javascript">
+$(window).load(function() {
+	jQuery.datetimepicker.setLocale('ko');		// 달력 언어 설정
+	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson'); 
+	for (var word in mobileKeyWords){ 
+		if (navigator.userAgent.match(mobileKeyWords[word]) != null){ 
+			// 모바일
+			$("div#menu > ul > li > a").attr("href","javascript:;");
+		} 
+	} 	
+});
+</script>
+
+
+<!-- template CSS 모음 -->
+
+
+<!-- Custom CSS -->
+<link href="/manage/template/dist/css/style.css" rel="stylesheet" type="text/css">
+
+<!-- 작업 CSS -->
+<link href="/manage/template/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="/manage/template/css/content.css" rel="stylesheet" type="text/css" />
+
+<!-- template JS 모음 -->
+<!-- jQuery -->
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>  -->
+<!-- <script src="/template/vendors/bower_components/jquery/dist/jquery.min.js"></script> -->
+
+<script src="/js/manage_viewport.js"></script>
+
+
+
+<script>
+var oEditors = new Array();
+var ignore = '';
+$(window).load(function(){
+	
+	inputMaxLength();
+	
+	mkAutoDateFormat();
+	
+	
+		fn_textarea_check(ignore);
+	
+	// 에디터 기본 font 설정
+	$(".note-editable.panel-body").find("p font").attr("face",$(".note-current-fontname").css("font-family"));
+		
+	if($("#branch_fk").size() > 0){
+		$("#branch_fk").change(function(){
+			
+			typeSelectbox($(this).val(), 0, 0);
+			
+			
+		});
+		
+		if($(".schedule").size() > 0){
+			$("#branch_fk").change(function(){
+				
+				calendarNewList($("#branch_fk").val(), $("#curMonth").val());
+			});
+		}
+	}
+	
+	if($("#type_fk").size() > 0){
+		$("#type_fk").change(function(){
+			var typekFk = $("#type_fk option:selected").data("branch");
+			
+			if($("#branch_fk").size() > 0){
+				var obj = $("#branch_fk option").filter(function(){if($(this).val() == typekFk){return this}});
+				$(obj).prop("selected",true);
+			}
+			
+			
+			if($("#doctor_fk").size() > 0){
+				doctorSelectbox($("#branch_fk").val(),$(this).val(),0,0);
+			}
+			
+			
+			if($("#branch_fk").size() == 0){
+				if($("#curMonth").size() > 0){
+					calendarNewList(1, $("#curMonth").val());
+				}
+			}else{
+				if($("#curMonth").size() > 0){
+					calendarNewList($("#branch_fk").val() == undefined ? 1 : $("#branch_fk").val(), $("#curMonth").val());
+				}
+			}
+			
+		});
+	
+	}
+	
+	
+	
+	if($("#curMonth").size() > 0){
+		
+		calendarNewList($("#branch_fk").val() == undefined ? 1 : $("#branch_fk").val(), $("#curMonth").val());
+	}
+	
+	
+});
+
+$(window).resize(function(){
+	
+	//fn_textarea_check(ignore);
+	
+		
+});
+
+
+function fn_textarea_check(ignore){
+		var currentAddr = 'https://www.sist.co.kr/manage/edu/edit.jsp';
+		$(".programCon textarea, #bbs textarea").each(function(i){
+				if(ignore.indexOf("|"+i+"|") < 0){
+					var tagCheck = $(this).next().prop("tagName");
+					if(tagCheck == undefined){
+						setSummertnoteEditor($(this).attr("id")); // 에디터 셋팅
+					}
+				}
+		})
+}
+function sendFile(file,editor,welEditable) {
+	  data = new FormData();
+	  data.append("file", file);
+	   $.ajax({
+	   url: "/summernote/image_upload.jsp",
+	   data: data,
+	   cache: false,
+	   contentType: false,
+	   processData: false,
+	   type: 'POST',
+	   success: function(data, msg){  
+//		editor.insertImage(welEditable, data);              
+		$("#"+editor).summernote('insertImage', data.trim());
+		//file 초기화
+		setTimeout(function(){
+			$("#"+editor).val($("#"+editor).summernote('code'))
+		},200)
+
+		$(".form-group [type=file]").each(function(i){
+			$(this).replaceWith($(this).clone(true));				
+		})	
+		
+	},
+	   error: function(jqXHR, textStatus, errorThrown) {
+	   console.log(textStatus+" "+errorThrown);
+	  }
+	});
+}
+function setSummertnoteEditor(editorArea) {
+		$("#"+editorArea).summernote({
+			height:300,
+			minHeight:100,
+			lang: 'ko-KR',
+			callbacks: {
+				onImageUpload: function(files, editor,$editable) {
+//					ajaxSummernoteInsertImage(editorArea);
+					if(navigator.userAgent.indexOf('9.0') == -1) {
+						for(var i=0;i<files.length;i++){
+							sendFile(files[i],editorArea,$editable);
+						}
+					}
+				}
+			}
+		});
+}
+
+function ajaxSummernoteInsertImage(editorArea) {
+//비동기 파일 전송
+	var frm = $('#'+editorArea).closest("form")[0];
+	var action = $(frm).attr("action");
+	
+	$(frm).attr("action","/summernote/image_upload.jsp");
+	
+	//$(frm).append("fileObj", $('#'+editorArea).next().find(".note-v").html());
+	$(frm).ajaxForm({
+		dataType : 'text' ,
+		beforeSubmit : function(){
+			
+		},
+		success : function(json, msg){
+			$("#"+editorArea).summernote('insertImage', json.trim());
+			//file 초기화
+			$(".form-group .note-v [type=file]").each(function(i){
+				$(this).replaceWith($(this).clone(true));				
+			})
+		},
+		error : function(xhr, status, exception){
+			alert("파일전송에 실패하였습니다. \n"+status);
+			return false;
+		}
+	});
+	
+	$(frm).submit();
+
+	$(frm).attr("action",action);
+	$(frm).off();
+}
+
+function imageOnchange(obj){
+	
+	ajaxSummernoteInsertImage($(obj).parents(".note-editor").prev().attr("id")); 
+}
+
+function typeChangeSelectBox(obj){
+	if($("#branch_fk").size() > 0){
+		if($(obj).val() != 0){
+			$("#branch_fk").val($(obj).find("option:selected").attr("id"));
+			if($(".schedule").size() > 0){
+				calendarNewList($("#branch_fk").val(), $("#curMonth").val());
+			}
+		}
+	}
+}
+
+function timeSelectedValue(obj) {
+	//console.log($(obj).data("value"));
+	if($(".schedule_time ul li").size() > 0){
+		$(".schedule_time ul li").removeClass("choiceTime");
+		$(obj).addClass("choiceTime");
+		$("#resertime").val($(obj).data("value"));
+	}else{
+		$("#resertime").val($(obj).val());
+	}
+	
+}
+
+function calendarSelectConDayConfirm(today) {
+	$('.calendar_table td').removeAttr("id");
+	$('.calendar_table td').filter(function(){
+		if( $(this).text().trim() == today.substring(8).trim() ){
+			return this;
+		}
+	}).attr("id", "r_click");
+	
+	$("#reserdate").val(today);
+	$("#resertime").val("");	
+	curTime($("#reserdate").val());
+}
+
+function timeSelectOnLoadConfirm(today) {
+	
+	if($("#tmTime").size() > 0){
+		if($("#tmTime").val().trim() != ""){
+			$("#resertime").val($("#tmTime").val());
+			curTime($("#reserdate").val());
+		}
+		
+	}
+	
+}
+
+function calendarSelectDayConfirm(today) {
+	
+	
+	$('.calendar_table td').removeAttr("id");
+	$('.calendar_table td').filter(function(){
+		if( $(this).text().trim() == today.substring(8).trim() ){
+			return this;
+		}
+	}).attr("id", "r_click");
+	
+	$("#reserdate").val(today);
+	$("#resertime").val("");
+	reserTimeList($("#branch_fk").val(),$("#doctor_fk").val(),$("#reserdate").val(),$("#resertime").val(),0);
+}
+
+
+function calendarSelectMonth(month) {
+	$("#curMonth").val(month);
+}
+
+//분류 selectbox 가져오기
+function typeSelectbox(branch_fk,type_fk,type) {
+	jQuery("#type_fk").load("clinicList.jsp?branch_fk="+branch_fk+"&type_fk="+type_fk+"&type="+type);
+}
+
+// 의료진 selectbox 가져오기
+function doctorSelectbox(branch_fk,type_fk,doctor_fk,type) {
+	type_fk = (type_fk == undefined || type_fk == "") ? 0 : type_fk; 
+	jQuery("#doctor_fk").load("doctorList.jsp?branch_fk="+branch_fk+"&type_fk="+type_fk+"&doctor_fk="+doctor_fk+"&type="+type);
+}
+
+// 의료진 사진 가져오기
+function doctorPhoto(branch_fk,type_fk) {
+	jQuery("#doctorPhoto").load("doctorPhoto.jsp?branch_fk="+branch_fk+"&type_fk="+type_fk);
+}
+
+// 예약달력 가져오기
+function calendarNewList(sbranch_fk, smonth) {
+	$.get("calendarList.jsp?sbranch_fk="+sbranch_fk+"&smonth="+smonth,function(data){
+		$(".schedule").html(data);
+		console.log(data);
+		
+		timeSelectOnLoadConfirm($("#reserdate").val());
+		
+
+
+		if($("[name=p_reserdate]").size() > 0){
+			$("#reserdate").val($("[name=p_reserdate]").val())
+			$("#resertime").val($("[name=p_resertime]").val())
+			reserTimeList($("#branch_fk").val(),$("#doctor_fk").val(),$("#p_reserdate").val(),$("#p_resertime").val(),0);
+		}
+		
+		
+	})
+	//jQuery(".schedule").load();
+}
+
+// 예약시간 가져오기
+function reserTimeList(branch_fk,doctor_fk,reserdate,resertime,times) {
+	jQuery(".schedule_time").load("timeList.jsp?branch_fk="+branch_fk+"&doctor_fk="+doctor_fk+"&reserdate="+reserdate+"&resertime="+resertime+"&times="+times);
+}
+
+
+function telTimeList(selectDay,type) {
+	jQuery("#curTimeList").load("curTimeList.jsp?type="+type+"&selectDay="+selectDay);
+}
+
+// 전화 상담 시간 가져오기
+function curTime(selectDay){
+	$.get("curTimeList.jsp?selectDay="+selectDay,function(data){
+		$(".schedule_time").html(data);
+		
+		if($("#tmTime").size() > 0){
+			timeSelectedValue($("#"+$("#tmTime").val().replace(/:/,"")));
+		}
+		
+	})
+	
+}
+
+
+
+$(function () {
+	
+    var obj = $("#dropzone");
+    
+    obj.on('dragenter', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+         $(this).css('border', '2px solid #5272A0');
+    });
+
+    obj.on('dragleave', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+         $(this).css('border', '2px dotted #8296C2');
+    });
+
+    obj.on('dragover', function (e) {
+         e.stopPropagation();
+         e.preventDefault();
+    });
+
+    obj.on('drop', function (e) {
+         e.preventDefault();
+         $(this).css('border', '2px dotted #8296C2');
+
+         var files = e.originalEvent.dataTransfer.files;
+
+         if(files.length < 1)
+			return;
+		
+         F_FileMultiUpload(files, obj);
+    });
+
+});
+
+var fileList = "";     
+var fileCnt  = 0;      //파일갯수
+var loading  = false;
+var table    = "product";
+var uploadPath = "/upload/product/";
+//파일 지우기
+function FileDelete(filename, that){
+	
+		var Deletedata	 = new FormData();
+		$.ajax({
+			url 	    : "/include/boardConfig/process_file.jsp?cmd=delete&filename="+filename+"&table="+table+"&uploadPath="+uploadPath,
+			method 	    : 'post',
+			data        : Deletedata,
+			dataType    : 'json',
+			processData : false,
+			contentType : false,
+			success : function(res) {
+				text = "<label>"+$(that).parent().html()+"</label>";
+				var fileList2 = $("#dropzone").html();
+				
+				fileList2 = fileList2.replace(text, "");
+				fileList = fileList2;
+				fileCnt--;
+				 
+				//alert(fileList.indexOf('<label>'));
+				if(fileList2.indexOf('<label>') == -1){
+					$("#dropzone").html("파일을 올려주세요.");
+				} else {
+					$("#dropzone").html(fileList2);
+				}
+			},
+			error : function(data) {
+				//alert("error");
+			}
+		}); 	
+		//alert(fileList);
+}
+//파일지우기 - 수정
+function FileEditDelete(filename, that){
+	
+		var Deletedata	 = new FormData();
+		text = "<label>"+$(that).parent().html()+"</label>";
+		var fileList2 = $("#dropzone").html();
+		
+		fileList2 = fileList2.replace(text, "");
+		fileList = fileList2;
+		fileCnt--;
+		 
+		//alert(fileList.indexOf('<label>'));
+		if(fileList2.indexOf('<label>') == -1){
+			$("#dropzone").html("파일을 올려주세요.");
+		} else {
+			$("#dropzone").html(fileList2);
+		}
+		
+		var inputFileList  =  $("#delFileList").val();
+		$("#delFileList").val(inputFileList+filename+",");
+}
+//파일 업로드
+function F_FileMultiUpload(files, obj) {
+	fileList = $("#dropzone").html();     
+	var data	 = new FormData();
+	data.append("cmd", "update");
+	//확장자 체크 변수 :[ true -> 사용가능 확장자 false -> 사용 불가능  확장자]
+	var chkFile  = false;
+	//파일 갯수 체크
+	var maxCnt   = 0;
+	
+	if (files.length <= maxCnt && fileCnt + files.length <= maxCnt){
+		//확장자 체크
+		//var selection = [ ".txt", ".jpg", ".png", ".xls", ".gif"];
+		
+		
+		for (var i = 0; i < files.length; i++) {
+			data.append('filenames' + (i + 1), files[i]);
+		}
+		
+		
+		if (!loading) {
+			//console.log("data 1  :::"+data.getAll('filenames1'));
+			loading = true;
+			
+			fileList = fileList.indexOf('<label>') == -1 ? "" : $("#dropzone").html();
+		
+			
+			$.ajax({
+				url 	    : "/include/boardConfig/process_file.jsp?cmd=write"+"&table="+table+"&uploadPath="+uploadPath,
+				method 	    : 'post',
+				data        : data,
+				dataType    : 'json',
+				processData : false,
+				contentType : false,
+				success : function(res) {
+					//alert(res);
+					//alert(res.filename);
+					loading = false;
+					var filenameArray = res.filename.split(",");
+					filenameArray.reverse();
+					fileList += "<font style='color:black; font-weight:bold '>"
+					for (var i = 0; i < files.length; i++) {
+						//alert(data.get('filenames1').name);
+						fileList += "<label>["+files[i].name+"<a onclick='javascript:FileDelete(\""+filenameArray[i+1]+"\", this)'> <img src='/img/ico_cancel.jpg' width='10px' style='vertical-align:initial;'> </a>], </label>";
+						fileCnt++;
+					}
+					
+					fileList += "</font>";
+					
+					$(obj).html(fileList);
+				},
+				error : function(data) {
+					//alert("error");
+				}
+			}); 
+		}
+		else {
+			alert("파일 등록중입니다.");
+		}
+	}
+	else {
+		alert("최대 "+maxCnt+"개의 파일만 첨부 가능합니다.")
+	}
+}
+function FileUploadInit(){
+	var Initdata	 = new FormData();
+	$.ajax({
+		url 	    : "/include/boardConfig/process_file.jsp?cmd=init"+"&table="+table+"&uploadPath="+uploadPath,
+		method 	    : 'post',
+		data        :  Initdata,
+		dataType    : 'json',
+		processData : false,
+		contentType : false,
+		success : function(res) {
+			//alert(res);
+		},
+		error : function(data) {
+			//alert("error");
+		}
+	}); 
+}
+// 파일 멀티 업로드 Callback
+function F_FileMultiUpload_Callback(files) {
+	for (var i = 0; i < files.length; i++)
+		console.log(files[i].file_nm + " - " + files[i].file_size);
+}
+window.onbeforeunload = function(){
+	//서브밋할 경우 안탐
+	if(!isSubmitChk){
+		FileUploadInit();
+	}
+}
+</script>
+<style>
+    #dropzone
+    {
+        border:2px dotted #3292A2;
+        width:90%;
+        height:50px;
+        text-align:center;
+        font-size:14px;
+        padding-top:12px;
+        margin-top:10px;
+    }
+</style>
+
+<script>
+	var isSubmitChk = false;
+	$(window).load(function(){
+		$("#eduStartDay").datetimepicker({
+			format:'Y-m-d',
+			 onShow:function( ct ){
+			 this.setOptions({
+				maxDate:$('#eduEndDay').val()?$('#eduEndDay').val():false
+			  })
+			},
+			timepicker:false
+		});
+		$("#startbutton").click(function(){
+			$('#eduStartDay').datetimepicker('show');
+		})	
+
+		$("#eduEndDay").datetimepicker({
+		format:'Y-m-d',
+		  onShow:function( ct ){
+		   this.setOptions({
+			minDate:$('#eduStartDay').val()?$('#eduStartDay').val():false
+		   })
+		  },
+		  timepicker:false
+		});
+		$("#endbutton").click(function(){
+			$('#eduEndDay').datetimepicker('show');
+		})		
+		
+		$("#recru_sdate").datetimepicker({
+			format:'Y-m-d',
+			 onShow:function( ct ){
+			 this.setOptions({
+				maxDate:$('#recru_edate').val()?$('#recru_edate').val():false
+			  })
+			},
+			timepicker:false
+		});
+		$("#recrusbutton").click(function(){
+			$('#recru_sdate').datetimepicker('show');
+		})	
+
+		$("#recru_edate").datetimepicker({
+		format:'Y-m-d',
+		  onShow:function( ct ){
+		   this.setOptions({
+			minDate:$('#recru_sdate').val()?$('#recru_sdate').val():false
+		   })
+		  },
+		  timepicker:false
+		});
+		$("#recruebutton").click(function(){
+			$('#recru_edate').datetimepicker('show');
+		})		
+	});
+	
+	function goSave(obj) {
+		
+		if(validation(obj)){
+			isSubmitChk = true;
+			$("#frm").submit();	
+			
+		}
+	}
+	
+</script>
+</head>
+<body> 
+
+
+
+<!-- 
+<div id="com1" style="width:0px; height:0px; position:absolute; left:0px; top:0px; z-index:1"> 
+<script type='text/javascript' src="http://weblog2.vizensoft.com/stat_js.jsp?sitenum="></script>
+</div>
+ -->
+
+
+
+<div id="com2" style="width:0px; height:0px; position:absolute; left:0px; top:0px; z-index:1;"> 
+<form name="urlMaintain" id="urlMaintain" action="/member/login.jsp" method="post">
+		<input type="hidden" name="url" id="main_url" value="/manage/edu/edit.jsp">
+		<input type="hidden" name="param" id="main_param" value="reqPageNo=1&no=728">
+</form>
+</div>
+
+
+
+<div id="layerTop" class="helper">
+	<div>
+		<p>
+			<strong>공지함 : </strong>현재 게시판 목록 페이지에서 최상에 노출됩니다.<br />
+			<strong>공지안함 : </strong>현재 게시판 목록에 TOP공지 되지 않습니다.
+		</p>
+		<p class="point">* TOP공지를 선택하였을 경우 현재 게시판이 메인 페이지에 노출되어 있어도 노출되지 않습니다.</p>
+	</div>
+</div>
+
+<div id="layerMain" class="helper">
+	<div>
+		<p>
+			<strong>노출함 : </strong>현재 게시판의 내용이 메인 페이지에 있을 경우 메인 페이지에 노출되게 됩니다.<br />
+			<strong>노출안함 : </strong>현재 게시판의 내용이 메인 페이지에 노출되지 않습니다.
+		</p>
+		<p class="point">* 현재 게시판의 내용이 메인 페이지에 있으면서 메인노출 선택을 하나도 하지 않을 경우 최근에 등록된 게시물이 메인 페이지에 노출 됩니다.</p>
+	</div>
+</div>
+
+<div id="layerNew" class="helper"> 
+	<div>
+		<p>
+			<strong>항상 : </strong>현재 게시판 목록페이지에서 해당 글 앞에 NEW아이콘이 표기됩니다.<br />
+			<strong>하루만 : </strong>현재 게시판 목록페이지에서 해당 글 앞에 하루동안만 NEW아이콘이 표기됩니다.<br />
+			<strong>표기안함 : </strong> NEW아이콘이 표기 되지 않습니다.
+		</p>
+	</div>
+</div>
+
+<div id="layer13" class="helper">
+	<div>
+		<p>
+			<strong>HTML : </strong>순수한 HTML로 작성될 경우<br />
+			<strong>TEXT : </strong> TEXT 또는 부분적인 HTML이 포함될 수 있습니다.
+		</p>
+		<p class="point">* TEXT 선택 시 읽기페이지에서 문단 단락 마다 &ltbr&gt태그를 삽입합니다.</p>
+	</div>
+</div>
+
+
+<div id="layerReadno" class="helper">
+	<div>
+		<p>
+			<strong>조회 수 : </strong>입력하지 않으시면 0부터 시작합니다.
+		</p>
+	</div>
+</div>
+
+
+<div id="layerRegistdate" class="helper"> 
+	<div>
+		<p>
+			<strong>작성일 : </strong>입력하지 않으시면 현재 날짜로 등록됩니다.<br />
+			ex) 2007-02-01 09:00:00
+		</p>
+	</div>
+</div>
+
+<div id="layerHoly" class="helper"> 
+	<div>
+		<p>
+			추석연휴와 설날연휴를 제외한 공휴일 진료시 진료시간 설정입니다.
+		</p>
+	</div>
+</div>
+
+<div id="layerSecret" class="helper"> 
+	<div>
+		<p>
+			<strong>공개 : </strong>사용자페이지에 노출됩니다.<br />
+			<strong>비공개 : </strong>사용자페이지에 노출 되지 않습니다.
+		</p>
+	</div>
+</div>
+<div id="layerSmsh" class="helper size01"> 
+	<div>
+		<p>
+			클릭 시 문자발송이 가능합니다.
+		</p>
+	</div>
+</div>
+<div id="layerEmailh" class="helper size01"> 
+	<div>
+		<p>
+			클릭 시 메일발송이 가능합니다.
+		</p>
+	</div>
+</div>
+
+<script type="text/javaScript">
+function helpComment(type, input) {
+	var ev = window.event;	
+	var mousePos = mouseCoords(ev);	
+	
+	if($("#"+input).width()+mousePos.x > $(window).width()){
+		mousePos.x = mousePos.x -$("#"+input).width(); 
+	}
+
+	document.getElementById(input).style.top = mousePos.y+"px";
+    document.getElementById(input).style.left = mousePos.x+"px";
+	document.getElementById(input).style.visibility = type;
+
+}
+
+function mouseCoords(ev) {	
+	if(ev.pageX || ev.pageY){		
+		return {x:ev.pageX, y:ev.pageY};	
+	}	
+	return {
+		x:ev.clientX + document.body.scrollLeft - document.body.clientLeft,
+		y:ev.clientY + document.body.scrollTop  - document.body.clientTop	
+	};
+}
+
+jQuery(document).ready(function(){
+	jQuery(".helpComment").filter("#Registdate").css("margin-left","15px");
+	jQuery(".helpComment").hover(
+		function(){
+			var id = jQuery(this).attr("id");
+			helpComment("visible","layer"+id);
+		},function(){
+			var id = jQuery(this).attr("id");
+			$("#layer"+id).css("visibility","hidden");
+		}
+	);
+	
+	jQuery(".helpComment").focusin(function(){
+		var id = jQuery(this).attr("id");
+		helpComment("visible","layer"+id);
+	});
+			
+	jQuery(".helpComment").focusout(function(){
+		var id = jQuery(this).attr("id");
+		$("#layer"+id).css("visibility","hidden");
+	});
+});
+</script>
+
+
+	
+
+
+<script>
+function popRecharge() {
+	var str,width,height;
+	str="'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,";
+	str=str+"width=1024";
+	str=str+",height=768',top=100,left=100";
+
+	window.open("https://hosting.vizensoft.com/customer/indexPayment.jsp?projectfk=3119&costomerfk=3038&tran_id=9999",'recharge',str);
+}
+
+$(function(){
+	$.ajax({
+		url: "https://hosting.vizensoft.com/customer/rechargeJquery.jsp?projectfk=3119&costomerfk=3038&tran_id=9999", // 클라이언트가 요청을 보낼 서버의 URL 주소
+		type: "GET",                             // HTTP 요청 방식(GET, POST)
+		dataType: "jsonp",                         // 서버에서 보내줄 데이터의 타입
+		success: function(data){
+			$("#recharge").text(data);
+		},
+		error : function(error){
+			console.log(error);
+		}
+	});
+});
+
+function popMaintenance() {
+	var str,width,height;
+	str="'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,";
+	str=str+"width=1024";
+	str=str+",height=768',top=100,left=100";
+
+	window.open("http://vizen.vizensoft.com/site/maintenance/customer/index.jsp?customerfk=3038&projectfk=3119",'maintenance',str);
+}
+function popMaintenance() {
+	var str,width,height;
+	str="'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=no,copyhistory=no,";
+	str=str+"width=1024";
+	str=str+",height=768',top=100,left=100";
+
+	window.open("http://vizen.vizensoft.com/site/maintenance/customer/index.jsp?customerfk=3038&projectfk=3119",'maintenance',str);
+}
+
+function OpenWinCount(URL,width,height) {
+
+	var str;
+	str="'toolbar=yes, location=yes, directories=yes, status=no, menubar=yes, scrollbars=yes,resizable=yes,copyhistory=no,";
+	str=str+"width="+width;
+	str=str+",height="+height+"',top=100,left=100";
+
+	window.open(URL,'_blank');
+}
+
+var parent = $(".parent");
+$(document).ready(function(){
+	if(isMobileTablet()) $(".parent").attr("href", "javascript: void(0); ");
+
+	// 1depth 메뉴들
+	
+	//현재 주소
+	// 주소중 manage이후 폴더 경로 자르기 ex) /manage/board/index.jsp -> board
+	var curUrl = document.location.pathname;
+	curUrl = location.pathname.substring(0,  location.pathname.lastIndexOf("/") ).substring( location.pathname.substring(0,  location.pathname.lastIndexOf("/") ).lastIndexOf("/"));
+	
+	$(".parent").parent().find("a").each(function(){
+		$(this).find("span").removeClass("bg");
+
+		// 1depth 메뉴 href 담기
+		href = $(this)[0].href;
+
+		// 가장 가까운 부모 디렉토리명
+		href = href.substring(0,  href.lastIndexOf("/") ).substring( href.substring(0,  href.lastIndexOf("/") ).lastIndexOf("/"));
+		
+		// 현재 주소에서 href가 포함 되어 있으면 그 메뉴에 배경색 지정
+		
+		if(curUrl == href){
+			$(this).parents('li:last').find(".parent span").addClass("bg");
+		}
+	});
+	
+	// 방문자 통계 클릭시 메뉴 유지
+	parent.click(function(){
+		// 1depth 메뉴 href 담기
+		href = $(this)[0].href;
+		
+		if(href.indexOf("OpenWinCount") >= 0){
+			parent.find("span").removeClass("bg");
+			$(this).find("span").addClass("bg");
+		}
+	});
+
+	// 메뉴 수에 맞게 width 값 수정.
+	$("ul.menu > li").css("width", (100 / $("ul.menu > li").length) + "%");
+});
+
+</script>
+
+	<!-- Preloader -->
+	<!-- <div class="preloader-it">
+		<div class="la-anim-1"></div>
+	</div> -->
+	<!-- /Preloader -->
+
+	<!-- #wrapper -->
+    <div class="wrapper theme-2-active pimary-color-blue">
+
+		<!-- Top Menu Items -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="mobile-only-brand">
+				<div class="nav-header">
+					<div class="logo-wrap">
+						<a href="/manage/eduStatistics/all/index.jsp">
+							<img class="brand-img" src="/manage/img/logo.png" alt="shop_logo"/>
+						</a>
+					</div>
+				</div>
+
+				<!-- 모바일 메뉴 토글 버튼 -->
+				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);">
+					<i class="zmdi zmdi-menu"></i>
+					<img src="/manage/template/img/nav_close_btn.png" alt="">
+				</a>
+				<!-- 모바일 우측 토글 버튼 -->
+				<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
+
+			</div>
+			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
+				<div class="nav navbar-right top-nav pull-right">
+					
+					<!--
+					<ul class="line">
+						<li><a href="javascript:;" onclick="popMaintenance();"><i><img src="/manage/img/top-nav_icon03.png" alt=""></i>유지보수요청</a></li>
+						<li><a href="http://www.vizensoft.com" target="_blank"><i><img src="/manage/img/top-nav_icon04.png" alt=""></i>비젠소프트 방문</a></li>
+					</ul>
+					-->
+					<ul class="box_a">
+						<li ><a href="javascript:;" onclick="window.open('https://www.sist.co.kr/');">홈페이지 바로가기</a></li>
+						<li><a href="/manage/include/logout.jsp">로그아웃</a></li>
+					</ul>
+				</div>
+			</div>	
+		</nav>
+		<!-- /Top Menu Items -->
+		
+		<!-- Left Sidebar Menu -->
+		<div class="fixed-sidebar-left">
+			<ul class="nav navbar-nav side-nav nicescroll-bar depth_custom" style="overflow:hidden;">
+				<li class="navigation-header">
+					<span></span> 
+					<i class="zmdi zmdi-more"></i>
+				</li>
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">게시판관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_1" class=""> -->
+<!-- 						<li id="menu1_1" class="/manage/board/notice/"><a href="/manage/board/notice/index.jsp">공지/보도/동영상</a></li> -->
+<!-- 						<li id="menu1_2" class="/manage/board/NoticeListImage/"><a href="/manage/board/NoticeListImage/index.jsp">공지/보도/동영상<br/>(이미지목록형)</a></li> -->
+<!-- 						<li id="menu1_3" class="/manage/board/reply/"><a href="/manage/board/reply/index.jsp">답변형 게시판</a></li> -->
+<!-- 						<li id="menu1_4" class="/manage/board/reply_comment/"><a href="/manage/board/reply_comment/index.jsp">답변댓글형 게시판</a></li> -->
+<!-- 						<li id="menu1_5" class="/manage/board/gallery/"><a href="/manage/board/gallery/index.jsp">갤러리</a></li> -->
+<!-- 						<li id="menu1_6" class="/manage/board/faq/"><a href="/manage/board/faq/index.jsp">FAQ</a></li> -->
+<!-- 						<li id="menu1_7" class="/manage/board/faq/FaqCatagory/"><a href="/manage/board/faq/FaqCatagory/index.jsp">FAQ분류관리</a></li> -->
+<!-- 						<li id="menu1_8" class="/manage/board/common/"><a href="/manage/board/common/index.jsp">공통게시판</a></li> -->
+<!-- 						<li id="menu1_9" class="/manage/board/popup/"><a href="/manage/board/popup/index.jsp">팝업관리</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">상품관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_2" class=""> -->
+<!-- 						<li id="menu2_1" class="/manage/product/product/"><a href="/manage/product/product/index.jsp">상품관리</a></li> -->
+<!-- 						<li id="menu2_2" class="/manage/product/elcategory/"><a href="/manage/product/elcategory/index.jsp">전자상거래 상품정보관리</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+						
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">주문관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_3" class=""> -->
+<!-- 						<li id="menu3_1" class="/manage/order/order/"><a href="/manage/order/order/index.jsp">주문관리</a></li> -->
+<!-- 						<li id="menu3_2" class="/manage/order/product_review/"><a href="/manage/order/product_review/index.jsp">상품평</a></li> -->
+<!-- 						<li id="menu3_3" class="/manage/order/product_qna/"><a href="/manage/order/product_qna/index.jsp">상품 Q&amp;A</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">매출통계</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_4" class=""> -->
+<!-- 						<li id="menu4_1" class="/manage/statistics/stat/"><a href="/manage/statistics/stat/index.jsp">매출통계</a></li> -->
+<!-- 						<li id="menu4_2" class="/manage/statistics/brand/"><a href="/manage/statistics/brand/index.jsp">브랜드별 통계</a></li> -->
+<!-- 						<li id="menu4_3" class="/manage/statistics/prdt/"><a href="/manage/statistics/prdt/index.jsp">상품별 통계</a></li> -->
+<!-- 						<li id="menu4_4" class="/manage/statistics/ctgr/"><a href="/manage/statistics/ctgr/index.jsp">카테고리별 통계</a></li> -->
+<!-- 						<li id="menu4_5" class="/manage/statistics/mem/"><a href="/manage/statistics/mem/index.jsp">회원 통계</a></li> -->
+<!-- 						<li id="menu4_6" class="/manage/statistics/cart/"><a href="/manage/statistics/cart/index.jsp">장바구니 분석</a></li> -->
+<!-- 						<li id="menu4_7" class="/manage/statistics/jjim/"><a href="/manage/statistics/jjim/index.jsp">관심상품 분석</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">배너관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_5" class=""> -->
+<!-- 						<li id="menu5_1" class="/manage/banner/category/"><a href="/manage/banner/category/index.jsp">카테고리 배너관리</a></li> -->
+<!-- 						li id="menu5_2" class="/manage/banner/main/"><a href="/manage/banner/main/index.jsp">메인 배너관리</a></li -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">쿠폰관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_6" class=""> -->
+<!-- 						<li id="menu6_1" class="/manage/coupon/mng/"><a href="/manage/coupon/mng/index.jsp">쿠폰관리</a></li> -->
+<!-- 						<li id="menu6_2" class="/manage/coupon/apply/"><a href="/manage/coupon/apply/index.jsp">쿠폰발급</a></li> -->
+<!-- 						<li id="menu6_3" class="/manage/coupon/use/"><a href="/manage/coupon/use/index.jsp">쿠폰사용</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">적립금관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_7" class=""> -->
+<!-- 						<li id="menu7_1" class="/manage/point/point/"><a href="/manage/point/point/index.jsp">적립금관리</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-account-box mr-20"></i><span class="right-nav-text">회원관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_8" class=""> -->
+<!-- 						<li id="menu8_1" class="/manage/member/"><a href="/manage/member/index.jsp">회원관리</a></li> -->
+
+<!-- 						<li id="menu8_2" class="/manage/member/"><a href="/manage/member/dormant_index.jsp">휴면회원</a></li> -->
+
+<!-- 						<li id="menu8_3" class="/manage/member/"><a href="/manage/member/secede_index.jsp">탈퇴회원</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-account-box mr-20"></i><span class="right-nav-text">판매자 관리</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_9" class=""> -->
+<!-- 						<li id="menu9_1" class="/manage/seller/"><a href="/manage/seller/index.jsp">판매자 관리</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-account-box mr-20"></i><span class="right-nav-text">회원관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_7" class="">
+						<li id="menu7_1" class="/manage/member/"><a href="/manage/member/index.jsp">회원관리</a></li>
+						<li id="menu7_2" class="/manage/member/"><a href="/manage/member/dormant_index.jsp">휴면회원</a></li>
+						<li id="menu7_3" class="/manage/member/"><a href="/manage/member/secede_index.jsp">탈퇴회원</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">지원자 관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_4" class="">
+						<li id="menu4_1" class="/manage/eduStatistics/all/"><a href="/manage/eduStatistics/all/index.jsp">전체 지원 현황</a></li>
+						<li id="menu4_2" class="/manage/eduStatistics/employment/allstatistics/"><a href="/manage/eduStatistics/employment/allstatistics/index.jsp">취업자 과정별 지원현황</a></li>
+						<li id="menu4_3" class="/manage/eduStatistics/employment/typestatistics/"><a href="/manage/eduStatistics/employment/typestatistics/index.jsp">취업자 과정별 지원자 관리</a></li>
+						<li id="menu4_4" class="/manage/eduStatistics/incumbent/allstatistics/"><a href="/manage/eduStatistics/incumbent/allstatistics/index.jsp">재직자 과정별 지원현황</a></li>
+						<li id="menu4_5" class="/manage/eduStatistics/incumbent/typestatistics/"><a href="/manage/eduStatistics/incumbent/typestatistics/index.jsp">재직자 과정별 지원자 관리</a></li>
+						<li id="menu4_6" class="/manage/boardAdmin/reservation/"><a href="/manage/boardAdmin/reservation/index.jsp">방문상담예약</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">연수 지원서</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_3" class="">
+						<li id="menu3_1" class="/manage/apply/employment/"><a href="/manage/apply/employment/index.jsp">취업교육 지원서관리</a></li>
+						<li id="menu3_2" class="/manage/apply/incumbent/"><a href="/manage/apply/incumbent/index.jsp">재직자교육 지원서관리</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">교육과정 관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_2" class="">
+						<li id="menu2_1" class="/manage/edu/"><a href="/manage/edu/index.jsp">교육과정</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">게시판관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_1" class="">
+						<li id="menu1_1" class="/manage/boardAdmin/notice/"><a href="/manage/boardAdmin/notice/index.jsp">공지사항</a></li>
+						<li id="menu1_2" class="/manage/boardAdmin/consult/"><a href="/manage/boardAdmin/consult/index.jsp">교육문의</a></li>
+						<li id="menu1_3" class="/manage/boardAdmin/faq/"><a href="/manage/boardAdmin/faq/index.jsp">FAQ</a></li>
+						<li id="menu1_4" class="/manage/boardAdmin/faq/FaqCatagory/"><a href="/manage/boardAdmin/faq/FaqCatagory/index.jsp">FAQ분류관리</a></li>
+						<li id="menu1_5" class="/manage/boardAdmin/employment/"><a href="/manage/boardAdmin/employment/index.jsp">취업현황</a></li>
+						<li id="menu1_6" class="/manage/boardAdmin/eduReview/"><a href="/manage/boardAdmin/eduReview/index.jsp">수강후기</a></li>
+						<li id="menu1_7" class="/manage/boardAdmin/portfolio/"><a href="/manage/boardAdmin/portfolio/index.jsp">포트폴리오</a></li>
+						<li id="menu1_8" class="/manage/boardAdmin/popup/"><a href="/manage/boardAdmin/popup/index.jsp">팝업관리</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-account-box mr-20"></i><span class="right-nav-text">구인의뢰관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_8" class="">
+						<li id="menu8_1" class="/manage/request/"><a href="/manage/request/index.jsp">구인의뢰</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">지원 통계</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_6" class="">
+						<li id="menu6_1" class="/manage/statistics/kind/"><a href="/manage/statistics/kind/index.jsp">과정별 통계</a></li>
+						<li id="menu6_1" class="/manage/statistics/info/"><a href="/manage/statistics/info/index.jsp">가입경위 통계</a></li>
+						<li id="menu6_1" class="/manage/statistics/mem/"><a href="/manage/statistics/mem/index.jsp">회원별 통계</a></li>
+					</ul>
+				</li>
+				
+				
+				
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">문자보내기</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_10" class=""> -->
+<!-- 						<li id="menu10_1" class="/manage/sms/"><a href="/manage/sms/write.jsp">문자보내기</a></li> -->
+<!-- 						<li id="menu10_2" class="/manage/sms/"><a href="/manage/sms/member.jsp">회원문자발송</a></li> -->
+<!-- 						<li id="menu10_3" class="/manage/sms/"><a href="/manage/sms/reservation.jsp">예약내역</a></li> -->
+<!-- 						<li id="menu10_4" class="/manage/sms/"><a href="/manage/sms/index.jsp">발송내역</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">메일보내기</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_11" class=""> -->
+<!-- 						<li id="menu11_1" class="/manage/email/"><a href="/manage/email/write.jsp">메일보내기</a></li> -->
+<!-- 						<li id="menu11_2" class="/manage/email/"><a href="/manage/email/member.jsp">회원메일발송</a></li> -->
+<!-- 						<li id="menu11_3" class="/manage/email/"><a href="/manage/email/index.jsp">발송내역</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</li> -->
+<!-- 				<li> -->
+<!-- 					<a href="javascript:void(0);"> -->
+<!-- 						<div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">방문자통계</span></div> -->
+<!-- 						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div> -->
+<!-- 						<div class="clearfix"></div> -->
+<!-- 					</a> -->
+<!-- 					<ul id="menu_12" class=""> -->
+
+<!-- 					</ul> -->
+<!-- 				</li> -->
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">환경설정</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_10" class="">
+						<li id="menu10_1" class="/manage/environment/admin/"><a href="/manage/environment/admin/index.jsp">관리자관리</a></li>
+						<li id="menu10_2" class="/manage/environment/loginhistory/"><a href="/manage/environment/loginhistory/index.jsp"><span>관리자접속기록</span></a></li>
+						<li id="menu10_3" class="/manage/environment/stipulation/"><a href="/manage/environment/stipulation/stipulation.jsp"><span>개인정보취급방침/<br/>회원약관</span></a></li>
+<!-- 						<li id="menu10_8" class="/manage/management/resertime/"><a href="/manage/management/resertime/index.jsp"><span>예약시간설정</span></a></li> -->
+<!-- 						<li id="menu10_8" class="/manage/management/resercalendar/"><a href="/manage/management/resercalendar/index.jsp"><span>예약달력설정</span></a></li> -->
+						
+					</ul>
+				</li>
+
+				
+
+			</ul>
+		</div>
+		<!-- /Left Sidebar Menu -->
+
+		<!-- Main Content -->
+		<div class="page-wrapper">
+			<div class="container-fluid pt-25">
+
+
+
+<script type="text/javascript">
+	$(window).load(function(){
+		$("#blist table tr td").mouseenter(function(){
+		$(this).parent("tr").addClass("on");
+		});
+		$("#blist table tr td").mouseleave(function(){
+			$("#blist table tr").removeClass("on");
+		});		
+	});	
+</script>
+
+
+<script>
+	/* 현재 디렉토리를 구해서 menu마다 넣어놓은 class 이름이랑 같을때, active 클래스 추가 */
+	$(window).load(function(){
+		var url = window.location.pathname;
+		var urlPathname = url.substring( 0, url.substring(1).lastIndexOf('/') + 2 );
+		//console.log(urlPathname);
+
+		//$(".side-nav > li > ul").removeClass("in");
+		
+		$(".depth_custom > li > ul").hide();
+		$(".depth_custom > li > a").click(function(){
+			var subcont = $(this).next("ul");
+
+			if( subcont.is(":visible") ){ //닫을 때
+				subcont.slideUp();
+				$(this).removeClass("active");
+			}else{
+				subcont.slideDown(); // 열릴 때						 
+				$(".depth_custom > li > ul").not(subcont).slideUp();
+				$(".depth_custom > li").not(this).removeClass("on");
+				$(".depth_custom > li > a").removeClass("active");
+				$(this).addClass("active");
+			}         
+		});
+		
+
+		$(".depth_custom > li > ul > li > a").each(function(){
+			if($(this).parent().attr('class') == urlPathname){
+				$(this).css("color","#307dd4");
+				$(this).parent().parent().addClass("in");	//메뉴펼침
+				$(this).parent().parent().show();
+				$(this).parent().parent().parent().find(">a").addClass("active").addClass("active_important");
+			}
+		});
+
+
+		/* 모바일에서 메뉴 펼쳤을때 컨텐츠 영역 선택하면 메뉴 닫히게*/
+		$(".page-wrapper").click(function(){
+			$(".wrapper").removeClass("slide-nav-toggle");
+		});
+
+		$(".collapse > li > a").click(function(){
+			if ( navigator.appName == "Microsoft Internet Explorer" ) {
+				var nowUrl = window.location.href;
+				saveHash(setTime);
+			}
+		});	
+	});
+	
+</script>
+
+	<!-- /top-->	
+	<form method="post" name="frm" id="frm" action="https://www.sist.co.kr/manage/edu/process.jsp" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default card-view">
+					<div class="panel-heading">
+						<div class="pull-left">
+							<!-- property:목록 -->
+							<h4 class="panel-title txt-dark">교육과정 - [쓰기]</h4>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="panel-wrapper collapse in">
+						<div class="panel-body">
+							<!-- //con_tit -->
+							<div class="con">
+								<!-- 내용 : s -->
+								<div id="bbs">
+									<h3>기본내용</h3>
+									<div class="table_wrap table_block">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
+											<colgroup>
+												<col width="15%" />
+												<col width="35%" />
+												<col width="15%" />
+												<col width="35%" />
+											</colgroup>
+											<tbody>
+												<tr>
+													<th scope="row"><label for="">구분</label></th>
+													<td colspan="3">
+														<select name="edu" id="edu">
+															<option value="0">선택하세요.</option>
+															<option value='1' >재직자 교육</option><option value='2' selected>취업교육</option>
+														</select>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="">기관</label></th>
+													<td colspan="3">
+														<select name="eduSchool" id="eduSchool">
+															<option value="0">선택하세요.</option>
+															<option value='1' selected>강남점</option><option value='2' >강북점</option>
+														</select>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="">과정분류</label></th>
+													<td colspan="3">
+														국가기간  322기
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="productName">교육과정명</label></th>
+													<td><input type="text" name="productName" id="productName" value="100%정부지원▶2/3 개강 AWS와 Docker & Kubernetes를 활용한 Java Full-Stack 개발자 양성과정" size="60" data-value="상품명을 입력해 주세요."/> </td>
+													<th scope="row"><label for="">목록이미지</label></th>
+													<td>
+														
+															<div class="weidtFile">
+																<img src="/upload/product/1732859485132_592.png" alt="" title="" width="130" height="130" />
+																<p class="pre_file"><img src="/manage/img/file_img.gif" /> <span class="blue_col vaM">lms_main_KDT_2024.png</span>
+																	<label for="imagename1_chk" class="b_nor_c size02 marl15"><input type="checkbox" id="imagename1_chk" name="imagename1_chk" value="1030" title="기존파일삭제를 하시려면 체크해주세요" /><i></i>
+																	기존파일삭제</label>
+																</p>
+																<input type="file" name="imagename1" id="imagename1" title="상품이미지를 업로드 해주세요."  class="input50p"/>
+																<p>이미지 사이즈(680 x 480)</p>	
+															</div>
+																
+													</td>
+												</tr>
+												
+												<tr>
+													<th scope="row"><label for="">노출여부</label></th>
+													<td>
+														 <label for='viewYn1' class='b_snor_r'><input type='radio' id='viewYn1' name='viewYn' checked value='1' data-value='노출 여부를 선택해 주세요.'><i></i><span class='vaM'>노출</span></label> <label for='viewYn2' class='b_snor_r'><input type='radio' id='viewYn2' name='viewYn'  value='2' data-value='노출 여부를 선택해 주세요.'><i></i><span class='vaM'>미노출</span></label>
+													</td>
+													<th scope="row"><label for="">상세이미지</label></th>
+													<td>
+														
+															<div class="weidtFile">
+																<img src="/upload/product/1732859485848_540.png" alt="" title="" width="130" height="130" />
+																<p class="pre_file"><img src="/manage/img/file_img.gif" /> <span class="blue_col vaM">lms_main_KDT_2024.png</span>
+																	<label for="imagename2_chk" class="b_nor_c size02 marl15"><input type="checkbox" id="imagename2_chk" name="imagename2_chk" value="1029" title="기존파일삭제를 하시려면 체크해주세요" /><i></i>
+																	기존파일삭제</label>
+																</p>
+																<input type="file" name="imagename2" id="imagename2" title="상품이미지를 업로드 해주세요."  class="input50p"/>
+																<p>이미지 사이즈(680 x 480)</p>	
+															</div>
+																
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="price">가격</label></th>
+													<td>
+														<input type="text" name="price" id="price" value="0" onkeyup="isOnlyNumber(this);fn_discountPrice($('#discountRate').val())" maxlength="12" placeholder="정상가" data-value="가격을 입력해 주세요."/>
+														<input type="text" name="discountPrice" id="discountPrice"  style="display:none;"  onkeyup="isOnlyNumber(this);fn_discountRate(this.value)" maxlength="12" value="0" placeholder="할인가" />
+													</td>
+												</tr>
+												
+												<tr>
+													<th scope="row"><label for="">교육 기간</label></th>
+													<td colspan="3">
+														시작일 : <input type="text" id="eduStartDay" name="eduStartDay" size="11" readonly="readonly"  value="2025-02-03" title="등록일을 입력해주세요" />&nbsp;
+														<span id="CalsaleStartDayIcon" class="cal_btn">
+															<button type="button" id="startbutton"><img src="/manage/img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"/></button>
+														</span>
+
+														~
+														종료일 : <input type="text" id="eduEndDay" name="eduEndDay" size="11" readonly="readonly" value="2025-08-08" title="등록일을 입력해주세요" />&nbsp;
+														<span id="CalsaleEndDayIcon" class="cal_btn">
+															<button type="button" id="endbutton"><img src="/manage/img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"/></button>
+														</span>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="">모집 기간</label></th>
+													<td colspan="3">
+														시작일 : <input type="text" id="recru_sdate" name="recru_sdate" size="11" readonly="readonly"  value="2024-11-29" title="등록일을 입력해주세요" />&nbsp;
+														<span id="CalsaleStartDayIcon" class="cal_btn">
+															<button type="button" id="recrusbutton"><img src="/manage/img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"/></button>
+														</span>
+
+														~
+														종료일 : <input type="text" id="recru_edate" name="recru_edate" size="11" readonly="readonly" value="2025-02-10" title="등록일을 입력해주세요" />&nbsp;
+														<span id="CalsaleEndDayIcon" class="cal_btn">
+															<button type="button" id="recruebutton"><img src="/manage/img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"/></button>
+														</span>
+													</td>
+												</tr>						
+												<tr>
+													<th scope="row"><label for="">교육 장소</label></th>
+													<td colspan="3">
+														<input type="text" name="eduClass" id="eduClass" value="4강의실"/>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row"><label for="">교육 시간</label></th>
+													<td>
+														<input type="text" name="eduTime" id="eduTime" value="09:00~18:00"/>
+													</td>
+													<th scope="row"><label for="">모집 인원</label></th>
+													<td>
+														<input type="text" name="eduAccount" id="eduAccount" value="20"/>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!-- //bbs --> 
+								<!-- 내용 : e -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default card-view">
+					<div class="panel-heading">
+						<div class="pull-left">
+							<h4 class="panel-title txt-dark">상세 설명</h4>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="panel-wrapper collapse in">
+						<div class="panel-body">
+							<div id="bbs">
+								<div class="table_wrap table_block">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
+										<colgroup>
+											<col width="*" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<td>
+													<textarea id="contents" name="contents" title="내용을 입력해주세요" style="width:100%;"><p><img src="/upload/editor/1732869039479_323.jpg" style=""><img src="/upload/editor/1732869047428_190.jpg" style=""><img src="/upload/editor/1732869054784_373.jpg" style=""><img src="/upload/editor/1732869078843_21.jpg" style=""><img src="/upload/editor/1732869085703_892.jpg" style=""><img src="/upload/editor/1732869092705_298.jpg" style=""><img src="/upload/editor/1732869100215_689.jpg" style=""><br></p></textarea>	
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<!--//btn-->
+							<div class="btns_wrap">
+								<div class="pull-left">
+									<a class="btns btns_blue_line" href="#" onclick=""><strong>목록</strong> </a>
+								</div>
+								<div class="pull-right">
+									<a class="btns btns_blue" href="javascript:;" onclick="goSave(this)"><strong>저장</strong></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<input type="hidden" name="cmd" id="cmd" value="edit" />
+		<input type="hidden" name="no" id="no" value="728" />
+		<input type="hidden" name="state" id="state" value="1" />
+		</form>
+	
+	</div>
+	<!-- /top_tab_area -->
+
+	<!-- Footer -->
+	<footer class="footer container-fluid pl-30 pr-30">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>COPYRIGHTS (C) 2020 VIZENSOFT. ALL RIGHTS RESERVED</p>
+			</div>
+		</div>
+	</footer>
+	<!-- /Footer -->
+
+	</div>
+    <!-- /Main Content -->
+</div>
+<!-- /#wrapper -->
+
+
+	<!-- JavaScript -->
+	
+    <!-- Bootstrap Core JavaScript -->
+    
+	<!-- Data table JavaScript -->
+	<script src="/manage/template/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	
+	<!-- Slimscroll JavaScript -->
+	<script src="/manage/template/dist/js/jquery.slimscroll.js"></script>
+	
+	<!-- Progressbar Animation JavaScript -->
+	<script src="/manage/template/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+	<script src="/manage/template/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+	
+	<!-- Fancy Dropdown JS -->
+	<script src="/manage/template/dist/js/dropdown-bootstrap-extended.js"></script>
+	
+	<!-- Sparkline JavaScript -->
+	<script src="/manage/template/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+	
+	<!-- Owl JavaScript -->
+	<script src="/manage/template/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+	
+	<!-- Switchery JavaScript -->
+	<script src="/manage/template/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+	
+	<!-- Toast JavaScript -->
+	<script src="/manage/template/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+	
+	<!-- Init JavaScript -->
+	<script src="/manage/template/dist/js/init.js"></script>
+	<script src="/manage/template/dist/js/dashboard-data.js"></script>
+<!--//wrap -->
+
+</body>
+</html>

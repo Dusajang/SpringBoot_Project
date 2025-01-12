@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>쌍용교육센터</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/basic.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/montserrat.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/notosanskr.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/summernote/jquery-ui.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/notosanskr.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/summernote/jquery-ui.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/board.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/content.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/jquery.datetimepicker.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/layout.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/mobile.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/montserrat.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/slick.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/slick-theme.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/swiper.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/css/swiper.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/summernote/bootstrap-3.3.2-dist/css/bootstrap.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/summernote/bootstrap-3.3.2-dist/js/bootstrap.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/summernote/jquery-ui.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/summernote/summernote.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/ui/1.12.1/themes/base/jquery-ui.css}">
+<link rel="stylesheet" th:href="@{//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css}">
+</head>
+<body>
+ <!-- header -->
+ <header th:replace="~{/customer/header::header01Fragment}"></header>
+<!-- header // -->
+<!-- 퀵메뉴 -->
+ <div th:replace="~{/customer/sidebar::sidebarFragment}"></div>
+<!-- 퀵메뉴 //-->
+<!-- 내용 -->
+<th:block layout:fragment="content"></th:block>
+<!-- 풋터 -->
+ <footer th:replace="~{/customer/footer::footerFragment}"></footer>
+<!-- 풋터 //-->
+<!-- bootstrap JS -->  
+<script th:src="@{/bootstrap/bootstrap.min.js}"></script>
+</body>
+</html>

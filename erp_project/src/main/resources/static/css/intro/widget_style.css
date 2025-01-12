@@ -1,0 +1,1627 @@
+
+/* line 478 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 1 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
+
+/* line 286 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/node_modules/grunt-contrib-stylus/node_modules/stylus/lib/functions/index.styl */
+
+/* line 1 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/lib.styl */
+
+/* line 6 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/lib.styl */
+
+/* line 6 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+
+/* line 1 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+
+/* line 2 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.widget-loading:before {
+  opacity: 0.6;
+  content: "";
+  position: absolute;
+  z-index: 90;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff url("/static/img/loading.gif") no-repeat 50% 250px;
+}
+
+/* line 13 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.widget-ruler {
+  position: absolute;
+  z-index: 10000;
+  top: 0;
+  right: 0;
+  width: 18px;
+  height: 2500px;
+  background: url("/static/img/ruler-bg.png") no-repeat 0 0;
+}
+
+/* line 22 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-content2 {
+  position: relative;
+  background: #fff;
+}
+
+/* line 26 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest,
+.recowidget-setting2-head {
+  *zoom: 1;
+}
+
+/* line 3 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/lib.styl */
+.recowidget-setting2-abtest:after,
+.recowidget-setting2-head:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 30 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest .control-group,
+.recowidget-setting2-head .control-group,
+.recowidget-setting2-abtest .control-label,
+.recowidget-setting2-head .control-label,
+.recowidget-setting2-abtest .controls,
+.recowidget-setting2-head .controls {
+  color: #333;
+  display: inline-block;
+  margin: 2px 5px;
+  vertical-align: middle;
+}
+
+/* line 38 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest .control-group-right,
+.recowidget-setting2-head .control-group-right {
+  float: right;
+}
+
+/* line 41 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest .form-control,
+.recowidget-setting2-head .form-control {
+  max-width: 120px;
+  font-size: 12px;
+}
+
+/* line 44 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest .form-control-channel,
+.recowidget-setting2-head .form-control-channel {
+  max-width: none;
+  width: 200px;
+}
+
+/* line 47 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest .form-control-title-text,
+.recowidget-setting2-head .form-control-title-text {
+  max-width: none;
+  width: 250px;
+}
+
+/* line 51 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest hr,
+.recowidget-setting2-head hr {
+  margin: 0;
+}
+
+/* line 54 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest {
+  padding: 10px 10px 0;
+  background: #eeeee9;
+}
+
+/* line 57 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+
+/* line 58 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest .nav-tabs .active a,
+.recowidget-setting2-abtest .nav-tabs .active a:hover,
+.recowidget-setting2-abtest .nav-tabs .active a:active {
+  background: #fff !important;
+}
+
+/* line 63 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-head {
+  position: relative;
+  background: #fff;
+  border: solid 4px #bbb;
+}
+
+/* line 68 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-abtest-label {
+  padding: 8px 8px 5px;
+}
+
+/* line 71 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail {
+  z-index: 20;
+  position: absolute;
+  right: 0;
+}
+
+/* line 76 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail .recowidget-setting2-detail-responsive {
+  background: #ccf;
+  margin: 5px 0;
+  padding: 10px 0;
+}
+
+/* line 81 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail .recowidget-setting2-detail-toggle {
+  transition: opacity 200ms linear;
+  opacity: 0.7;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  border: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+/* line 89 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail .recowidget-setting2-detail-toggle:hover {
+  opacity: 1;
+}
+
+/* line 92 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened {
+  width: 227px;
+  padding: 15px 0;
+  background: #f2f2f2;
+  border: solid 1px #ddd;
+  border-top: 0;
+}
+
+/* line 98 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened .control-group {
+  padding: 0 19px;
+}
+
+/* line 100 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened .controls {
+  margin-bottom: 5px;
+}
+
+/* line 102 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened label {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+/* line 106 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened label.inline2 {
+  font-weight: normal;
+  display: inline-block;
+  width: 50px;
+}
+
+/* line 110 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened label.inline3 {
+  font-weight: normal;
+  display: inline-block;
+  width: 75px;
+}
+
+/* line 114 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened label.inline4 {
+  font-weight: normal;
+  display: block;
+}
+
+/* line 117 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened label.radio {
+  padding: 0 !important;
+}
+
+/* line 119 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened input[type="text"],
+.recowidget-setting2-detail.opened input[type="number"],
+.recowidget-setting2-detail.opened select {
+  width: 179px;
+  height: 19px;
+  margin: 0;
+  padding: 0 5px;
+  border: solid 1px #c3cbda;
+  border-radius: 0;
+  font-size: 11px;
+  line-height: 19px;
+}
+
+/* line 130 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened select {
+  width: 189px;
+}
+
+/* line 132 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened hr {
+  margin: 15px 0;
+  border-top: solid 1px #ddd;
+}
+
+/* line 135 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened .selectpicker {
+  width: 191px !important;
+}
+
+/* line 137 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened .recowidget-fold {
+  width: 100%;
+  margin-top: 10px;
+  border: 0;
+  background: #e1e1e1;
+  font-size: 11px;
+}
+
+/* line 143 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail.opened .recowidget-setting2-detail-toggle {
+  top: auto;
+  margin-top: 16px;
+}
+
+/* line 147 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-detail ul,
+.recowidget-setting2-detail li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 152 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.widget2-input-medium {
+  width: 130px !important;
+}
+
+/* line 154 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.widget2-input-small {
+  width: 80px !important;
+}
+
+/* line 156 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.widget2-input-tiny {
+  width: 50px !important;
+}
+
+/* line 159 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-body2 {
+  min-height: 300px;
+  padding: 0 10px;
+  border: solid 1px #ddd;
+  resize: vertical;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+/* line 167 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-bottom {
+  border-bottom: solid 1px #ddd;
+  background: #f2f2f2;
+}
+
+/* line 171 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-bottom .control-label,
+.recowidget-setting2-bottom .controls {
+  color: #333;
+  display: inline-block;
+  margin: 2px 5px;
+  vertical-align: middle;
+}
+
+/* line 178 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-bottom .form-control {
+  display: inline-block;
+}
+
+/* line 181 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-css,
+.recowidget-setting2-floating {
+  padding: 15px;
+}
+
+/* line 184 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-css textarea,
+.recowidget-setting2-floating textarea {
+  width: 100%;
+}
+
+/* line 186 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-css label,
+.recowidget-setting2-floating label {
+  margin-right: 10px;
+  font-weight: normal !important;
+}
+
+/* line 190 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-setting2-floating-body {
+  padding: 15px;
+  border: solid 1px #ddd;
+  background: #fff;
+}
+
+/* line 195 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width {
+  position: relative;
+  z-index: 30;
+  float: right;
+  width: 310px;
+  height: 40px;
+  margin-right: 230px;
+  *zoom: 1;
+}
+
+/* line 3 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/lib.styl */
+.recowidget-preview-width:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 204 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width .recowidget-preview-width-title {
+  position: absolute;
+  top: 13px;
+  left: 0;
+  font-size: 12px;
+}
+
+/* line 209 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width .recowidget-preview-slider {
+  position: absolute;
+  top: 17px;
+  left: 110px;
+  width: 200px;
+  font-size: 12px;
+}
+
+/* line 215 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width .recowidget-preview-min {
+  position: absolute;
+  top: -17px;
+  left: -5px;
+  width: 35px;
+  text-align: left;
+}
+
+/* line 221 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width .recowidget-preview-max {
+  position: absolute;
+  top: -17px;
+  right: -5px;
+}
+
+/* line 225 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width .recowidget-preview-value {
+  position: absolute;
+  top: -17px;
+  right: 82px;
+  width: 35px;
+  text-align: center;
+}
+
+/* line 231 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-width .ui-slider-handle {
+  font-size: 14px;
+}
+
+/* line 234 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-preview-frame {
+  clear: both;
+}
+
+/* line 237 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-buttons {
+  text-align: center;
+}
+
+/* line 240 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-has-changes {
+  padding: 5px;
+  border-top: solid 2px #bbb;
+  background-color: #ffe;
+  font-size: 14px;
+}
+
+/* line 246 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.img-loading {
+  position: relative;
+}
+
+/* line 249 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.img-loading .img-loading-wrap {
+  opacity: 0.7;
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-image: url("/static/img/loading_s.gif");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-color: #fff;
+}
+
+/* line 260 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+
+/* line 261 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.modal-widget-abtest .modal-dialog {
+  width: 750px;
+}
+
+/* line 263 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.modal-widget-abtest table {
+  background: #fafafa;
+}
+
+/* line 265 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.modal-widget-abtest td {
+  padding: 3px 8px !important;
+}
+
+/* line 268 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.form-control-url {
+  width: 250px;
+  max-width: 250px !important;
+  padding: 6px;
+  font-size: 11px !important;
+  letter-spacing: -1px;
+}
+
+/* line 275 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+
+/* line 276 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.nav-tabs-abtest-groups > li > a:hover {
+  border-color: #aaa;
+  border-bottom: 0 !important;
+}
+
+/* line 279 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.nav-tabs-abtest-groups > li > a {
+  border: solid 1px #aaa;
+  border-bottom: 0;
+  background: #bfb;
+  color: #555 !important;
+}
+
+/* line 284 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.nav-tabs-abtest-groups > li.active > a {
+  border-color: #aaa !important;
+  border-bottom: 0;
+}
+
+/* line 287 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.nav-tabs-abtest-groups > li.notinuse > a {
+  border-color: #eeeee9 !important;
+  background: none;
+  color: #aaa !important;
+}
+
+/* line 292 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/widget.styl */
+.recowidget-copy {
+  float: left;
+  padding: 5px 0;
+}
+
+/* line 4 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.clear {
+  clear: both;
+  *zoom: 1;
+}
+
+/* line 5 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.clear:after {
+  content: " ";
+  display: block;
+  clear: both;
+}
+
+/* line 7 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table th,
+.table td {
+  vertical-align: middle !important;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* line 13 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table tbody tr.sun td,
+.table tbody tr.sun th {
+  color: #d00;
+  border-bottom: solid 1px #999;
+}
+
+/* line 18 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table tbody tr.sat td,
+.table tbody tr.sat th {
+  color: #00d;
+}
+
+/* line 22 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table tbody tr.day_start td,
+.table tbody tr.day_start th {
+  border-bottom: solid 1px #999;
+}
+
+/* line 26 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table tbody tr.day_noon td,
+.table tbody tr.day_noon th {
+  border-bottom: solid 1px #bbb;
+}
+
+/* line 30 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table tbody tr.day_middle td,
+.table tbody tr.day_middle th {
+  border-bottom: 0;
+}
+
+/* line 34 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table-left th,
+.table-left td {
+  text-align: left;
+}
+
+/* line 38 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table-sm th,
+.table-sm td {
+  padding: 3px 5px !important;
+  font-size: 11px;
+}
+
+/* line 43 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table hr {
+  margin: 5px 0;
+}
+
+/* line 46 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 47 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ibox-title .nav-tabs > li > a {
+  padding: 5px 13px 6px 15px;
+}
+
+/* line 49 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ibox-title.ibox-title-autoheight {
+  height: auto;
+}
+
+/* line 51 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 52 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ibox-tools .btn-group {
+  margin-top: -3px;
+}
+
+/* line 55 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.list-group-item-narrow {
+  padding: 5px 10px;
+}
+
+/* line 58 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.logstatus-recentvisitor-content {
+  height: 435px;
+  overflow-y: scroll;
+}
+
+/* line 62 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recentvisitor-item,
+.recentitem-item {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  -moz-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  -o-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+
+/* line 72 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recentvisitor-item.ng-enter,
+.recentitem-item.ng-enter {
+  background: #ff5;
+}
+
+/* line 74 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recentvisitor-item.ng-enter.ng-active,
+.recentitem-item.ng-enter.ng-active {
+  opacity: 1;
+  background: #fff;
+}
+
+/* line 78 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recentvisitor-item img,
+.recentitem-item img {
+  max-width: 50px;
+  max-height: 30px;
+}
+
+/* line 83 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recentvisitor-item:hover,
+.recentitem-item:hover {
+  background: #eee;
+}
+
+/* line 86 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recentvisitor-item.loading,
+.recentitem-item.loading {
+  min-height: 0;
+}
+
+/* line 90 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.browser-icon {
+  display: inline-block;
+  padding-left: 18px;
+  background-image: url("/static/img/browser/unknown.png");
+  background-repeat: no-repeat;
+  background-position: 1px 1px;
+}
+
+/* line 97 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.msie6 {
+  background-image: url("/static/img/browser/ie6.png");
+}
+
+/* line 98 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.msie7 {
+  background-image: url("/static/img/browser/ie7.png");
+}
+
+/* line 99 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.msie8 {
+  background-image: url("/static/img/browser/ie8.png");
+}
+
+/* line 100 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.msie9 {
+  background-image: url("/static/img/browser/ie9.png");
+}
+
+/* line 101 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.msie10 {
+  background-image: url("/static/img/browser/ie10.png");
+}
+
+/* line 102 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.chrome {
+  background-image: url("/static/img/browser/chrome.png");
+}
+
+/* line 103 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.firefox {
+  background-image: url("/static/img/browser/firefox.png");
+}
+
+/* line 104 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.safari {
+  background-image: url("/static/img/browser/safari.png");
+}
+
+/* line 105 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.opera {
+  background-image: url("/static/img/browser/opera.png");
+}
+
+/* line 107 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.item-img-middle {
+  max-width: 100px;
+  max-height: 80px;
+}
+
+/* line 111 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.pointer {
+  cursor: pointer;
+}
+
+/* line 113 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.pointer:hover {
+  opacity: 0.5;
+}
+
+/* line 116 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loading {
+  min-height: 50px;
+  background-image: url("/static/img/loading_s.gif");
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+/* line 121 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loading.ibox-content,
+.loading.row {
+  min-height: 250px;
+  background-image: url("/static/img/loading.gif");
+}
+
+/* line 126 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loading .highcharts-container {
+  opacity: 0.3;
+}
+
+/* line 129 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.highcharts-container {
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+/* line 133 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 134 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.item-detail img {
+  max-width: 100%;
+  max-height: 250px;
+  margin: 20px 20px 0 0;
+}
+
+/* line 139 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.sp-replacer {
+  margin: 0 3px 0 0;
+  border: solid 1px #c3cbda;
+  background: #fff;
+}
+
+/* line 143 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.sp-preview {
+  width: 11px;
+  height: 11px;
+  border: 0;
+}
+
+/* line 147 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.sp-dd {
+  height: 11px;
+  padding: 0;
+  color: #838ba2;
+  font-size: 8px;
+  line-height: 11px;
+}
+
+/* line 154 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.tab-pane .form-group {
+  padding: 40px;
+}
+
+/* line 157 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-form-custom {
+  width: 300px;
+}
+
+/* line 161 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+input.ng-invalid {
+  border: solid 1px #f44;
+  background: #fee;
+}
+
+/* line 165 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+[dropdown] {
+  position: relative;
+}
+
+/* line 168 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.animate-rotation {
+  -webkit-animation: rotation 2s infinite linear;
+  animation: rotation 2s infinite linear;
+}
+
+/* line 172 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-webkit-keyframes rotation {
+
+/* line 173 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+/* line 174 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+/* line 180 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ibox-title .label {
+  float: none;
+  font: inherit;
+}
+
+/* line 184 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-install-status {
+  float: right;
+  padding: 10px;
+}
+
+/* line 188 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.progress-steps {
+  position: relative;
+  height: 40px;
+}
+
+/* line 191 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.progress-txt {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* line 197 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.progress-step {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: #bbb;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+/* line 205 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.progress-step .fa {
+  color: #fff;
+  line-height: 40px;
+}
+
+/* line 209 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.progress-step-done {
+  background: #1c84c6;
+}
+
+/* line 211 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.progress-line {
+  display: inline-block;
+  width: 70px;
+  height: 3px;
+  background: #ddd;
+  vertical-align: middle;
+}
+
+/* line 218 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ctr-filter {
+  height: auto;
+  padding: 0;
+}
+
+/* line 222 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ctr-filter-title {
+  display: inline-block;
+  width: 75px;
+  margin-right: 8px;
+  padding: 8px 12px;
+  text-align: center;
+  background: #939;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* line 231 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.ctr-filter--recotype .ctr-filter-title {
+  background: #982;
+}
+
+/* line 234 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.filter-type.level1 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* line 237 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.filter-type.level2 {
+  background-color: #ddd;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+/* line 242 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.meta-invalid {
+  background: #f99;
+}
+
+/* line 244 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.meta-invalid code {
+  background: #f99;
+}
+
+/* line 247 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 248 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.superadmin-service-autocomplete input {
+  width: 110px;
+  vertical-align: middle;
+  font-size: 11px !important;
+  line-height: 20px;
+}
+
+/* line 253 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.superadmin-service-autocomplete a.ui-button {
+  width: 20px;
+  height: 24px;
+}
+
+/* line 256 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+ul.ui-autocomplete {
+  z-index: 1000;
+  font-size: 11px;
+}
+
+/* line 260 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 261 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-tabs-sm > li > a {
+  padding: 7px 10px 7px 15px;
+}
+
+/* line 265 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+ul[ui-sortable] {
+  position: relative;
+  padding: 15px 0;
+}
+
+/* line 269 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+ul[ui-sortable] hr {
+  margin-top: 0 !important;
+  border-color: #f4f4f4 !important;
+}
+
+/* line 273 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+ul[ui-sortable] li {
+  padding-bottom: 15px;
+  background: #d9d9d9;
+  cursor: move;
+  position: relative;
+}
+
+/* line 279 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+ul[ui-sortable] .ui-sortable-placeholder {
+  background-color: #bbb;
+  height: 50px;
+}
+
+/* line 283 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.is-new {
+  -webkit-animation: 3s yellow_fade 0s 1;
+  -moz-animation: 3s yellow_fade 0s 1;
+  -o-animation: 3s yellow_fade 0s 1;
+  animation: 3s yellow_fade 0s 1;
+}
+
+/* line 290 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-webkit-keyframes yellow_fade {
+
+/* line 290 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 290 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+/* line 291 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-moz-keyframes yellow_fade {
+
+/* line 291 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 291 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+/* line 292 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-o-keyframes yellow_fade {
+
+/* line 292 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 292 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+/* line 295 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-second-level .divider {
+  margin: 10px 0;
+  border-top: dotted 1px #777;
+}
+
+/* line 299 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+
+/* line 300 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services .collapse {
+  display: block;
+  visibility: visible;
+}
+
+/* line 303 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services ul {
+  min-width: 150px;
+  background: #2f4050;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 309 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services li {
+  margin: 0;
+  padding: 10px;
+  border-bottom: solid 1px #203648;
+  white-space: nowrap;
+}
+
+/* line 314 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services li:hover {
+  background: #223140;
+}
+
+/* line 316 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services li.current {
+  background: #223140;
+}
+
+/* line 318 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services li.current a {
+  font-weight: bold;
+}
+
+/* line 320 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.nav-other-services a {
+  color: #ddd;
+}
+
+/* line 323 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 {
+  height: 400px;
+  margin: 100px auto 0;
+  z-index: 100;
+  text-align: center;
+  width: 750px;
+ 
+}
+
+/* line 329 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 h1 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+/* line 333 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 h1 img {
+  max-width: 100%;
+}
+
+/* line 336 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 h2 {
+  padding-bottom: 7px;
+  border-bottom: solid 3px #000;
+  margin-bottom: 20px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* line 344 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .notices {
+  float: left;
+  width: 200px;
+  padding-bottom: 20px;
+  border: solid 1px #bbb;
+  font-size: 16px;
+  background-color: #bababa;
+  border-color: #bababa;
+  color: #FFFFFF;
+  border-radius: 10px;
+}
+
+/* line 344 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .direct {
+  float: left;
+  width: 200px;
+  height: 250px;
+  margin: 20px;
+  padding-top: 20px;
+  border: solid 1px ;
+  font-size: 16px;
+  color: #FFFFFF;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+.loginscreen2 .direct  h2 {
+  padding-bottom: 7px;
+  border-bottom: solid 0px #000;
+  margin-bottom: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* line 349 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .notices ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 352 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .notices li {
+  list-style: none;
+  position: relative;
+  padding: 5px 85px 5px 5px;
+  border-bottom: solid 1px #bbb;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* line 360 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .notices li.empty {
+  padding-top: 55px;
+  padding-bottom: 55px;
+}
+
+/* line 363 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .notices a {
+  color: #000;
+}
+
+/* line 365 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 .notices small {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* line 369 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.loginscreen2 form {
+  float: right;
+  width: 300px;
+  padding-bottom: 20px;
+}
+
+/* line 374 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@media screen and (max-width: 940px) {
+
+/* line 375 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  .loginscreen2 {
+    width: 620px;
+  }
+
+/* line 377 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  .loginscreen2 .notices {
+    width: 330px;
+  }
+
+/* line 379 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  .loginscreen2 form {
+    width: 270px;
+  }
+}
+
+/* line 382 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@media screen and (max-width: 640px) {
+
+/* line 383 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  .loginscreen2 {
+    margin: 10px auto;
+    width: 310px;
+  }
+
+/* line 386 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  .loginscreen2 .notices,
+  .loginscreen2 form {
+    float: none;
+    width: 100%;
+  }
+
+  .loginscreen2 .direct {
+  float: left;
+  width: 30%;
+  height: 30%;
+   font-size: 13px;
+   
+ margin: 5px;
+ margin-top: 50px;
+  margin-bottom: 50px;
+  }
+   .loginscreen2 .direct h2{
+     font-size: 14px;
+  }
+  .loginscreen2 .direct img{
+  width: 50px;
+
+  }
+
+}
+
+/* line 391 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table-method-head {
+  position: relative;
+}
+
+/* line 393 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.table-method-head-method {
+  position: absolute;
+  word-wrap: nowrap;
+  top: 0;
+  left: 0;
+  padding: 3px 10px;
+  border: solid 1px #999;
+  background: #ffd;
+}
+
+/* line 402 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp1-link a {
+  background: #0e2f44;
+  color: #a7b1c2;
+}
+
+/* line 405 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp1-link.active a {
+  background: #293846;
+}
+
+/* line 407 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp2-link a {
+  background: #00183c;
+  color: #a7b1c2;
+}
+
+/* line 410 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp2-link.active a {
+  background: #293846;
+}
+
+/* line 413 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp2-link li.active a {
+  background: #293846;
+  color: #fff;
+}
+
+/* line 416 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp3-link a {
+  background: #123e59;
+  color: #a7b1c2;
+}
+
+/* line 419 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp3-link.active a {
+  background: #293846;
+}
+
+/* line 421 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp3-link li.active a {
+  background: #293846;
+  color: #fff;
+}
+
+/* line 424 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp3-link a span.label {
+  background: #fff;
+  color: #1ab394;
+}
+
+/* line 428 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .superadmin-link a {
+  background: #313119;
+  color: #a7b1c2;
+}
+
+/* line 431 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .superadmin-link.active a {
+  background: #313119;
+}
+
+/* line 433 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .superadmin-link li.active a {
+  background: #313119;
+  color: #fff;
+}
+
+/* line 437 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.switch {
+  width: 41px;
+  height: 19px;
+}
+
+/* line 440 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.switch small {
+  width: 18px;
+  height: 18px;
+}
+
+/* line 444 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.modal-9w .modal-dialog {
+  width: 90% !important;
+}
+
+/* line 448 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.inline-block {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 452 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.no-mg {
+  margin: 0 !important;
+}
+
+/* line 455 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+#x-expand-table_wrapper th,
+#x-expand-table_wrapper td {
+  white-space: nowrap;
+}
+
+/* line 458 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+#x-expand-table_wrapper.dataTables_wrapper {
+  width: 100%;
+}
+
+/* line 461 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+div.dataTables_scrollBody thead th,
+div.dataTables_scrollBody thead td {
+  line-height: 0;
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+}
+
+/* line 468 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+#home-top-panel a {
+  color: #676a6c;
+}
+
+/* line 471 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.recowidget-buttons {
+  margin-top: 15px;
+}
+
+/* line 474 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.custom_css .CodeMirror {
+  height: 500px;
+}
+
+/* line 477 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+.navbar-default .grp2-link .client-level-link a {
+  background-color: #00183c !important;
+}
+
+/* line 175 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-moz-keyframes rotation {
+
+/* line 176 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    transform: rotate(0deg);
+  }
+
+/* line 177 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* line 175 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-webkit-keyframes rotation {
+
+/* line 176 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    transform: rotate(0deg);
+  }
+
+/* line 177 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* line 175 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-o-keyframes rotation {
+
+/* line 176 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    transform: rotate(0deg);
+  }
+
+/* line 177 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* line 175 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@keyframes rotation {
+
+/* line 176 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    transform: rotate(0deg);
+  }
+
+/* line 177 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-moz-keyframes yellow_fade {
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-webkit-keyframes yellow_fade {
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@-o-keyframes yellow_fade {
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+@keyframes yellow_fade {
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  from {
+    background: #ff0;
+  }
+
+/* line 293 : /usr/share/tomcat8/.jenkins/workspace/deploy-dashboard/front/style/index.styl */
+  to {
+    background: #fff;
+  }
+}
+
+
+.white{color:#777;border-color:#dfdfdf;background-color:#fff}
+.white:hover{color:#555;border-color:#dfdfdf;background-color:#eee}
+
+.blue{color:#fff;border-color:#1f6ea8;background-color:#378dcc}
+.blue:hover{color:#fff;border-color:#1f6ea8;background-color:#1f6ea8}
+
+.green{color:#fff;border-color:#60ba2a;background-color:#60ba2a}
+.green:hover{color:#fff;border-color:#4ea51a;background-color:#4ea51a}
+
+.cyan{color:#fff;border-color:#42b97d;background-color:#66d99f}
+.cyan:hover{color:#fff;border-color:#42b97d;background-color:#42b97d}
+
+.orange{color:#fff;border-color:#d37200;background-color:#ec8000; text-shadow:#b66300 1px 1px 1px;box-shadow:#4d7d20 1px 1px 1px;}
+.orange:hover{color:#fff;border-color:#d37200;background-color:#ff7200}
+
+.dark_gray{color:#fff;border-color:#dfdfdf;background-color:#666}
+.dark_gray:hover{color:#fff;border-color:#dfdfdf;background-color:#666}
+
+.facebook{color:#fff;border-color:#3765a3;background-color:#3765a3}
+.facebook:hover{color:#fff;border-color:#324e97;background-color:#324e97}
+
+.twitter{color:#fff;border-color:#6abde5;background-color:#6abde5}
+.twitter:hover{color:#fff;border-color:#39a8df;background-color:#39a8df}
+
+.gray{color:#fff;border-color:#666;background-color:#666}
+.gray:hover{color:#fff;border-color:#666;background-color:#666}
+
+.notices{    float: left;
+    width: 570px;
+    padding-bottom: 20px;
+    font-size: 16px;}
+
+.notices a {
+    color: #000;
+}
+ .notices ul {
+    margin: 0;
+    padding: 0;
+}
+.notices li {
+    list-style: none;
+    position: relative;
+    padding: 8px 85px 8px 5px;
+    border-bottom: solid 1px #e1e1e1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.notices small {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.notices h2 {
+    padding-bottom: 13px;
+    border-bottom: solid 2px #e1e1e1;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.login-layout  h2 {
+    padding-bottom: 13px;
+    border-bottom: solid 2px #e1e1e1;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.notices{   
+	float: left;
+    width: 100%;
+    padding-bottom: 20px;
+    font-size: 16px;
+}
+
+.notices_m a {
+    color: #000;
+}
+ .notices_m ul {
+    margin: 0;
+    padding: 0;
+}
+.notices_m li {
+    list-style: none;
+    position: relative;
+    padding: 8px 85px 8px 5px;
+    border-bottom: solid 1px #e1e1e1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.notices_m small {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.notices_m h2 {
+    padding-bottom: 13px;
+    border-bottom: solid 2px #e1e1e1;
+    margin-bottom: 5px;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.login-layout  h2 {
+    padding-bottom: 13px;
+    border-bottom: solid 2px #e1e1e1;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+.notice_more {
+     display:inline-block;float:right;border: solid 1px #e1e1e1;border-radius:4px;  padding:6px 8px;font-size:11px;
+}

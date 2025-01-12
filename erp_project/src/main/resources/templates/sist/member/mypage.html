@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>mypage</title>
+
+	<!-- CSS -->
+	<link th:href="@{/css/basic.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/board.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/layout.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/main.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/content.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/custom.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/montserrat.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/notosanskr.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/jquery.datetimepicker.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/mobile.css}" rel="stylesheet" media="all" />
+	
+    <!-- jQuery (최신 안정 버전) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<script th:src="@{/summernote/bootstrap-3.3.2-dist/js/bootstrap.js}"></script>
+	
+	<!-- 기타 JavaScript -->
+	<script th:src="@{/js/jquery.bxslider.min.js}"></script>
+	<script th:src="@{/smarteditor/js/HuskyEZCreator.js}"></script>	
+	<script th:src="@{/js/function.js}"></script>
+	<script th:src="@{/js/function_jquery.js}"></script>
+	<script th:src="@{/js/dev.js}"></script>
+	<script th:src="@{/js/vizenweblog.js}"></script>
+	<script th:src="@{/js/vizen_calendar.js}"></script>
+	<script th:src="@{/js/jquery.datetimepicker.full.js}"></script>
+	<script th:src="|//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js|"></script>	
+	<script th:src="@{/summernote/summernote.js}"></script>
+	<script th:src="@{/summernote/lang/summernote-ko-KR.js}"></script>
+	
+<script type="text/javascript">
+    
+        $(window).on("load", function () {
+            jQuery.datetimepicker.setLocale('ko'); // 달력 언어 설정
+
+            // 생일 달력 설정
+            $('#birthday').datetimepicker({ timepicker: false, format: "Y-m-d" });
+            $("#button").click(function () {
+                $('#birthday').datetimepicker('show');
+            });
+        });
+
+        function zipcodeapi() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    var fullAddr = ''; // 최종 주소 변수
+                    var extraAddr = ''; // 조합형 주소 변수
+
+                    // 주소 타입에 따른 처리
+                    if (data.userSelectedType === 'R') {
+                        fullAddr = data.roadAddress;
+                    } else {
+                        fullAddr = data.jibunAddress;
+                    }
+
+                    // 상세 주소 추가
+                    if (data.userSelectedType === 'R') {
+                        if (data.bname !== '') {
+                            extraAddr += data.bname;
+                        }
+                        if (data.buildingName !== '') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+                    }
+
+                    // 값 설정
+                    $('#zipcode').val(data.zonecode);
+                    $('#addr0').val(fullAddr);
+                    $('#addr1').focus();
+                }
+            }).open();
+        }
+        
+		        function validatePassword() {
+		    const password = document.getElementById('password').value;
+		    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
+		    if (!regex.test(password)) {
+		        alert('비밀번호는 6~12자의 영문, 숫자, 특수문자를 포함해야 합니다.');
+		        return false;
+		    }
+		    return true;
+		    }
+		    
+		    function validatePasswordMatch() {
+		    const password = document.getElementById('password').value;
+		    const password2 = document.getElementById('password2').value;
+		    if (password !== password2) {
+		        alert('비밀번호가 일치하지 않습니다.');
+		        return false;
+		    }
+		    return true;
+		}
+		    	    		    	    		    	    		    	    		    
+        function validateGenderAndArea() {
+	    const gender = document.querySelector('input[name="gender"]:checked');
+	    const area = document.getElementById('area').value;
+	    if (!gender) {
+	        alert('성별을 선택해주세요.');
+	        return false;
+	    }
+	    return true;
+	}
+	
+	function validateAgreement() {
+    const agree00 = document.getElementById('agree00').checked;
+    const agree02 = document.getElementById('agree02').checked;
+    if (!agree00 || !agree02) {
+        alert('약관에 모두 동의해야 가입이 가능합니다.');
+        return false;
+    }
+    return true;
+}
+       
+       function validateForm() {
+	    // 약관 동의 확인
+	    if (!validateAgreement()) return false;
+	    
+	    // 비밀번호 유효성 검사
+	     if (!validatePassword()) return false;
+	    
+	    //비밀번호 일치
+	    if (!validatePasswordMatch()) return false;
+	    
+	    // 성별 확인
+	    if (!validateGenderAndArea()) return false;
+	   
+	
+	    // 모든 검증 통과
+	    return true;
+	}
+       
+
+    function resetForm() {
+        document.getElementById('wform').reset(); // 폼 초기화
+        
+        
+	    // 체크박스와 라디오 버튼 초기화
+	    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	    const radios = document.querySelectorAll('input[type="radio"]');
+	
+	    checkboxes.forEach(checkbox => checkbox.checked = false);
+	    radios.forEach(radio => radio.checked = false);
+    }
+    
+    function submitForm() {
+    
+        if (validateForm()) {
+        // 이메일 결합 로직
+        const email1 = document.getElementById('email1').value;
+        const email2 = document.getElementById('email2').value;
+        const emailHidden = document.getElementById('email');
+
+        if (!email1) {
+            alert('이메일 아이디를 입력해주세요.');
+            return; // 폼 제출 중단
+        }
+
+        if (!email2) {
+            alert('이메일 도메인을 선택해주세요.');
+            return; // 폼 제출 중단
+        }
+
+        // 결합된 이메일을 히든 필드에 설정
+        emailHidden.value = `${email1}@${email2}`;
+
+        // 폼 제출
+        document.getElementById('wform').submit();
+    }
+    
+}
+    
+   		     
+</script>
+
+<style type="text/css">
+    
+	    .writeForm_btn a {
+	    background-color: #04264c;
+	    }
+	
+    </style>
+
+</head>
+<body>
+
+<div id="wrap">
+
+<div class="sub_common">
+	<div class="sub_route">
+		<div class="inner">
+			<div class="home">
+				<a href="/main" class="mont">
+					<img src="/img/sub_route_home.png" alt="home"> HOME
+				</a>
+				<i></i>
+			</div>
+			<ul>
+				<li><a href="/mypage">마이페이지</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="mypages_tabbtn">
+	<div class="inner">
+		<ul>
+			<li class="on"><a href="/member/edit.jsp"><span>회원정보</span></a></li>
+			<li><a href="/mypages/curriculum/index.jsp"><span>교육과정 신청 내역</span></a></li>
+			<li><a href="/withdraw"><span>회원탈퇴</span></a></li>
+		</ul>
+	</div>
+</div>
+<script>
+	$(document).ready(function(){
+		// 마이페이지 탭
+		var url = window.location.pathname;
+		$(".mypages_tabbtn ul li a").each(function(){
+			if ( $(this).attr("href") == url ){
+				$(this).parent().addClass("on").siblings().removeClass("on");
+			}
+		});
+	});
+	
+			        function validatePassword() {
+		    const password = document.getElementById('password').value;
+		    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
+		    if (!regex.test(password)) {
+		        alert('비밀번호는 6~12자의 영문, 숫자, 특수문자를 포함해야 합니다.');
+		        return false;
+		    }
+		    return true;
+		    }
+		    
+		    function validatePasswordMatch() {
+		    const password = document.getElementById('password').value;
+		    const password2 = document.getElementById('password2').value;
+		    if (password !== password2) {
+		        alert('비밀번호가 일치하지 않습니다.');
+		        return false;
+		    }
+		    return true;
+		}
+		
+		     function validateGenderAndArea() {
+	    const gender = document.querySelector('input[name="gender"]:checked');
+	    const area = document.getElementById('area').value;
+	    if (!gender) {
+	        alert('성별을 선택해주세요.');
+	        return false;
+	    }
+	    return true;
+	}
+	
+	       function validateForm() {
+	       	    
+	    // 비밀번호 유효성 검사
+	     if (!validatePassword()) return false;
+	    
+	    //비밀번호 일치
+	    if (!validatePasswordMatch()) return false;
+	    
+	    // 성별 확인
+	    if (!validateGenderAndArea()) return false;
+	   
+	
+	    // 모든 검증 통과
+	    return true;
+	}
+	
+	 function resetForm() {
+        document.getElementById('wform').reset(); // 폼 초기화
+        
+        
+	    // 체크박스와 라디오 버튼 초기화
+	    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	    const radios = document.querySelectorAll('input[type="radio"]');
+	
+	    checkboxes.forEach(checkbox => checkbox.checked = false);
+	    radios.forEach(radio => radio.checked = false);
+    }
+    
+    function submitForm() {
+    
+        if (validateForm()) {
+        
+        // 이메일 결합 로직
+        const email1 = document.getElementById('email1').value;
+        const email2 = document.getElementById('email2').value;
+        const emailHidden = document.getElementById('email');
+
+        if (!email1) {
+            alert('이메일 아이디를 입력해주세요.');
+            return; // 폼 제출 중단
+        }
+
+        if (!email2) {
+            alert('이메일 도메인을 선택해주세요.');
+            return; // 폼 제출 중단
+        }
+
+        // 결합된 이메일을 히든 필드에 설정
+        emailHidden.value = `${email1}@${email2}`;
+
+        // 폼 제출
+        document.getElementById('wform').submit();
+    }
+    
+}
+	
+</script>
+
+	<!-- 프로그램시작 -->
+	<div class="programCon">
+
+		<form name="wform" id="wform" method="post" th:action="@{/mypage}" onsubmit="return validateForm();" th:object="${memberForm}">
+		
+		<!-- //join -->
+		<div class="writeForm">
+			<table>
+				<colgroup>
+					<col class="writeForm_col01">
+					<col width="*">
+				</colgroup>
+				<tbody><tr>
+					<th><label for="id">아이디</label></th>
+					<td>
+					    <input type="hidden" name="username" id="username" th:value = "${#authentication.principal.member.username}">
+						<label><span th:text="${#authentication.principal.member.username}"></span></label>
+					</td>
+				</tr>
+				<tr>
+					<th><label for="password">비밀번호</label></th>
+					<td>
+						<input name="password" id="password" class="inputPass size02" type="password" maxlength="20">
+						<span class="password_ch"><label for="password2">비밀번호 확인</label></span>
+						<input name="password2" id="password2" class="inputPass size02 mmarT10" type="password">
+					</td>
+				</tr>
+				<tr>
+					<th><span class="col01">*</span>이름</th>
+					<td>
+					    
+						<input id="name" name="name" class="inputTxt inputName" type="text" th:value="${#authentication.principal.member.name}" maxlength="20">
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="">생일</label></th>
+					<td>
+						<input type="text" id="birthday" name="birthDate" th:value="${#authentication.principal.member.birthDate}">
+						<span id="CalregistdateIcon">
+						<button type="button" id="button"><img src="img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"></button>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<th>연락처</th>
+					<td>
+						
+						<input type="text" name="contect" id="tel" th:value="${#authentication.principal.member.contect}" onkeyup="isNumberOrHyphen(this);" onblur="cvtUserPhoneNumber(this)" data-value="" maxlength="13">
+						
+						
+					</td>
+				</tr>
+				<tr>
+					<th><span class="col01">*</span>휴대폰</th>
+					<td>
+						
+						<input type="text" name="phone" id="cell" th:value="${#authentication.principal.member.phone}" onkeyup="isNumberOrHyphen(this);" onblur="cvtUserPhoneNumber(this)" data-value="휴대폰 번호를 입력해주세요." maxlength="13">
+						
+						<span class="label_wrap">
+						<input type="checkbox" id="Num_check" name="smsOptIn" value="1" th:checked="${#authentication.principal.member.smsOptIn}">
+						<label for="Num_check">수신</label></span>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="col01">*</span>이메일</th>
+					<td class="mail_type">
+						<input type="hidden" name="email" id="email" th:value="${#authentication.principal.member.email}">
+						<input data-value="이메일을 입력해주세요." name="email1" id="email1" class="inputEmail" type="text" th:value="${local}" maxlength="70">
+						<span class="email_txt">@</span>
+					
+					
+					    <select class="selecEmail" name="email2" id="email2" th:value="${domain}">
+						
+						    <option value="">선택해주세요.</option>
+						    <option value="naver.com" th:selected="${domain == 'naver.com'}">naver.com</option>
+						    <option value="daum.net" th:selected="${domain == 'daum.net'}">daum.net</option>
+						    <option value="gmail.com" th:selected="${domain == 'gmail.com'}">gmail.com</option>
+						    <option value="hotmail.com" th:selected="${domain == 'hotmail.com'}">hotmail.com</option>
+						    <option value="nate.com" th:selected="${domain == 'nate.com'}">nate.com</option>
+						    <option value="korea.com" th:selected="${domain == 'korea.com'}">korea.com</option>
+						    
+						</select> 
+										
+						<span class="label_wrap">
+						<input type="checkbox" id="Email_check" name="emailOptIn" value="1" th:checked="${#authentication.principal.member.emailOptIn}">
+						<label for="Email_check">수신</label></span>
+						
+					</td>
+				</tr>
+				<tr>
+				 
+					<th><span class="col01">*</span>성별</th>
+				
+					<td>
+				    <!-- 남자 라디오 버튼 -->
+				    <input name="gender" type="radio" id="radio_check01" value="1"
+				           th:checked="${gender.ordinal() == 0}">
+				    <label for="radio_check01">남자</label>
+				
+				    <!-- 여자 라디오 버튼 -->
+				    <input name="gender" type="radio" id="radio_check02" value="2"
+				           th:checked="${gender.ordinal() == 1}">
+				    <label for="radio_check02">여자</label>
+				   </td>
+									
+						
+				</tr> 
+				<tr>
+					<th><label for="area">소재지</label></th>
+					<td>
+					
+					<select id="area" name="location">
+					
+				    <option value="">선택해주세요.</option>
+				    
+				    <option value="1" th:selected="${location.ordinal() == 0}">강원</option>
+				    <option value="2" th:selected="${location.ordinal() == 1}">경기</option>
+				    <option value="3" th:selected="${location.ordinal() == 2}">경남</option>
+				    <option value="4" th:selected="${location.ordinal() == 3}">경북</option>
+				    <option value="5" th:selected="${location.ordinal() == 4}">광주</option>
+				    <option value="6" th:selected="${location.ordinal() == 5}">대구</option>
+				    <option value="7" th:selected="${location.ordinal() == 6}">대전</option>
+				    <option value="8" th:selected="${location.ordinal() == 7}">부산</option>
+				    <option value="9" th:selected="${location.ordinal() == 8}">서울</option>
+				    <option value="10" th:selected="${location.ordinal() == 9}">울산</option>
+				    <option value="11" th:selected="${location.ordinal() == 10}">인천</option>
+				    <option value="12" th:selected="${location.ordinal() == 11}">전남</option>
+				    <option value="13" th:selected="${location.ordinal() == 12}">전북</option>
+				    <option value="14" th:selected="${location.ordinal() == 13}">제주</option>
+				    <option value="15" th:selected="${location.ordinal() == 14}">충남</option>
+				    <option value="16" th:selected="${location.ordinal() == 15}">충북</option>
+				    <option value="17" th:selected="${location.ordinal() == 16}">해외</option>
+				    
+				</select>
+					
+					
+					</td>
+				</tr>
+				<tr>
+					<th><span class="col01">*</span>우편번호</th>
+					<td>
+						<input data-value="우편번호를 입력해주세요." type="text" class="zipcode" id="zipcode" name="postalCode" th:value="${#authentication.principal.member.postalCode}" readonly="readonly" onclick="zipcodeapi();"><a class="zip_ch" href="javascript:zipcodeapi();">우편번호검색</a>
+					</td>
+				</tr>
+				<tr>
+					<th><span class="col01">*</span>주소</th>
+					<td class="addr_td">
+						<input  type="text" id="addr0" class="addr" name="address" th:value="${#authentication.principal.member.address}" readonly="readonly"><br>
+						<input  type="text" id="addr1" class="addr" name="addressDetail" th:value="${#authentication.principal.member.addressDetail}" style="margin-top:7px;">
+					</td>
+				</tr>
+			</tbody></table>
+		</div>
+		
+		    <div class="writeForm_btn">
+		        <a href="javascript:;" id="w_btn" onclick="submitForm();">확인</a>
+		        <a href="#" onclick="resetForm();">취소</a>
+		    </div>
+
+		</form>
+	</div>
+	<!-- 프로그램끝 -->
+</div>
+
+</body>
+</html>
