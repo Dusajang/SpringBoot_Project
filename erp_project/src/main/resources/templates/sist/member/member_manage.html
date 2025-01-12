@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
+<title>쌍용교육센터</title>
+<meta http-equiv="X-UA-compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="페이지설명">
+<meta name="keywords" content="검색키워드등록">
+<meta name="classification" content="검색사이트 카테고리 등록">
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="/manage/css/nanumgothic.css" rel="stylesheet" type="text/css">
+<link href="/manage/css/notosanskr.css" rel="stylesheet" type="text/css">
+
+<link href="/css/poppins.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/kopubdotum.css">
+<link href="/css/nanumbarungothic.css" rel="stylesheet" type="text/css">
+<link href="/manage/css/basic.css" rel="stylesheet" type="text/css">
+<link href="/manage/css/layout.css" rel="stylesheet" type="text/css">
+<link href="/manage/css/board.css" rel="stylesheet" type="text/css">
+<link href="/manage/css/manage.css" rel="stylesheet" type="text/css">
+<link href="/css/colorPicker.css" rel="stylesheet" type="text/css">
+<link href="/summernote/jquery-ui.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/style.min.css">
+<link rel="stylesheet" href="/css/jquery.datetimepicker.css" type="text/css" media="all">
+
+<script type="text/javascript" src="/js/function.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+<script type="text/javascript" src="/js/calendar_beans_v2.0.js"></script>
+<script type="text/javascript" src="/js/jquery-1.8.0.min.js"></script>
+
+<!-- 달력 변경 jquery.js 버젼업, datetimepicker.full.js 달력 js -->
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery.datetimepicker.full.js"></script>
+<!-- 달력 변경 끝 -->
+<script src="/js/dev.js"></script>
+<script src="/js/jstree_/js/jstree.min.js"></script>
+<!-- summernote editor-->
+
+<link href="/summernote/bootstrap-3.3.2-dist/css/bootstrap.css" rel="stylesheet">
+<link href="/summernote/summernote.css" rel="stylesheet">
+
+<script src="/summernote/bootstrap-3.3.2-dist/js/bootstrap.js"></script> 
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+<script src="/summernote/summernote.js"></script>
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
+
+<!-- include summernote css/js-->
+
+
+
+<!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+<script type="text/javascript" src="/js/function_jquery.js"></script>
+
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"></script>
+<script type="text/javascript" src="/js/jquery.colorPicker.js"></script>
+<script type="text/javascript" src="/js/validationBind.js"></script> 
+
+
+<link rel="stylesheet/less" type="text/css" href="/manage/css/color.less">
+<script type="text/javascript" src="/manage/include/less.min.js"></script>
+
+
+<script type="text/javascript">
+$(window).load(function() {
+	jQuery.datetimepicker.setLocale('ko');		// 달력 언어 설정
+	var mobileKeyWords = new Array('iPhone', 'iPod', 'BlackBerry', 'Android', 'Windows CE', 'LG', 'MOT', 'SAMSUNG', 'SonyEricsson'); 
+	for (var word in mobileKeyWords){ 
+		if (navigator.userAgent.match(mobileKeyWords[word]) != null){ 
+			// 모바일
+			$("div#menu > ul > li > a").attr("href","javascript:;");
+		} 
+	} 	
+});
+</script>
+
+
+<!-- template CSS 모음 -->
+
+
+<!-- Custom CSS -->
+<link href="/css/manage/template/dist/css/style.css" rel="stylesheet" type="text/css">
+<!-- 작업 CSS -->
+<link href="/css/manage/template/css/layout.css" rel="stylesheet" type="text/css">
+<link href="/css/manage/template/css/content.css" rel="stylesheet" type="text/css">
+
+<script src="/js/manage_viewport.js"></script>
+<style type="text/css" id="less:error-message">
+
+.less-error-message ul, .less-error-message li {
+list-style-type: none;
+margin-right: 15px;
+padding: 4px 0;
+margin: 0;
+}
+.less-error-message label {
+font-size: 12px;
+margin-right: 15px;
+padding: 4px 0;
+color: #cc7777;
+}
+.less-error-message pre {
+color: #dd6666;
+padding: 4px 0;
+margin: 0;
+display: inline-block;
+}
+.less-error-message pre.line {
+color: #ff0000;
+}
+.less-error-message h3 {
+font-size: 20px;
+font-weight: bold;
+padding: 15px 0 5px 0;
+margin: 0;
+}
+.less-error-message a {
+color: #10a
+}
+.less-error-message .error {
+color: red;
+font-weight: bold;
+padding-bottom: 2px;
+border-bottom: 1px dashed red;
+}
+
+</style>
+
+<script>
+function groupDelete() {	
+	if ( isSeleted(document.frm.no) ){
+		document.frm.submit();
+	} else {
+		alert("삭제할 항목을 하나 이상 선택해 주세요.");
+	}
+}
+
+function groupDormant() {	
+	if ( isSeleted(document.frm.no) ){
+		document.frm.cmd.value = "dormant";
+ 		document.frm.submit();
+	} else {
+		alert("휴면상태 변경을 원하는 항목을 하나 이상 선택해주세요.");
+	}
+}
+function groupEmail() {	
+	if ( isSeleted(document.frm.no) ){
+		document.frm.cmd.value = "dormantEmail";
+ 		document.frm.submit();
+	} else {
+		alert("휴면안내 메일발송을 원하는 항목을 하나 이상 선택해주세요.");
+	}
+}
+
+function groupSend(){
+	if ( isSeleted(document.frm.push) ){
+	$("input[name=cmd]").val("group");
+	$("#frm").attr("action","/manage/member/push.jsp").submit();
+	} else {
+		alert("문자를 발송할 사람들을 선택해주세요");
+	}
+}
+
+
+// 달력부분
+$(window).load(function() {
+	$("#sstartdate").datetimepicker({
+		format:'Y-m-d',
+		 onShow:function( ct ){
+		 this.setOptions({
+			maxDate:$('#senddate').val()?$('#senddate').val():false
+		  })
+		},
+		timepicker:false
+	});
+		$("#start_button").click(function(){
+			$('#sstartdate').datetimepicker('show');
+		})	
+	$("#senddate").datetimepicker({
+	format:'Y-m-d',
+	  onShow:function( ct ){
+	   this.setOptions({
+		minDate:$('#sstartdate').val()?$('#sstartdate').val():false
+	   })
+	  },
+	  timepicker:false
+	});
+		$("#end_button").click(function(){
+			$('#senddate').datetimepicker('show');
+		})	
+	//initCal({id:"sstartdate",type:"day",today:"y"});			
+	//initCal({id:"senddate",type:"day",today:"y"});
+	
+	$("#sval").keydown(function(e){
+		entKeyEventListener(e.keyCode, "searchForm");
+	});
+});
+
+// 목록 'search' form 정렬 
+function goOrderBy(by, type) {
+	var f = document.searchForm;
+	f.ordertype.value = type;
+	f.orderby.value = by;
+	f.submit();
+}
+
+$(document).ready(function(){
+	$("#excel").click(function(){
+		$("#searchForm")[0].action = "excel.jsp";
+		$("#searchForm").submit();
+	});
+});
+
+function goExcel() {
+	$("#searchForm")[0].action = "excel.jsp";
+	$("#searchForm").submit();
+}
+
+function searchDate(startDay, endDay) {
+	$("#searchForm [name=sstartdate]").val(startDay);
+	$("#searchForm [name=senddate]").val(endDay);
+	$("#searchForm").submit();
+}
+
+</script>
+<style type="text/css">
+	body {font-family:'Noto Sans KR';}
+	#bbs #blist table thead th {font-weight:500;}
+	#bbs #blist table tbody td {font-weight:300;}
+</style>
+</head>
+</head>
+
+<body>
+
+<div class="wrapper theme-2-active pimary-color-blue">
+
+		<!-- Top Menu Items -->
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="mobile-only-brand">
+				<div class="nav-header">
+					<div class="logo-wrap">
+						<a href="/manage/eduStatistics/all/index.jsp">
+							<img class="brand-img" src="/manage/img/logo.png" alt="shop_logo">
+						</a>
+					</div>
+				</div>
+
+				<!-- 모바일 메뉴 토글 버튼 -->
+				<a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);">
+					<i class="zmdi zmdi-menu"></i>
+					
+				</a>
+				<!-- 모바일 우측 토글 버튼 -->
+				<a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
+
+			</div>
+			<div id="mobile_only_nav" class="mobile-only-nav pull-right">
+				<div class="nav navbar-right top-nav pull-right">
+					
+					<ul class="box_a">
+						<li><a href="/main" >홈페이지 바로가기</a></li>
+						<li><a href="/logout">로그아웃</a></li>
+					</ul>
+				</div>
+			</div>	
+		</nav>
+</div>
+
+    <div class="wrapper theme-2-active pimary-color-blue">
+    
+    <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);">
+	<i class="zmdi zmdi-menu"></i>
+	<img src="/css/manage/template/img/nav_close_btn.png" alt="">
+    </a>
+
+		<!-- Top Menu Items -->
+		
+		<!-- /Top Menu Items -->
+		
+		<!-- Left Sidebar Menu -->
+		<div class="fixed-sidebar-left">
+			<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+			<ul class="nav navbar-nav side-nav nicescroll-bar depth_custom" style="overflow: hidden; width: auto; height: 100%;">
+				<li class="navigation-header">
+					<span></span> 
+					<i class="zmdi zmdi-more"></i>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-account-box mr-20"></i><span class="right-nav-text">회원관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_7" class="" style="display: none;">
+						<li id="menu7_1" class="/manage/member/"><a href="/admin/member_manage">회원관리</a></li>
+						<li id="menu7_2" class="/manage/member/"><a href="">휴면회원</a></li>
+						<li id="menu7_3" class="/manage/member/"><a href="/admin/withdraw">탈퇴회원</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">지원자 관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_4" class="" style="display: none;">
+						<li id="menu4_1" class="/manage/eduStatistics/all/"><a href="/manage/eduStatistics/all/index.jsp">전체 지원 현황</a></li>
+						<li id="menu4_2" class="/manage/eduStatistics/employment/allstatistics/"><a href="/manage/eduStatistics/employment/allstatistics/index.jsp">취업자 과정별 지원현황</a></li>
+						<li id="menu4_3" class="/manage/eduStatistics/employment/typestatistics/"><a href="/manage/eduStatistics/employment/typestatistics/index.jsp">취업자 과정별 지원자 관리</a></li>
+						<li id="menu4_4" class="/manage/eduStatistics/incumbent/allstatistics/"><a href="/manage/eduStatistics/incumbent/allstatistics/index.jsp">재직자 과정별 지원현황</a></li>
+						<li id="menu4_5" class="/manage/eduStatistics/incumbent/typestatistics/"><a href="/manage/eduStatistics/incumbent/typestatistics/index.jsp">재직자 과정별 지원자 관리</a></li>
+						<li id="menu4_6" class="/manage/boardAdmin/reservation/"><a href="/manage/boardAdmin/reservation/index.jsp">방문상담예약</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">연수 지원서</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_3" class="" style="display: none;">
+						<li id="menu3_1" class="/manage/apply/employment/"><a href="/manage/apply/employment/index.jsp">취업교육 지원서관리</a></li>
+						<li id="menu3_2" class="/manage/apply/incumbent/"><a href="/manage/apply/incumbent/index.jsp">재직자교육 지원서관리</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">교육과정 관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_2" class="" style="display: none;">
+						<li id="menu2_1" class="/manage/edu/"><a href="/manage/edu/index.jsp">교육과정</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">게시판관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_1" class="" style="display: none;">
+						<li id="menu1_1" class="/manage/boardAdmin/notice/"><a href="/manage/boardAdmin/notice/index.jsp">공지사항</a></li>
+						<li id="menu1_2" class="/manage/boardAdmin/consult/"><a href="/manage/boardAdmin/consult/index.jsp">교육문의</a></li>
+						<li id="menu1_3" class="/manage/boardAdmin/faq/"><a href="/manage/boardAdmin/faq/index.jsp">FAQ</a></li>
+						<li id="menu1_4" class="/manage/boardAdmin/faq/FaqCatagory/"><a href="/manage/boardAdmin/faq/FaqCatagory/index.jsp">FAQ분류관리</a></li>
+						<li id="menu1_5" class="/manage/boardAdmin/employment/"><a href="/manage/boardAdmin/employment/index.jsp">취업현황</a></li>
+						<li id="menu1_6" class="/manage/boardAdmin/eduReview/"><a href="/manage/boardAdmin/eduReview/index.jsp">수강후기</a></li>
+						<li id="menu1_7" class="/manage/boardAdmin/portfolio/"><a href="/manage/boardAdmin/portfolio/index.jsp">포트폴리오</a></li>
+						<li id="menu1_8" class="/manage/boardAdmin/popup/"><a href="/manage/boardAdmin/popup/index.jsp">팝업관리</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-account-box mr-20"></i><span class="right-nav-text">구인의뢰관리</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_8" class="" style="display: none;">
+						<li id="menu8_1" class="/manage/request/"><a href="/manage/request/index.jsp">구인의뢰</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">지원 통계</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_6" class="" style="display: none;">
+						<li id="menu6_1" class="/manage/statistics/kind/"><a href="/manage/statistics/kind/index.jsp">과정별 통계</a></li>
+						<li id="menu6_1" class="/manage/statistics/info/"><a href="/manage/statistics/info/index.jsp">가입경위 통계</a></li>
+						<li id="menu6_1" class="/manage/statistics/mem/"><a href="/manage/statistics/mem/index.jsp">회원별 통계</a></li>
+					</ul>
+				</li>
+				
+				<li>
+					<a href="javascript:void(0);">
+						<div class="pull-left"><i class="zmdi zmdi-settings mr-20"></i><span class="right-nav-text">환경설정</span></div>
+						<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+						<div class="clearfix"></div>
+					</a>
+					<ul id="menu_10" class="" style="display: none;">
+						<li id="menu10_1" class="/manage/environment/admin/"><a href="/manage/environment/admin/index.jsp">관리자관리</a></li>
+						<li id="menu10_2" class="/manage/environment/loginhistory/"><a href="/manage/environment/loginhistory/index.jsp"><span>관리자접속기록</span></a></li>
+						<li id="menu10_3" class="/manage/environment/stipulation/"><a href="/manage/environment/stipulation/stipulation.jsp"><span>개인정보취급방침/<br>회원약관</span></a></li>					
+					</ul>
+				</li>				
+			</ul><div class="slimScrollBar" style="background: rgb(135, 135, 135); width: 4px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 0px; z-index: 99; right: 1px; height: 1690px;"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+		</div>
+		<!-- /Left Sidebar Menu -->
+
+		<!-- Main Content -->
+		
+    <!-- /Main Content -->
+</div>
+
+
+<div class="page-wrapper" style="min-height: 1756px;">
+			<div class="container-fluid pt-25">
+
+
+
+<script type="text/javascript">
+	$(window).load(function(){
+		$("#blist table tr td").mouseenter(function(){
+		$(this).parent("tr").addClass("on");
+		});
+		$("#blist table tr td").mouseleave(function(){
+			$("#blist table tr").removeClass("on");
+		});		
+	});	
+</script>
+
+
+<script>
+	/* 현재 디렉토리를 구해서 menu마다 넣어놓은 class 이름이랑 같을때, active 클래스 추가 */
+	$(window).load(function(){
+		var url = window.location.pathname;
+		var urlPathname = url.substring( 0, url.substring(1).lastIndexOf('/') + 2 );
+		//console.log(urlPathname);
+
+		//$(".side-nav > li > ul").removeClass("in");
+		
+		$(".depth_custom > li > ul").hide();
+		$(".depth_custom > li > a").click(function(){
+			var subcont = $(this).next("ul");
+
+			if( subcont.is(":visible") ){ //닫을 때
+				subcont.slideUp();
+				$(this).removeClass("active");
+			}else{
+				subcont.slideDown(); // 열릴 때						 
+				$(".depth_custom > li > ul").not(subcont).slideUp();
+				$(".depth_custom > li").not(this).removeClass("on");
+				$(".depth_custom > li > a").removeClass("active");
+				$(this).addClass("active");
+			}         
+		});
+		
+
+		$(".depth_custom > li > ul > li > a").each(function(){
+			if($(this).parent().attr('class') == urlPathname){
+				$(this).css("color","#307dd4");
+				$(this).parent().parent().addClass("in");	//메뉴펼침
+				$(this).parent().parent().show();
+				$(this).parent().parent().parent().find(">a").addClass("active").addClass("active_important");
+			}
+		});
+
+
+		/* 모바일에서 메뉴 펼쳤을때 컨텐츠 영역 선택하면 메뉴 닫히게*/
+		$(".page-wrapper").click(function(){
+			$(".wrapper").removeClass("slide-nav-toggle");
+		});
+
+		$(".collapse > li > a").click(function(){
+			if ( navigator.appName == "Microsoft Internet Explorer" ) {
+				var nowUrl = window.location.href;
+				saveHash(setTime);
+			}
+		});	
+	});
+	
+</script>
+
+	<script>
+		// 메뉴효과
+		$('#menu8_2 a').addClass('off');
+		$('#menu8_3 a').addClass('off');
+	</script>
+	<!-- /top-->
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default card-view">
+					<div class="panel-heading">
+						<div class="pull-left">
+							<!-- property:목록 -->
+							<h4 class="panel-title txt-dark">회원 관리 - [목록]</h4>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="panel-wrapper collapse in">
+						<div class="panel-body">
+							<form name="searchForm" id="searchForm" action="index.jsp" method="post">
+							<div class="form-wrap">
+								<div class="form-horizontal">
+									<div class="row">
+										<div class="col-md-3">
+											<label for="" class="col-md-4 title">
+												<span class="asterisk">*</span>
+												회원상태
+											</label>
+											<select name="ssecession" class="form-control w140" onchange="$('#searchForm').submit();">
+												<option value="-1">전체</option>
+												<option value="0">회원</option><option value="1">탈퇴신청</option>
+											</select>
+										</div>
+										<div class="col-md-3">
+											<label for="" class="col-md-4 title">
+												<span class="asterisk">*</span>
+												sms수신
+											</label>
+											<select name="sissms" class="form-control w140" onchange="$('#searchForm').submit();">
+												<option value="-1">전체</option>
+												<option value="0">수신안함</option><option value="1">수신</option>
+											</select>
+										</div>
+										<div class="col-md-3">
+											<label for="" class="col-md-4 title">
+												<span class="asterisk">*</span>
+												email수신
+											</label>
+											<select name="sisemail" class="form-control w140" onchange="$('#searchForm').submit();">
+												<option value="-1">전체</option>
+												<option value="0">수신안함</option><option value="1">수신</option>
+											</select>
+										</div>
+									</div>
+									
+									
+									<div class="light-grey-hr"></div>
+									<div class="row">
+										<div class="col-md-12 all">
+											<label for="" class="col-md-2 title">
+												<span class="asterisk">*</span>
+												성별
+											</label>
+											<select name="sgender" class="form-control w140" onchange="$('#searchForm').submit();">
+												<option value="0">전체</option>
+												<option value="1">남자</option><option value="2">여자</option>
+											</select>
+										</div>
+									</div>
+									
+									<div class="light-grey-hr"></div>
+									<div class="row">
+										<div class="col-md-12 all">
+											<label for="" class="col-md-2 title">
+												<span class="asterisk">*</span>
+												가입일
+											</label>
+											<div class="form-box hauto">
+												<input type="hidden" name="sdatetype" id="sdatetype" value="registdate">
+												<input type="text" id="sstartdate" name="sstartdate" class="form-control w140" value="">&nbsp;
+												<span id="CalregistdateIcon" class="cal_btn">
+												<button type="button" id="start_button"><img src="/manage/img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"></button>
+												</span>
+												&nbsp;&nbsp;-&nbsp;&nbsp;
+												<input type="text" id="senddate" name="senddate" class="form-control w140" value="">&nbsp;
+												<span id="CalregistdateIcon" class="cal_btn">
+												<button type="button" id="end_button"><img src="/manage/img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"></button>
+												</span>
+												<p class="pc_inline_block_m_block">
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-12-05','2024-12-05');"><strong>전일</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-12-06','2024-12-06');"><strong>오늘</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-12-07','2024-12-07');"><strong>후일</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-11-29','2024-12-06');"><strong>1주</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-11-29','2024-12-05');"><strong>전주</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-12-01','2024-12-07');"><strong>금주</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-12-07','2024-12-13');"><strong>차주</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-11-06','2024-12-06');"><strong>1개월</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-11-01','2024-11-30');"><strong>전월</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2024-12-01','2024-12-31');"><strong>금월</strong></a>
+													<a class="btns btns_black_line" href="#" onclick="searchDate('2025-01-01','2025-01-31');"><strong>익월</strong></a>
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="light-grey-hr"></div>
+									<div class="row">
+										<div class="col-md-12 all">
+											<label for="" class="col-md-2 title">
+												<span class="asterisk">*</span>
+												검색어 검색
+											</label>
+											<div class="form-box hauto">
+												<select name="stype" class="form-control w140" id="stype" title="검색을 선택해주세요." onchange="$('#searchForm').submit();">
+													<option value="name">
+														이름
+													</option>
+													<option value="id">
+														아이디
+													</option>
+													<option value="cell">
+														휴대폰
+													</option>
+													<option value="email">
+														이메일
+													</option>
+													<option value="addr0">
+														주소
+													</option>
+
+
+<!-- 													</option> -->
+												</select>
+												<input type="text" id="sval" name="sval" value="" class="text_box form-control upserch06" onkeyup="entKeyEventListener(event.keyCode, 'searchForm');">
+												<a class="btns btns_blue_line" href="#" onclick="$('#searchForm').submit();">검색</a>
+												<a class="downl_icon btns btns_black_line" href="javascript:;" onclick="goExcel();"><img src="/manage/img/down_icon.png">엑셀다운로드</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="panel panel-default card-view">
+					<div class="panel-wrapper collapse in">
+						<div class="panel-body">
+							<div id="bbs">
+								<div class="page_num">
+									<span>
+										<strong>
+											총 22324개
+										</strong>
+									</span>
+									<span>
+										1/2233페이지
+									</span>
+								</div>
+								<form name="frm" id="frm" action="" method="post">
+								
+
+						<div class="table_wrap table_scroll1400">
+						    <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
+						        <colgroup>
+						            <col class="t_w5">
+						            <col class="t_w8">
+						            <col class="t_w11">
+						            <col class="t_w11">
+						            <col class="t_w14">
+						            <col class="t_w14">
+						            <col class="t_w12">
+						            <col class="t_w12">
+						            <col class="t_w7">
+						            <col class="t_w7">
+						        </colgroup>
+						        <thead>
+						            <tr>
+						                <th scope="col" class="first">
+						                    <label class="b_first_c">
+						                        <input type="checkbox" name="allChk" id="allChk" onclick="check(this, document.frm.no)">
+						                        <i></i>
+						                    </label>
+						                </th>
+						                <th scope="col">번호</th>
+						                <th scope="col">회원</th> 
+						                <th scope="col">아이디</th> 
+						                <th scope="col">휴대폰</th> 
+						                <th scope="col">이메일</th>
+						                <th scope="col">회원상태</th> 
+						                <th scope="col">sms수신</th> 
+						                <th scope="col">email수신</th> 
+						                <th scope="col">가입일</th>
+						            </tr>
+						        </thead>
+						        <tbody>
+						        
+						            <tr th:each="member : ${paging.content}">
+						                <td>
+						                    <label class="b_first_c">
+						                        <input type="checkbox" name="chk" th:value="${member.memberId}">
+						                        <i></i>
+						                    </label>
+						                </td>
+						                <td th:text="${member.memberId}"></td> <!-- 번호 -->
+						                <td th:text="${member.name}"></td> <!-- 회원 이름 -->
+						                <td th:text="${member.username}"></td> <!-- 아이디 -->
+						                <td th:text="${member.phone}"></td> <!-- 휴대폰 -->
+						                <td th:text="${member.email}"></td> <!-- 이메일 -->
+						                <td th:text="${member.status}"></td> <!-- 회원 상태 -->
+						                <td th:text="${member.smsOptIn ? '수신' : '수신안함'}"></td> <!-- SMS 수신 -->
+						                <td th:text="${member.emailOptIn ? '수신' : '수신안함'}"></td> <!-- Email 수신 -->
+						                <td th:text="${member.joinDate}"></td> <!-- 가입일 -->
+						            </tr>
+						        </tbody>
+						    </table>
+						</div>
+								</form>
+
+
+<!-- 페이징 블럭 -->
+<div th:if="${!paging.isEmpty()}" class="paging_wrap">
+    <div class="page">
+
+        <!-- 현재 페이지 -->
+        <!-- <strong th:text="${paging.number + 1}"></strong> -->
+
+        <!-- 페이지 번호 -->
+        <a th:each="page : ${#numbers.sequence(0, paging.totalPages - 1)}"
+           th:classappend="${page == paging.number} ? 'active b_num' : 'b_num'"
+           th:text="${page + 1}"
+           th:href="@{|/admin/member_manage?page=${page}|}">
+        </a>
+
+        <!-- 다음 페이지 -->
+        <a th:if="${paging.hasNext()}" th:href="@{|/admin/member_manage?page=${paging.number + 1}|}" class="next">
+            <img src="/img/li_next_b.png" alt="">
+        </a>
+        
+        <!-- 마지막 페이지 -->
+        <a th:if="${paging.number < paging.totalPages - 1}" 
+           th:href="@{|/admin/member_manage?page=${paging.totalPages - 1}|}" 
+           class="next no03">
+            <img src="/img/li_next_end.png" alt="">
+        </a>
+
+    </div>
+</div>
+<!-- //페이징 처리 -->
+
+
+							
+								<div class="btns_wrap list">
+									<div class="pull-left">
+										<a class="btns btns_red" href="#" onclick="groupDelete();">삭제 </a>									
+									</div>
+									
+									<div class="pull-right">
+                                     <a class="btns btns_blue" href="#">회원추가 </a>
+									</div>
+								</div>
+								
+								
+								<!--//btn-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	<!-- /top_tab_area -->
+
+	<!-- Footer -->
+	<footer class="footer container-fluid pl-30 pr-30">
+		<div class="row">
+			<div class="col-sm-12">
+				<p>COPYRIGHTS (C) 2020 VIZENSOFT. ALL RIGHTS RESERVED</p>
+			</div>
+		</div>
+	</footer>
+	<!-- /Footer -->
+
+	</div>
+
+
+
+	<!-- JavaScript -->
+	
+    <!-- Bootstrap Core JavaScript -->
+    
+	<!-- Data table JavaScript -->
+	<script src="/manage/template/vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+	
+	<!-- Slimscroll JavaScript -->
+	<script src="/manage/template/dist/js/jquery.slimscroll.js"></script>
+	
+	<!-- Progressbar Animation JavaScript -->
+	<script src="/manage/template/vendors/bower_components/waypoints/lib/jquery.waypoints.min.js"></script>
+	<script src="/manage/template/vendors/bower_components/jquery.counterup/jquery.counterup.min.js"></script>
+	
+	<!-- Fancy Dropdown JS -->
+	<script src="/manage/template/dist/js/dropdown-bootstrap-extended.js"></script>
+	
+	<!-- Sparkline JavaScript -->
+	<script src="/manage/template/vendors/jquery.sparkline/dist/jquery.sparkline.min.js"></script>
+	
+	<!-- Owl JavaScript -->
+	<script src="/manage/template/vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+	
+	<!-- Switchery JavaScript -->
+	<script src="/manage/template/vendors/bower_components/switchery/dist/switchery.min.js"></script>
+	
+	<!-- Toast JavaScript -->
+	<script src="/manage/template/vendors/bower_components/jquery-toast-plugin/dist/jquery.toast.min.js"></script>
+	
+	<!-- Init JavaScript -->
+	<script src="/manage/template/dist/js/init.js"></script>
+	<script src="/manage/template/dist/js/dashboard-data.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+<div class="xdsoft_datetimepicker xdsoft_noselect xdsoft_"><div class="xdsoft_datepicker active"><div class="xdsoft_monthpicker"><button type="button" class="xdsoft_prev" style="visibility: visible;"></button><button type="button" class="xdsoft_today_button" style="visibility: visible;"></button><div class="xdsoft_label xdsoft_month"><span>12월</span><div class="xdsoft_select xdsoft_monthselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="0">1월</div><div class="xdsoft_option " data-value="1">2월</div><div class="xdsoft_option " data-value="2">3월</div><div class="xdsoft_option " data-value="3">4월</div><div class="xdsoft_option " data-value="4">5월</div><div class="xdsoft_option " data-value="5">6월</div><div class="xdsoft_option " data-value="6">7월</div><div class="xdsoft_option " data-value="7">8월</div><div class="xdsoft_option " data-value="8">9월</div><div class="xdsoft_option " data-value="9">10월</div><div class="xdsoft_option " data-value="10">11월</div><div class="xdsoft_option xdsoft_current" data-value="11">12월</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><i></i></div><div class="xdsoft_label xdsoft_year"><span>2024</span><div class="xdsoft_select xdsoft_yearselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="1950">1950</div><div class="xdsoft_option " data-value="1951">1951</div><div class="xdsoft_option " data-value="1952">1952</div><div class="xdsoft_option " data-value="1953">1953</div><div class="xdsoft_option " data-value="1954">1954</div><div class="xdsoft_option " data-value="1955">1955</div><div class="xdsoft_option " data-value="1956">1956</div><div class="xdsoft_option " data-value="1957">1957</div><div class="xdsoft_option " data-value="1958">1958</div><div class="xdsoft_option " data-value="1959">1959</div><div class="xdsoft_option " data-value="1960">1960</div><div class="xdsoft_option " data-value="1961">1961</div><div class="xdsoft_option " data-value="1962">1962</div><div class="xdsoft_option " data-value="1963">1963</div><div class="xdsoft_option " data-value="1964">1964</div><div class="xdsoft_option " data-value="1965">1965</div><div class="xdsoft_option " data-value="1966">1966</div><div class="xdsoft_option " data-value="1967">1967</div><div class="xdsoft_option " data-value="1968">1968</div><div class="xdsoft_option " data-value="1969">1969</div><div class="xdsoft_option " data-value="1970">1970</div><div class="xdsoft_option " data-value="1971">1971</div><div class="xdsoft_option " data-value="1972">1972</div><div class="xdsoft_option " data-value="1973">1973</div><div class="xdsoft_option " data-value="1974">1974</div><div class="xdsoft_option " data-value="1975">1975</div><div class="xdsoft_option " data-value="1976">1976</div><div class="xdsoft_option " data-value="1977">1977</div><div class="xdsoft_option " data-value="1978">1978</div><div class="xdsoft_option " data-value="1979">1979</div><div class="xdsoft_option " data-value="1980">1980</div><div class="xdsoft_option " data-value="1981">1981</div><div class="xdsoft_option " data-value="1982">1982</div><div class="xdsoft_option " data-value="1983">1983</div><div class="xdsoft_option " data-value="1984">1984</div><div class="xdsoft_option " data-value="1985">1985</div><div class="xdsoft_option " data-value="1986">1986</div><div class="xdsoft_option " data-value="1987">1987</div><div class="xdsoft_option " data-value="1988">1988</div><div class="xdsoft_option " data-value="1989">1989</div><div class="xdsoft_option " data-value="1990">1990</div><div class="xdsoft_option " data-value="1991">1991</div><div class="xdsoft_option " data-value="1992">1992</div><div class="xdsoft_option " data-value="1993">1993</div><div class="xdsoft_option " data-value="1994">1994</div><div class="xdsoft_option " data-value="1995">1995</div><div class="xdsoft_option " data-value="1996">1996</div><div class="xdsoft_option " data-value="1997">1997</div><div class="xdsoft_option " data-value="1998">1998</div><div class="xdsoft_option " data-value="1999">1999</div><div class="xdsoft_option " data-value="2000">2000</div><div class="xdsoft_option " data-value="2001">2001</div><div class="xdsoft_option " data-value="2002">2002</div><div class="xdsoft_option " data-value="2003">2003</div><div class="xdsoft_option " data-value="2004">2004</div><div class="xdsoft_option " data-value="2005">2005</div><div class="xdsoft_option " data-value="2006">2006</div><div class="xdsoft_option " data-value="2007">2007</div><div class="xdsoft_option " data-value="2008">2008</div><div class="xdsoft_option " data-value="2009">2009</div><div class="xdsoft_option " data-value="2010">2010</div><div class="xdsoft_option " data-value="2011">2011</div><div class="xdsoft_option " data-value="2012">2012</div><div class="xdsoft_option " data-value="2013">2013</div><div class="xdsoft_option " data-value="2014">2014</div><div class="xdsoft_option " data-value="2015">2015</div><div class="xdsoft_option " data-value="2016">2016</div><div class="xdsoft_option " data-value="2017">2017</div><div class="xdsoft_option " data-value="2018">2018</div><div class="xdsoft_option " data-value="2019">2019</div><div class="xdsoft_option " data-value="2020">2020</div><div class="xdsoft_option " data-value="2021">2021</div><div class="xdsoft_option " data-value="2022">2022</div><div class="xdsoft_option " data-value="2023">2023</div><div class="xdsoft_option xdsoft_current" data-value="2024">2024</div><div class="xdsoft_option " data-value="2025">2025</div><div class="xdsoft_option " data-value="2026">2026</div><div class="xdsoft_option " data-value="2027">2027</div><div class="xdsoft_option " data-value="2028">2028</div><div class="xdsoft_option " data-value="2029">2029</div><div class="xdsoft_option " data-value="2030">2030</div><div class="xdsoft_option " data-value="2031">2031</div><div class="xdsoft_option " data-value="2032">2032</div><div class="xdsoft_option " data-value="2033">2033</div><div class="xdsoft_option " data-value="2034">2034</div><div class="xdsoft_option " data-value="2035">2035</div><div class="xdsoft_option " data-value="2036">2036</div><div class="xdsoft_option " data-value="2037">2037</div><div class="xdsoft_option " data-value="2038">2038</div><div class="xdsoft_option " data-value="2039">2039</div><div class="xdsoft_option " data-value="2040">2040</div><div class="xdsoft_option " data-value="2041">2041</div><div class="xdsoft_option " data-value="2042">2042</div><div class="xdsoft_option " data-value="2043">2043</div><div class="xdsoft_option " data-value="2044">2044</div><div class="xdsoft_option " data-value="2045">2045</div><div class="xdsoft_option " data-value="2046">2046</div><div class="xdsoft_option " data-value="2047">2047</div><div class="xdsoft_option " data-value="2048">2048</div><div class="xdsoft_option " data-value="2049">2049</div><div class="xdsoft_option " data-value="2050">2050</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><i></i></div><button type="button" class="xdsoft_next" style="visibility: visible;"></button></div><div class="xdsoft_calendar"><table><thead><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead><tbody><tr><td data-date="1" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>1</div></td><td data-date="2" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>2</div></td><td data-date="3" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>3</div></td><td data-date="4" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>4</div></td><td data-date="5" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>5</div></td><td data-date="6" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>6</div></td><td data-date="7" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>7</div></td></tr><tr><td data-date="8" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>8</div></td><td data-date="9" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>9</div></td><td data-date="10" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>10</div></td><td data-date="11" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>11</div></td><td data-date="12" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>12</div></td><td data-date="13" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>13</div></td><td data-date="14" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>14</div></td></tr><tr><td data-date="15" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_current xdsoft_today xdsoft_weekend" title=""><div>15</div></td><td data-date="16" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>16</div></td><td data-date="17" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>17</div></td><td data-date="18" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>18</div></td><td data-date="19" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>19</div></td><td data-date="20" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>20</div></td><td data-date="21" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>21</div></td></tr><tr><td data-date="22" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>22</div></td><td data-date="23" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>23</div></td><td data-date="24" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>24</div></td><td data-date="25" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>25</div></td><td data-date="26" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>26</div></td><td data-date="27" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>27</div></td><td data-date="28" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>28</div></td></tr><tr><td data-date="29" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>29</div></td><td data-date="30" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>30</div></td><td data-date="31" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>31</div></td><td data-date="1" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date xdsoft_other_month" title=""><div>1</div></td><td data-date="2" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_other_month" title=""><div>2</div></td><td data-date="3" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date xdsoft_other_month" title=""><div>3</div></td><td data-date="4" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>4</div></td></tr></tbody></table></div><button type="button" class="xdsoft_save_selected blue-gradient-button" style="display: none;">Save Selected</button></div><div class="xdsoft_timepicker"><button type="button" class="xdsoft_prev"></button><div class="xdsoft_time_box xdsoft_scroller_box"><div class="xdsoft_time_variant" style="margin-top: 0px;"><div class="xdsoft_time " data-hour="0" data-minute="0">00:00</div><div class="xdsoft_time " data-hour="1" data-minute="0">01:00</div><div class="xdsoft_time xdsoft_current" data-hour="2" data-minute="0">02:00</div><div class="xdsoft_time " data-hour="3" data-minute="0">03:00</div><div class="xdsoft_time " data-hour="4" data-minute="0">04:00</div><div class="xdsoft_time " data-hour="5" data-minute="0">05:00</div><div class="xdsoft_time " data-hour="6" data-minute="0">06:00</div><div class="xdsoft_time " data-hour="7" data-minute="0">07:00</div><div class="xdsoft_time " data-hour="8" data-minute="0">08:00</div><div class="xdsoft_time " data-hour="9" data-minute="0">09:00</div><div class="xdsoft_time " data-hour="10" data-minute="0">10:00</div><div class="xdsoft_time " data-hour="11" data-minute="0">11:00</div><div class="xdsoft_time " data-hour="12" data-minute="0">12:00</div><div class="xdsoft_time " data-hour="13" data-minute="0">13:00</div><div class="xdsoft_time " data-hour="14" data-minute="0">14:00</div><div class="xdsoft_time " data-hour="15" data-minute="0">15:00</div><div class="xdsoft_time " data-hour="16" data-minute="0">16:00</div><div class="xdsoft_time " data-hour="17" data-minute="0">17:00</div><div class="xdsoft_time " data-hour="18" data-minute="0">18:00</div><div class="xdsoft_time " data-hour="19" data-minute="0">19:00</div><div class="xdsoft_time " data-hour="20" data-minute="0">20:00</div><div class="xdsoft_time " data-hour="21" data-minute="0">21:00</div><div class="xdsoft_time " data-hour="22" data-minute="0">22:00</div><div class="xdsoft_time " data-hour="23" data-minute="0">23:00</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><button type="button" class="xdsoft_next"></button></div></div><div class="xdsoft_datetimepicker xdsoft_noselect xdsoft_"><div class="xdsoft_datepicker active"><div class="xdsoft_monthpicker"><button type="button" class="xdsoft_prev" style="visibility: visible;"></button><button type="button" class="xdsoft_today_button" style="visibility: visible;"></button><div class="xdsoft_label xdsoft_month"><span>12월</span><div class="xdsoft_select xdsoft_monthselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="0">1월</div><div class="xdsoft_option " data-value="1">2월</div><div class="xdsoft_option " data-value="2">3월</div><div class="xdsoft_option " data-value="3">4월</div><div class="xdsoft_option " data-value="4">5월</div><div class="xdsoft_option " data-value="5">6월</div><div class="xdsoft_option " data-value="6">7월</div><div class="xdsoft_option " data-value="7">8월</div><div class="xdsoft_option " data-value="8">9월</div><div class="xdsoft_option " data-value="9">10월</div><div class="xdsoft_option " data-value="10">11월</div><div class="xdsoft_option xdsoft_current" data-value="11">12월</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><i></i></div><div class="xdsoft_label xdsoft_year"><span>2024</span><div class="xdsoft_select xdsoft_yearselect xdsoft_scroller_box"><div style="margin-top: 0px;"><div class="xdsoft_option " data-value="1950">1950</div><div class="xdsoft_option " data-value="1951">1951</div><div class="xdsoft_option " data-value="1952">1952</div><div class="xdsoft_option " data-value="1953">1953</div><div class="xdsoft_option " data-value="1954">1954</div><div class="xdsoft_option " data-value="1955">1955</div><div class="xdsoft_option " data-value="1956">1956</div><div class="xdsoft_option " data-value="1957">1957</div><div class="xdsoft_option " data-value="1958">1958</div><div class="xdsoft_option " data-value="1959">1959</div><div class="xdsoft_option " data-value="1960">1960</div><div class="xdsoft_option " data-value="1961">1961</div><div class="xdsoft_option " data-value="1962">1962</div><div class="xdsoft_option " data-value="1963">1963</div><div class="xdsoft_option " data-value="1964">1964</div><div class="xdsoft_option " data-value="1965">1965</div><div class="xdsoft_option " data-value="1966">1966</div><div class="xdsoft_option " data-value="1967">1967</div><div class="xdsoft_option " data-value="1968">1968</div><div class="xdsoft_option " data-value="1969">1969</div><div class="xdsoft_option " data-value="1970">1970</div><div class="xdsoft_option " data-value="1971">1971</div><div class="xdsoft_option " data-value="1972">1972</div><div class="xdsoft_option " data-value="1973">1973</div><div class="xdsoft_option " data-value="1974">1974</div><div class="xdsoft_option " data-value="1975">1975</div><div class="xdsoft_option " data-value="1976">1976</div><div class="xdsoft_option " data-value="1977">1977</div><div class="xdsoft_option " data-value="1978">1978</div><div class="xdsoft_option " data-value="1979">1979</div><div class="xdsoft_option " data-value="1980">1980</div><div class="xdsoft_option " data-value="1981">1981</div><div class="xdsoft_option " data-value="1982">1982</div><div class="xdsoft_option " data-value="1983">1983</div><div class="xdsoft_option " data-value="1984">1984</div><div class="xdsoft_option " data-value="1985">1985</div><div class="xdsoft_option " data-value="1986">1986</div><div class="xdsoft_option " data-value="1987">1987</div><div class="xdsoft_option " data-value="1988">1988</div><div class="xdsoft_option " data-value="1989">1989</div><div class="xdsoft_option " data-value="1990">1990</div><div class="xdsoft_option " data-value="1991">1991</div><div class="xdsoft_option " data-value="1992">1992</div><div class="xdsoft_option " data-value="1993">1993</div><div class="xdsoft_option " data-value="1994">1994</div><div class="xdsoft_option " data-value="1995">1995</div><div class="xdsoft_option " data-value="1996">1996</div><div class="xdsoft_option " data-value="1997">1997</div><div class="xdsoft_option " data-value="1998">1998</div><div class="xdsoft_option " data-value="1999">1999</div><div class="xdsoft_option " data-value="2000">2000</div><div class="xdsoft_option " data-value="2001">2001</div><div class="xdsoft_option " data-value="2002">2002</div><div class="xdsoft_option " data-value="2003">2003</div><div class="xdsoft_option " data-value="2004">2004</div><div class="xdsoft_option " data-value="2005">2005</div><div class="xdsoft_option " data-value="2006">2006</div><div class="xdsoft_option " data-value="2007">2007</div><div class="xdsoft_option " data-value="2008">2008</div><div class="xdsoft_option " data-value="2009">2009</div><div class="xdsoft_option " data-value="2010">2010</div><div class="xdsoft_option " data-value="2011">2011</div><div class="xdsoft_option " data-value="2012">2012</div><div class="xdsoft_option " data-value="2013">2013</div><div class="xdsoft_option " data-value="2014">2014</div><div class="xdsoft_option " data-value="2015">2015</div><div class="xdsoft_option " data-value="2016">2016</div><div class="xdsoft_option " data-value="2017">2017</div><div class="xdsoft_option " data-value="2018">2018</div><div class="xdsoft_option " data-value="2019">2019</div><div class="xdsoft_option " data-value="2020">2020</div><div class="xdsoft_option " data-value="2021">2021</div><div class="xdsoft_option " data-value="2022">2022</div><div class="xdsoft_option " data-value="2023">2023</div><div class="xdsoft_option xdsoft_current" data-value="2024">2024</div><div class="xdsoft_option " data-value="2025">2025</div><div class="xdsoft_option " data-value="2026">2026</div><div class="xdsoft_option " data-value="2027">2027</div><div class="xdsoft_option " data-value="2028">2028</div><div class="xdsoft_option " data-value="2029">2029</div><div class="xdsoft_option " data-value="2030">2030</div><div class="xdsoft_option " data-value="2031">2031</div><div class="xdsoft_option " data-value="2032">2032</div><div class="xdsoft_option " data-value="2033">2033</div><div class="xdsoft_option " data-value="2034">2034</div><div class="xdsoft_option " data-value="2035">2035</div><div class="xdsoft_option " data-value="2036">2036</div><div class="xdsoft_option " data-value="2037">2037</div><div class="xdsoft_option " data-value="2038">2038</div><div class="xdsoft_option " data-value="2039">2039</div><div class="xdsoft_option " data-value="2040">2040</div><div class="xdsoft_option " data-value="2041">2041</div><div class="xdsoft_option " data-value="2042">2042</div><div class="xdsoft_option " data-value="2043">2043</div><div class="xdsoft_option " data-value="2044">2044</div><div class="xdsoft_option " data-value="2045">2045</div><div class="xdsoft_option " data-value="2046">2046</div><div class="xdsoft_option " data-value="2047">2047</div><div class="xdsoft_option " data-value="2048">2048</div><div class="xdsoft_option " data-value="2049">2049</div><div class="xdsoft_option " data-value="2050">2050</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><i></i></div><button type="button" class="xdsoft_next" style="visibility: visible;"></button></div><div class="xdsoft_calendar"><table><thead><tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr></thead><tbody><tr><td data-date="1" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>1</div></td><td data-date="2" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>2</div></td><td data-date="3" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>3</div></td><td data-date="4" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>4</div></td><td data-date="5" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>5</div></td><td data-date="6" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>6</div></td><td data-date="7" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>7</div></td></tr><tr><td data-date="8" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>8</div></td><td data-date="9" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>9</div></td><td data-date="10" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>10</div></td><td data-date="11" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>11</div></td><td data-date="12" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>12</div></td><td data-date="13" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>13</div></td><td data-date="14" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>14</div></td></tr><tr><td data-date="15" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_current xdsoft_today xdsoft_weekend" title=""><div>15</div></td><td data-date="16" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>16</div></td><td data-date="17" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>17</div></td><td data-date="18" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>18</div></td><td data-date="19" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>19</div></td><td data-date="20" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>20</div></td><td data-date="21" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>21</div></td></tr><tr><td data-date="22" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>22</div></td><td data-date="23" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>23</div></td><td data-date="24" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>24</div></td><td data-date="25" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date" title=""><div>25</div></td><td data-date="26" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date" title=""><div>26</div></td><td data-date="27" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date" title=""><div>27</div></td><td data-date="28" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_weekend" title=""><div>28</div></td></tr><tr><td data-date="29" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week0 xdsoft_date xdsoft_weekend" title=""><div>29</div></td><td data-date="30" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week1 xdsoft_date" title=""><div>30</div></td><td data-date="31" data-month="11" data-year="2024" class="xdsoft_date xdsoft_day_of_week2 xdsoft_date" title=""><div>31</div></td><td data-date="1" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week3 xdsoft_date xdsoft_other_month" title=""><div>1</div></td><td data-date="2" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week4 xdsoft_date xdsoft_other_month" title=""><div>2</div></td><td data-date="3" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week5 xdsoft_date xdsoft_other_month" title=""><div>3</div></td><td data-date="4" data-month="0" data-year="2025" class="xdsoft_date xdsoft_day_of_week6 xdsoft_date xdsoft_other_month xdsoft_weekend" title=""><div>4</div></td></tr></tbody></table></div><button type="button" class="xdsoft_save_selected blue-gradient-button" style="display: none;">Save Selected</button></div><div class="xdsoft_timepicker"><button type="button" class="xdsoft_prev"></button><div class="xdsoft_time_box xdsoft_scroller_box"><div class="xdsoft_time_variant" style="margin-top: 0px;"><div class="xdsoft_time " data-hour="0" data-minute="0">00:00</div><div class="xdsoft_time " data-hour="1" data-minute="0">01:00</div><div class="xdsoft_time xdsoft_current" data-hour="2" data-minute="0">02:00</div><div class="xdsoft_time " data-hour="3" data-minute="0">03:00</div><div class="xdsoft_time " data-hour="4" data-minute="0">04:00</div><div class="xdsoft_time " data-hour="5" data-minute="0">05:00</div><div class="xdsoft_time " data-hour="6" data-minute="0">06:00</div><div class="xdsoft_time " data-hour="7" data-minute="0">07:00</div><div class="xdsoft_time " data-hour="8" data-minute="0">08:00</div><div class="xdsoft_time " data-hour="9" data-minute="0">09:00</div><div class="xdsoft_time " data-hour="10" data-minute="0">10:00</div><div class="xdsoft_time " data-hour="11" data-minute="0">11:00</div><div class="xdsoft_time " data-hour="12" data-minute="0">12:00</div><div class="xdsoft_time " data-hour="13" data-minute="0">13:00</div><div class="xdsoft_time " data-hour="14" data-minute="0">14:00</div><div class="xdsoft_time " data-hour="15" data-minute="0">15:00</div><div class="xdsoft_time " data-hour="16" data-minute="0">16:00</div><div class="xdsoft_time " data-hour="17" data-minute="0">17:00</div><div class="xdsoft_time " data-hour="18" data-minute="0">18:00</div><div class="xdsoft_time " data-hour="19" data-minute="0">19:00</div><div class="xdsoft_time " data-hour="20" data-minute="0">20:00</div><div class="xdsoft_time " data-hour="21" data-minute="0">21:00</div><div class="xdsoft_time " data-hour="22" data-minute="0">22:00</div><div class="xdsoft_time " data-hour="23" data-minute="0">23:00</div></div><div class="xdsoft_scrollbar"><div class="xdsoft_scroller" style="display: block; height: 10px; margin-top: 0px;"></div></div></div><button type="button" class="xdsoft_next"></button></div></div></body>
+
+</html>

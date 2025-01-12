@@ -1,0 +1,1619 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xml:lang="ko" 
+      lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- /** [version:v1.0.5 update:18.10.18] **/ -->
+
+    <title>쌍용교육센터</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="description"
+      content="자바 기반 풀스택 과정, 고용노동부 지정 우수훈련기관, 100%무료교육, 취업지원 진행"
+    />
+    <meta name="keywords" content="검색키워드등록" />
+    <meta name="classification" content="검색사이트 카테고리 등록" />
+
+    <link rel="stylesheet" href="/css/basic.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/css/board.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/css/layout.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/css/main.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/content.css"
+      type="text/css"
+      media="all"
+    />
+    <link rel="stylesheet" href="/css/custom.css" type="text/css" media="all" />
+
+    <link
+      rel="stylesheet"
+      href="/css/montserrat.css"
+      type="text/css"
+      media="all"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/css/notosanskr.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/summernote/jquery-ui.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="/css/font-awesome.min.css"
+      type="text/css"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <link rel="stylesheet" href="/css/mobile.css" type="text/css" media="all" />
+
+    <!-- less 색상 -->
+    <link rel="stylesheet/less" type="text/css" href="/css/pro_color.less" />
+    <script type="text/javascript" src="/js/less.min.js"></script>
+
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <meta http-equiv="X-UA-Compatible" content="IE=9" />
+      <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/js/function.js"></script>
+    <script type="text/javascript" src="/js/menu.js"></script>
+    <script type="text/javascript" src="/js/calendar_beans_v2.0.js"></script>
+    <script type="text/javascript" src="/js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="/js/dev.js"></script>
+    <script type="text/javascript" src="/js/vizenweblog.js"></script>
+    <script type="text/javascript" src="/js/vizen_calendar.js"></script>
+    <!-- aos 동적효과 -->
+    <!--
+<script type="text/javascript" src="/js/aos.js"></script>
+<link rel="stylesheet" href="/css/aos.css" type="text/css" media="all" />
+<script>
+		AOS.init({
+		});
+</script>
+-->
+
+    <link
+      rel="stylesheet"
+      href="/css/jquery.datetimepicker.css"
+      type="text/css"
+      media="all"
+    />
+    <!-- 달력 변경 jquery.js 버젼업, datetimepicker.full.js 달력 js -->
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.datetimepicker.full.js"></script>
+    <!-- 달력 변경 끝 -->
+    <!--<script src="/js/zoom.js"></script>-->
+    <!--반응형사이트 아닐경우 활성화-->
+    <!-- summernote editor-->
+
+    <link
+      href="/summernote/bootstrap-3.3.2-dist/css/bootstrap.css"
+      rel="stylesheet"
+    />
+    <link href="/summernote/summernote.css" rel="stylesheet" />
+
+    <script src="/summernote/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script src="/summernote/summernote.js"></script>
+    <script src="/summernote/lang/summernote-ko-KR.js"></script>
+
+    <!-- include summernote css/js-->
+
+    <!-- bx슬라이더 -->
+    <script type="text/javascript" src="/js/jquery.bxslider.min.js"></script>
+
+    <!-- 슬릭슬라이더 -->
+    <link rel="stylesheet" href="/css/slick.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/slick-theme.css"
+      type="text/css"
+      media="all"
+    />
+    <script src="/js/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script
+      src="/js/slick.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+
+    <!-- 스와이퍼 슬라이더 -->
+    <link rel="stylesheet" href="/css/swiper.css" type="text/css" media="all" />
+    <link
+      rel="stylesheet"
+      href="/css/swiper.min.css"
+      type="text/css"
+      media="all"
+    />
+    <script src="/js/swiper.js" type="text/javascript" charset="utf-8"></script>
+    <script
+      src="/js/swiper.min.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+
+    <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script> -->
+    <script type="text/javascript" src="/js/function_jquery.js"></script>
+
+    <script
+      type="text/javascript"
+      src="/smarteditor/js/HuskyEZCreator.js"
+    ></script>
+    <script type="text/javascript" src="/js/jquery.colorPicker.js"></script>
+    <script type="text/javascript" src="/js/validationBind.js"></script>
+
+    <!-- JQuery ui -->
+    <link
+      rel="stylesheet"
+      href="/css/jquery-ui.css"
+      type="text/css"
+      media="all"
+    />
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+
+    <script src="/js/jquery.datetimepicker.full.js"></script>
+    <!-- 로딩 -->
+    <!-- <link rel="stylesheet" href="/shop/loading/loading.css" type="text/css" media="all" />	
+<div class="bg_wrap">
+	<div class="ring">
+		Loading
+		<span></span>
+	</div>
+</div>
+<script>
+	$(window).load(function(){
+		$(".bg_wrap").delay(500).fadeOut("slow");
+	});
+</script> -->
+    <!-- 로딩 끝 -->
+
+    <script>
+      $(window).load(function () {
+        jQuery.datetimepicker.setLocale("ko"); // 달력 언어 설정
+        if ($(parent.frames["mainFrame"]).size() > 0) {
+          //$("[name=mainFrame]",parent.document).attr("src",$(parent.frames['mainFrame'].document).get(0).URL);
+        }
+      });
+
+      var commonhour = "21";
+      var commonminute = "33";
+      var commonsecond = "47";
+
+      var key = "1733402025965";
+    </script>
+
+    <!-- viewport 480px -->
+    <script type="text/javascript" src="/js/viewport.js"></script>
+    <link
+      rel="stylesheet"
+      href="/css/board_mobile.css"
+      type="text/css"
+      media="all"
+    />
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-MN42H8F6");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-11300096246"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "AW-11300096246");
+    </script>
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+      fbq("init", "1223866951603624");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        src="https://www.facebook.com/tr?id=1223866951603624&ev=PageView
+&noscript=1"
+      />
+    </noscript>
+
+    <script>
+      var oEditors = new Array();
+      var ignore = "";
+      $(window).load(function () {
+        inputMaxLength();
+
+        mkAutoDateFormat();
+
+        fn_textarea_check(ignore);
+
+        // 에디터 기본 font 설정
+        $(".note-editable.panel-body")
+          .find("p font")
+          .attr("face", $(".note-current-fontname").css("font-family"));
+
+        if ($("#branch_fk").size() > 0) {
+          $("#branch_fk").change(function () {
+            typeSelectbox($(this).val(), 0, 0);
+          });
+
+          if ($(".schedule").size() > 0) {
+            $("#branch_fk").change(function () {
+              calendarNewList($("#branch_fk").val(), $("#curMonth").val());
+            });
+          }
+        }
+
+        if ($("#type_fk").size() > 0) {
+          $("#type_fk").change(function () {
+            var typekFk = $("#type_fk option:selected").data("branch");
+
+            if ($("#branch_fk").size() > 0) {
+              var obj = $("#branch_fk option").filter(function () {
+                if ($(this).val() == typekFk) {
+                  return this;
+                }
+              });
+              $(obj).prop("selected", true);
+            }
+
+            if ($("#doctor_fk").size() > 0) {
+              doctorSelectbox($("#branch_fk").val(), $(this).val(), 0, 0);
+            }
+
+            if ($("#branch_fk").size() == 0) {
+              if ($("#curMonth").size() > 0) {
+                calendarNewList(1, $("#curMonth").val());
+              }
+            } else {
+              if ($("#curMonth").size() > 0) {
+                calendarNewList(
+                  $("#branch_fk").val() == undefined
+                    ? 1
+                    : $("#branch_fk").val(),
+                  $("#curMonth").val()
+                );
+              }
+            }
+          });
+        }
+
+        if ($("#curMonth").size() > 0) {
+          calendarNewList(
+            $("#branch_fk").val() == undefined ? 1 : $("#branch_fk").val(),
+            $("#curMonth").val()
+          );
+        }
+      });
+
+      $(window).resize(function () {
+        //fn_textarea_check(ignore);
+      });
+
+      function fn_textarea_check(ignore) {
+        var currentAddr = "https://www.sist.co.kr/customer/consult/write.jsp";
+        $(".programCon textarea, #bbs textarea").each(function (i) {
+          if (ignore.indexOf("|" + i + "|") < 0) {
+            var tagCheck = $(this).next().prop("tagName");
+            if (tagCheck == undefined) {
+              setSummertnoteEditor($(this).attr("id")); // 에디터 셋팅
+            }
+          }
+        });
+      }
+      function sendFile(file, editor, welEditable) {
+        data = new FormData();
+        data.append("file", file);
+        $.ajax({
+          url: "/summernote/image_upload.jsp",
+          data: data,
+          cache: false,
+          contentType: false,
+          processData: false,
+          type: "POST",
+          success: function (data, msg) {
+            //		editor.insertImage(welEditable, data);
+            $("#" + editor).summernote("insertImage", data.trim());
+            //file 초기화
+            setTimeout(function () {
+              $("#" + editor).val($("#" + editor).summernote("code"));
+            }, 200);
+
+            $(".form-group [type=file]").each(function (i) {
+              $(this).replaceWith($(this).clone(true));
+            });
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            console.log(textStatus + " " + errorThrown);
+          },
+        });
+      }
+      function setSummertnoteEditor(editorArea) {
+        $("#" + editorArea).summernote({
+          height: 300,
+          minHeight: 100,
+          lang: "ko-KR",
+          callbacks: {
+            onImageUpload: function (files, editor, $editable) {
+              //					ajaxSummernoteInsertImage(editorArea);
+              if (navigator.userAgent.indexOf("9.0") == -1) {
+                for (var i = 0; i < files.length; i++) {
+                  sendFile(files[i], editorArea, $editable);
+                }
+              }
+            },
+          },
+        });
+      }
+
+      function ajaxSummernoteInsertImage(editorArea) {
+        //비동기 파일 전송
+        var frm = $("#" + editorArea).closest("form")[0];
+        var action = $(frm).attr("action");
+
+        $(frm).attr("action", "/summernote/image_upload.jsp");
+
+        //$(frm).append("fileObj", $('#'+editorArea).next().find(".note-v").html());
+        $(frm).ajaxForm({
+          dataType: "text",
+          beforeSubmit: function () {},
+          success: function (json, msg) {
+            $("#" + editorArea).summernote("insertImage", json.trim());
+            //file 초기화
+            $(".form-group .note-v [type=file]").each(function (i) {
+              $(this).replaceWith($(this).clone(true));
+            });
+          },
+          error: function (xhr, status, exception) {
+            alert("파일전송에 실패하였습니다. \n" + status);
+            return false;
+          },
+        });
+
+        $(frm).submit();
+
+        $(frm).attr("action", action);
+        $(frm).off();
+      }
+
+      function imageOnchange(obj) {
+        ajaxSummernoteInsertImage(
+          $(obj).parents(".note-editor").prev().attr("id")
+        );
+      }
+
+      function typeChangeSelectBox(obj) {
+        if ($("#branch_fk").size() > 0) {
+          if ($(obj).val() != 0) {
+            $("#branch_fk").val($(obj).find("option:selected").attr("id"));
+            if ($(".schedule").size() > 0) {
+              calendarNewList($("#branch_fk").val(), $("#curMonth").val());
+            }
+          }
+        }
+      }
+
+      function timeSelectedValue(obj) {
+        //console.log($(obj).data("value"));
+        if ($(".schedule_time ul li").size() > 0) {
+          $(".schedule_time ul li").removeClass("choiceTime");
+          $(obj).addClass("choiceTime");
+          $("#resertime").val($(obj).data("value"));
+        } else {
+          $("#resertime").val($(obj).val());
+        }
+      }
+
+      function calendarSelectConDayConfirm(today) {
+        $(".calendar_table td").removeAttr("id");
+        $(".calendar_table td")
+          .filter(function () {
+            if ($(this).text().trim() == today.substring(8).trim()) {
+              return this;
+            }
+          })
+          .attr("id", "r_click");
+
+        $("#reserdate").val(today);
+        $("#resertime").val("");
+        curTime($("#reserdate").val());
+      }
+
+      function timeSelectOnLoadConfirm(today) {
+        if ($("#tmTime").size() > 0) {
+          if ($("#tmTime").val().trim() != "") {
+            $("#resertime").val($("#tmTime").val());
+            curTime($("#reserdate").val());
+          }
+        }
+      }
+
+      function calendarSelectDayConfirm(today) {
+        $(".calendar_table td").removeAttr("id");
+        $(".calendar_table td")
+          .filter(function () {
+            if ($(this).text().trim() == today.substring(8).trim()) {
+              return this;
+            }
+          })
+          .attr("id", "r_click");
+
+        $("#reserdate").val(today);
+        $("#resertime").val("");
+        reserTimeList(
+          $("#branch_fk").val(),
+          $("#doctor_fk").val(),
+          $("#reserdate").val(),
+          $("#resertime").val(),
+          0
+        );
+      }
+
+      function calendarSelectMonth(month) {
+        $("#curMonth").val(month);
+      }
+
+      //분류 selectbox 가져오기
+      function typeSelectbox(branch_fk, type_fk, type) {
+        jQuery("#type_fk").load(
+          "clinicList.jsp?branch_fk=" +
+            branch_fk +
+            "&type_fk=" +
+            type_fk +
+            "&type=" +
+            type
+        );
+      }
+
+      // 의료진 selectbox 가져오기
+      function doctorSelectbox(branch_fk, type_fk, doctor_fk, type) {
+        type_fk = type_fk == undefined || type_fk == "" ? 0 : type_fk;
+        jQuery("#doctor_fk").load(
+          "doctorList.jsp?branch_fk=" +
+            branch_fk +
+            "&type_fk=" +
+            type_fk +
+            "&doctor_fk=" +
+            doctor_fk +
+            "&type=" +
+            type
+        );
+      }
+
+      // 의료진 사진 가져오기
+      function doctorPhoto(branch_fk, type_fk) {
+        jQuery("#doctorPhoto").load(
+          "doctorPhoto.jsp?branch_fk=" + branch_fk + "&type_fk=" + type_fk
+        );
+      }
+
+      // 예약달력 가져오기
+      function calendarNewList(sbranch_fk, smonth) {
+        $.get(
+          "calendarList.jsp?sbranch_fk=" + sbranch_fk + "&smonth=" + smonth,
+          function (data) {
+            $(".schedule").html(data);
+            console.log(data);
+
+            timeSelectOnLoadConfirm($("#reserdate").val());
+
+            if ($("[name=p_reserdate]").size() > 0) {
+              $("#reserdate").val($("[name=p_reserdate]").val());
+              $("#resertime").val($("[name=p_resertime]").val());
+              reserTimeList(
+                $("#branch_fk").val(),
+                $("#doctor_fk").val(),
+                $("#p_reserdate").val(),
+                $("#p_resertime").val(),
+                0
+              );
+            }
+          }
+        );
+        //jQuery(".schedule").load();
+      }
+
+      // 예약시간 가져오기
+      function reserTimeList(
+        branch_fk,
+        doctor_fk,
+        reserdate,
+        resertime,
+        times
+      ) {
+        jQuery(".schedule_time").load(
+          "timeList.jsp?branch_fk=" +
+            branch_fk +
+            "&doctor_fk=" +
+            doctor_fk +
+            "&reserdate=" +
+            reserdate +
+            "&resertime=" +
+            resertime +
+            "&times=" +
+            times
+        );
+      }
+
+      function telTimeList(selectDay, type) {
+        jQuery("#curTimeList").load(
+          "curTimeList.jsp?type=" + type + "&selectDay=" + selectDay
+        );
+      }
+
+      // 전화 상담 시간 가져오기
+      function curTime(selectDay) {
+        $.get("curTimeList.jsp?selectDay=" + selectDay, function (data) {
+          $(".schedule_time").html(data);
+
+          if ($("#tmTime").size() > 0) {
+            timeSelectedValue($("#" + $("#tmTime").val().replace(/:/, "")));
+          }
+        });
+      }
+
+      $(function () {
+        var obj = $("#dropzone");
+
+        obj.on("dragenter", function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          $(this).css("border", "2px solid #5272A0");
+        });
+
+        obj.on("dragleave", function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          $(this).css("border", "2px dotted #8296C2");
+        });
+
+        obj.on("dragover", function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+        });
+
+        obj.on("drop", function (e) {
+          e.preventDefault();
+          $(this).css("border", "2px dotted #8296C2");
+
+          var files = e.originalEvent.dataTransfer.files;
+
+          if (files.length < 1) return;
+
+          F_FileMultiUpload(files, obj);
+        });
+      });
+
+      var fileList = "";
+      var fileCnt = 0; //파일갯수
+      var loading = false;
+      var table = "consult";
+      var uploadPath = "/upload/consult/";
+      //파일 지우기
+      function FileDelete(filename, that) {
+        var Deletedata = new FormData();
+        $.ajax({
+          url:
+            "/include/boardConfig/process_file.jsp?cmd=delete&filename=" +
+            filename +
+            "&table=" +
+            table +
+            "&uploadPath=" +
+            uploadPath,
+          method: "post",
+          data: Deletedata,
+          dataType: "json",
+          processData: false,
+          contentType: false,
+          success: function (res) {
+            text = "<label>" + $(that).parent().html() + "</label>";
+            var fileList2 = $("#dropzone").html();
+
+            fileList2 = fileList2.replace(text, "");
+            fileList = fileList2;
+            fileCnt--;
+
+            //alert(fileList.indexOf('<label>'));
+            if (fileList2.indexOf("<label>") == -1) {
+              $("#dropzone").html("파일을 올려주세요.");
+            } else {
+              $("#dropzone").html(fileList2);
+            }
+          },
+          error: function (data) {
+            //alert("error");
+          },
+        });
+        //alert(fileList);
+      }
+      //파일지우기 - 수정
+      function FileEditDelete(filename, that) {
+        var Deletedata = new FormData();
+        text = "<label>" + $(that).parent().html() + "</label>";
+        var fileList2 = $("#dropzone").html();
+
+        fileList2 = fileList2.replace(text, "");
+        fileList = fileList2;
+        fileCnt--;
+
+        //alert(fileList.indexOf('<label>'));
+        if (fileList2.indexOf("<label>") == -1) {
+          $("#dropzone").html("파일을 올려주세요.");
+        } else {
+          $("#dropzone").html(fileList2);
+        }
+
+        var inputFileList = $("#delFileList").val();
+        $("#delFileList").val(inputFileList + filename + ",");
+      }
+      //파일 업로드
+      function F_FileMultiUpload(files, obj) {
+        fileList = $("#dropzone").html();
+        var data = new FormData();
+        data.append("cmd", "update");
+        //확장자 체크 변수 :[ true -> 사용가능 확장자 false -> 사용 불가능  확장자]
+        var chkFile = false;
+        //파일 갯수 체크
+        var maxCnt = 10;
+
+        if (files.length <= maxCnt && fileCnt + files.length <= maxCnt) {
+          //확장자 체크
+          //var selection = [ ".txt", ".jpg", ".png", ".xls", ".gif"];
+
+          for (var i = 0; i < files.length; i++) {
+            data.append("filenames" + (i + 1), files[i]);
+          }
+
+          if (!loading) {
+            //console.log("data 1  :::"+data.getAll('filenames1'));
+            loading = true;
+
+            fileList =
+              fileList.indexOf("<label>") == -1 ? "" : $("#dropzone").html();
+
+            $.ajax({
+              url:
+                "/include/boardConfig/process_file.jsp?cmd=write" +
+                "&table=" +
+                table +
+                "&uploadPath=" +
+                uploadPath,
+              method: "post",
+              data: data,
+              dataType: "json",
+              processData: false,
+              contentType: false,
+              success: function (res) {
+                //alert(res);
+                //alert(res.filename);
+                loading = false;
+                var filenameArray = res.filename.split(",");
+                filenameArray.reverse();
+                fileList += "<font style='color:black; font-weight:bold '>";
+                for (var i = 0; i < files.length; i++) {
+                  //alert(data.get('filenames1').name);
+                  fileList +=
+                    "<label>[" +
+                    files[i].name +
+                    "<a onclick='javascript:FileDelete(\"" +
+                    filenameArray[i + 1] +
+                    "\", this)'> <img src='/img/ico_cancel.jpg' width='10px' style='vertical-align:initial;'> </a>], </label>";
+                  fileCnt++;
+                }
+
+                fileList += "</font>";
+
+                $(obj).html(fileList);
+              },
+              error: function (data) {
+                //alert("error");
+              },
+            });
+          } else {
+            alert("파일 등록중입니다.");
+          }
+        } else {
+          alert("최대 " + maxCnt + "개의 파일만 첨부 가능합니다.");
+        }
+      }
+      function FileUploadInit() {
+        var Initdata = new FormData();
+        $.ajax({
+          url:
+            "/include/boardConfig/process_file.jsp?cmd=init" +
+            "&table=" +
+            table +
+            "&uploadPath=" +
+            uploadPath,
+          method: "post",
+          data: Initdata,
+          dataType: "json",
+          processData: false,
+          contentType: false,
+          success: function (res) {
+            //alert(res);
+          },
+          error: function (data) {
+            //alert("error");
+          },
+        });
+      }
+      // 파일 멀티 업로드 Callback
+      function F_FileMultiUpload_Callback(files) {
+        for (var i = 0; i < files.length; i++)
+          console.log(files[i].file_nm + " - " + files[i].file_size);
+      }
+      window.onbeforeunload = function () {
+        //서브밋할 경우 안탐
+        if (!isSubmitChk) {
+          FileUploadInit();
+        }
+      };
+    </script>
+    <style>
+      #dropzone {
+        border: 2px dotted #3292a2;
+        width: 90%;
+        height: 50px;
+        text-align: center;
+        font-size: 14px;
+        padding-top: 12px;
+        margin-top: 10px;
+      }
+    </style>
+
+    <script>
+      var isSubmitChk = false;
+      $(window).load(function () {
+        fn_addDel_object(10); //파일 function 생성
+      });
+      function goSave(obj) {
+        if (validation(obj)) {
+          if (
+            $("input[name=email1]").val() != "" &&
+            $("[name=email2]").val() != ""
+          ) {
+            $("input[name=email]").val(
+              $("input[name=email1]").val().trim() +
+                "@" +
+                $("[name=email2]").val().trim()
+            );
+          }
+
+          //여기부터 스팸
+          //if(!fn_spamCheck()){return false;}
+
+          var form = $("#frm");
+
+          fn_formSpanCheck(form, key);
+          //스팸 끝
+          isSubmitChk = true;
+          $(form).submit();
+        } else {
+          return;
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <div
+      id="com2"
+      style="
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 1;
+      "
+    >
+      <form
+        name="urlMaintain"
+        id="urlMaintain"
+        action="/member/login.jsp"
+        method="post"
+      >
+        <input
+          type="hidden"
+          name="url"
+          id="main_url"
+          value="/customer/consult/write.jsp"
+        />
+        <input type="hidden" name="param" id="main_param" value="" />
+      </form>
+    </div>
+
+    <!-- header -->
+    <div id="header">
+      <h1 class="logo">
+        <a href="/"><img src="/img/logo.png" alt="logo" /></a>
+      </h1>
+      <div class="gnb">
+        <ul>
+          <li>
+            <a href="/about/intro/index.jsp">교육센터소개</a>
+            <ul class="depth02">
+              <li><a href="/about/intro/index.jsp">센터소개</a></li>
+              <li><a href="/about/history/index.jsp">연혁</a></li>
+              <li><a href="/about/teacher/index.jsp">강사소개</a></li>
+              <li><a href="/about/facilities/index.jsp">교육시설</a></li>
+              <li><a href="/about/strength/index.jsp">쌍용강점</a></li>
+              <li><a href="/about/location/index.jsp">오시는길</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/employment/gangnam/index.jsp">취업과정</a>
+            <ul class="depth02">
+              <li><a href="/employment/gangnam/index.jsp">강남교육센터</a></li>
+              <li><a href="/employment/gangbuk/index.jsp">강북교육센터</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/incumbent/gangnam/index.jsp">재직자과정</a>
+            <ul class="depth02">
+              <li><a href="/incumbent/gangnam/index.jsp">강남교육센터</a></li>
+              <li><a href="/incumbent/gangbuk/index.jsp">강북교육센터</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/system/country/index.jsp">교육제도안내</a>
+            <ul class="depth02">
+              <li><a href="/system/country/index.jsp">국가기간·전략산업</a></li>
+              <li><a href="/system/nation/index.jsp">국민내일배움카드</a></li>
+              <li>
+                <a href="/system/business/index.jsp">사업주직업능력개발</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="/job/center/index.jsp">취업센터</a>
+            <ul class="depth02">
+              <li><a href="/job/center/index.jsp">쌍용 취업지원센터</a></li>
+              <li><a href="/job/status/index.jsp">취업현황</a></li>
+              <li><a href="/job/review/index.jsp">수강후기</a></li>
+              <li><a href="/job/portfolio/index.jsp">포트폴리오</a></li>
+              <li><a href="/job/request/write.jsp">구인의뢰</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/customer/notice/index.jsp">고객센터</a>
+            <ul class="depth02">
+              <li><a href="/customer/notice/index.jsp">공지사항</a></li>
+              <li><a href="/customer/consult/write.jsp">교육문의</a></li>
+              <li><a href="/customer/faq/index.jsp">FAQ</a></li>
+              <li><a href="/customer/lease/index.jsp">강의장임대</a></li>
+              <li>
+                <a href="/customer/enterprise/index.jsp">기업교육컨설팅</a>
+              </li>
+              <li><a href="/customer/payment/index.jsp">결제안내</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="/reservate/reservate/write.jsp">예약센터</a>
+            <ul class="depth02">
+              <li><a href="/reservate/reservate/write.jsp">방문상담예약</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="right_box">
+        <ul class="">
+          <li>
+            <a href="/member/login.jsp">
+              <p>로그인</p>
+            </a>
+          </li>
+          <li>
+            <a href="/member/write.jsp">
+              <p>회원가입</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="http://lms1.sist.co.kr/">
+              <p>교육정보시스템</p>
+            </a>
+          </li>
+        </ul>
+        <a href="javascript:;" class="all_btn"> <i></i><i></i><i></i> </a>
+      </div>
+    </div>
+    <div id="header_blank"></div>
+    <div class="mo_menu">
+      <div class="top">
+        <a href="/" class="logo"><img src="/img/logo.png" alt="" /></a>
+        <div class="right_box">
+          <ul class="">
+            <li>
+              <a href="/member/login.jsp">
+                <p>로그인</p>
+              </a>
+            </li>
+            <li>
+              <a href="/member/write.jsp">
+                <p>회원가입</p>
+              </a>
+            </li>
+          </ul>
+          <a href="javascript:;" class="close_btn">
+            <img src="/img/m_close_btn.png" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="gnb"></div>
+    </div>
+    <script>
+      // pc 메뉴 == 모바일 메뉴
+      var gnbHtml = $("#header .gnb").html();
+      $(".mo_menu .gnb").html(gnbHtml);
+
+      // pc 메뉴 depth02
+      $("#header .gnb").hover(
+        function () {
+          $(this).addClass("on");
+        },
+        function () {
+          $(this).removeClass("on");
+        }
+      );
+
+      // 모바일 메뉴
+      $("#header .all_btn").click(function () {
+        $(".mo_menu").addClass("on");
+      });
+      $(".mo_menu .close_btn").click(function () {
+        $(".mo_menu").removeClass("on");
+        $(".mo_menu .gnb > ul > li > .depth02").slideUp();
+        $(".mo_menu .gnb > ul > li").removeClass("on");
+      });
+      // 모바일 메뉴 depth02
+      $(".mo_menu .gnb > ul > li > a").click(function () {
+        var subcont = $(this).next(".depth02");
+
+        if (subcont.is(":visible")) {
+          //닫을 때
+          subcont.slideUp();
+          $(this).parent().removeClass("on");
+        } else {
+          subcont.slideDown(); // 열릴 때
+          $(".mo_menu .gnb > ul > li > .depth02").not(subcont).slideUp();
+          $(".mo_menu .gnb > ul > li").not(this).removeClass("on");
+          $(this).parent().addClass("on");
+        }
+      });
+
+      $(window).on("load resize", function () {
+        var winW = $(window).width();
+
+        if (winW > 1000) {
+          $(".mo_menu").removeClass("on");
+          $(".mo_menu .gnb > ul > li > .depth02").slideUp();
+          $(".mo_menu .gnb > ul > li").removeClass("on");
+        }
+        $(".mo_menu .gnb > ul > li > a").click(function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    </script>
+    <!-- header // -->
+
+    <!-- sub_common -->
+    <div class="sub_common">
+      <div class="sub_visual">
+        <div class="text">
+          <h6 class="mont">Ssangyong Institute of System Technology</h6>
+          <h2></h2>
+          <i></i>
+        </div>
+      </div>
+      <div class="sub_route">
+        <div class="inner">
+          <div class="home">
+            <a href="/" class="mont">
+              <img src="/img/sub_route_home.png" alt="home" /> HOME
+            </a>
+            <i></i>
+          </div>
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        var url = window.location.pathname;
+        var urlPathname = url.substring(0, url.substring(1).indexOf("/") + 2);
+        var fileName = url.substring(url.lastIndexOf("/") + 1);
+        var isForDev =
+          fileName == "index.jsp" ||
+          fileName == "read.jsp" ||
+          fileName == "edit.jsp" ||
+          fileName == "write.jsp" ||
+          fileName == "password.jsp";
+
+        // sub_common
+        $("#header .gnb ul.depth02 li a").each(function () {
+          if ($(this).attr("href") == url) {
+            var idx = $(this).parent().parent().parent().index();
+            var title = $(this).parent().parent().parent().find(">a").text(); // depth01
+            var link = $(this)
+              .parent()
+              .parent()
+              .parent()
+              .find(">a")
+              .attr("href"); // depth01 링크
+            var depth02 = $(this).parent().html(); // depth02
+
+            $(".sub_visual").css(
+              "background-image",
+              "url('/img/sub_visual0" + idx + ".jpg?ver')"
+            );
+            $(".sub_visual .text h2").text(title);
+            $(".sub_route ul").append(
+              '<li><a href="' + link + '">' + title + "</a></li>"
+            );
+            $(".sub_route ul").append("<li>" + depth02 + "</li>");
+          } else if (isForDev) {
+            if (
+              $(this)
+                .attr("href")
+                .indexOf(url.substring(0, url.lastIndexOf("/") + 1)) > -1
+            ) {
+              var idx = $(this).parent().parent().parent().index();
+              var title = $(this).parent().parent().parent().find(">a").text(); // depth01
+              var link = $(this)
+                .parent()
+                .parent()
+                .parent()
+                .find(">a")
+                .attr("href"); // depth01 링크
+              var depth02 = $(this).parent().html(); // depth02
+
+              $(".sub_visual").css(
+                "background-image",
+                "url('/img/sub_visual0" + idx + ".jpg?ver')"
+              );
+              $(".sub_visual .text h2").text(title);
+              $(".sub_route ul").append(
+                '<li><a href="' + link + '">' + title + "</a></li>"
+              );
+              $(".sub_route ul").append("<li>" + depth02 + "</li>");
+            }
+          }
+        });
+      });
+    </script>
+    <!-- sub_common // -->
+
+    <div class="job_con">
+      <div class="inner">
+        <div class="sub_tit">
+          <h3>교육문의</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- 프로그램시작 -->
+    <!-- 
+    <form name="frm" id="frm" method="post">
+       enctype="multipart/form-data" 
+      <div class="programCon">
+        <div class="join">
+          <div class="joinTop">
+            <div class="jcheck">
+              <input
+                type="checkbox"
+                data-value="개인정보취급방침에 동의해주세요."
+                id="agree02"
+                name="agree02"
+                value=""
+                title="개인정보취급방침에 동의합니다 체크해주세요."
+                checked="checekd"
+              />
+              <label for="agree02"> 개인정보취급방침에 동의합니다.</label>
+            </div>
+            //jcheck 
+          </div>
+        </div>
+
+         //join 
+        <div class="writeForm">
+          <table>
+            <colgroup>
+              <col class="writeForm_col01" />
+              <col width="*" />
+            </colgroup>
+            <tr>
+              <th>작성자</th>
+              <td>
+                <input
+                  data-value="작성자를 입력해주세요."
+                  id="name"
+                  name="name"
+                  class="inputTxt inputName"
+                  type="text"
+                  value=""
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>이메일</th>
+              <td class="mail_type">
+                <input
+                  data-value="이메일을 입력해주세요."
+                  name="email1"
+                  id="email1"
+                  class="inputEmail"
+                  type="text"
+                  value=""
+                  maxlength="70"
+                /><span class="email_txt">@</span>
+                <select
+                  class="selecEmail"
+                  name="email2"
+                  id="email2"
+                  data-value="이메일을 선택해주세요."
+                >
+                  <option value="">선택해주세요.</option>
+                  <option value="직접 입력">직접 입력</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="daum.net">daum.net</option>
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="hotmail.com">hotmail.com</option>
+                  <option value="nate.com">nate.com</option>
+                  <option value="korea.com">korea.com</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>비밀번호</th>
+              <td>
+                <input
+                  data-value="비밀번호를 입력해주세요."
+                  name="password"
+                  id="password"
+                  class="inputPass"
+                  type="password"
+                  maxlength="100"
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>연락처</th>
+              <td>
+                <input
+                  type="text"
+                  name="tel"
+                  id="tel"
+                  value=""
+                  onkeyup="isNumberOrHyphen(this);"
+                  onblur="cvtUserPhoneNumber(this);"
+                  data-value=""
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>휴대폰</th>
+              <td>
+                <input
+                  type="text"
+                  name="cell"
+                  id="cell"
+                  value=""
+                  onkeyup="isNumberOrHyphen(this);"
+                  onblur="cvtUserPhoneNumber(this);"
+                  data-value="휴대폰 번호를 입력해주세요."
+                />
+              </td>
+            </tr>
+            <tr>
+              <th>제목</th>
+              <td class="addr_td">
+                <input
+                  data-value="제목를 입력해주세요."
+                  type="text"
+                  id="title"
+                  class="inputTit"
+                  name="title"
+                  value=""
+                  maxlength="120"
+                />
+                <span class="label_wrap"
+                  ><input type="checkbox" name="secret" id="secret" value="1" />
+                  <label for="secret">비공개</label></span
+                >
+              </td>
+            </tr>
+            <tr>
+              <th>내용</th>
+              <td>
+                <textarea
+                  name="contents"
+                  id="contents"
+                  data-value="내용을 입력해주세요."
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="writeForm_btn">
+        <input type="submit" value="저장하기" class="btn btn-primary my-2">
+        
+          <a href="" id="w_btn">확인</a>
+          <a href="">취소</a>
+        </div>
+        <input type="hidden" name="cmd" id="cmd" value="write" />
+        <input type="hidden" name="email" id="email" value="" />
+
+        <input type="hidden" name="branch_fk" id="branch_fk" value="0" />
+      </div>
+      
+      
+    </form>
+    -->
+    
+    <form th:object="${eduForm}" method="post">
+      <div class="programCon">
+        <div class="join">
+          <div class="joinTop">
+          <div th:replace="~{/customer/termsWrite :: termsWriteFragment}"></div>
+            <div class="jcheck">
+              <input
+                type="checkbox"
+                id="agree02"
+                name="agree02"
+                checked="checked"
+              />
+              <label for="agree02">개인정보취급방침에 동의합니다.</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="writeForm">
+          <table>
+            <colgroup>
+              <col class="writeForm_col01" />
+              <col width="*" />
+            </colgroup>
+            <tr>
+              <th>작성자</th>
+              <td>
+                <input 
+				    th:field="*{name}"
+				    class="inputTxt inputName"
+				    type="text"
+				/>
+              </td>
+            </tr>
+            <tr>
+              <th>이메일</th>
+              <td class="mail_type">
+                <input 
+				    th:field="*{email1}" 
+				    class="inputEmail" 
+			    	type="text"
+				/>
+				<span class="email_txt">@</span>
+                <select
+                	th:field="*{email2}" 
+                  	class="selecEmail"
+                >
+                  <option value="">선택해주세요.</option>
+                  <option value="직접 입력">직접 입력</option>
+                  <option value="naver.com">naver.com</option>
+                  <option value="daum.net">daum.net</option>
+                  <option value="gmail.com">gmail.com</option>
+                  <option value="hotmail.com">hotmail.com</option>
+                  <option value="nate.com">nate.com</option>
+                  <option value="korea.com">korea.com</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>비밀번호</th>
+              <td>
+                <input 
+				    th:field="*{password}" 
+				    class="password" 
+			    	type="text"
+			    	maxlength="100"
+				/>
+              </td>
+            </tr>
+            <tr>
+              <th>연락처</th>
+              <td>
+	              <input 
+					    th:field="*{contact}" 
+					    class="password" 
+				    	type="text"
+					/>
+              </td>
+            </tr>
+            <tr>
+              <th>휴대폰</th>
+              <td>
+                <input th:field="*{phone}" 
+				    	type="text"/>
+              </td>
+            </tr>
+            <tr>
+              <th>제목</th>
+              <td class="addr_td">
+                <input
+                  type="text"
+                  class="inputTit"
+                  maxlength="120"
+                  th:field=*{title}
+                />
+                <span class="label_wrap">
+                  <input type="checkbox" name="secret" id="secret" value="1" />
+                  <label for="secret">비공개</label>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>내용</th>
+              <td>
+                <textarea
+                  cols="30"
+                  rows="10"
+                  th:field="*{content}"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="writeForm_btn">
+         <input type="submit" value="저장하기" class="btn btn-primary my-2" style="display: inline-block;
+		    width: 180px;
+		    height: 51px;
+		    line-height: 50px;
+		    color: #fff;
+		    font-size: 15px;
+		    border: 0;">
+          <a th:href="@{/edu/list}">취소</a>
+        </div>
+      </div>
+    </form>
+    
+    <!-- 프로그램끝 -->
+
+
+
+    <!-- quick -->
+    <div id="quick_menu">
+      <p class="top_logo">
+        <img src="/img/quick_top_icon.png" alt="" />
+      </p>
+      <ul>
+        <li class="tit01">
+          <img src="/img/quick_menu_icon01.png" alt="icon" />
+          <h6>수강신청</h6>
+        </li>
+        <li>
+          <a href="/employment/gangnam/index.jsp">
+            <h5>강남</h5>
+            <p>지원하기</p>
+          </a>
+        </li>
+        <li>
+          <a href="/employment/gangbuk/index.jsp">
+            <h5>강북</h5>
+            <p>지원하기</p>
+          </a>
+        </li>
+        <li>
+          <a href="/employment/gangbuk/index.jsp">
+            <h5>강북 별관</h5>
+            <p>지원하기</p>
+          </a>
+        </li>
+      </ul>
+      <ul class="type02">
+        <li>
+          <a href="/customer/consult/write.jsp">
+            <img src="/img/quick_menu_icon02.png" alt="icon" />
+            <h6>온라인 상담</h6>
+          </a>
+        </li>
+        <li>
+          <a href="/reservate/reservate/write.jsp">
+            <img src="/img/quick_menu_icon03.png" alt="icon" />
+            <h6>방문상담예약</h6>
+          </a>
+        </li>
+        <li>
+          <a href="/about/location/index.jsp">
+            <img src="/img/quick_menu_icon04.png" alt="icon" />
+            <h6>오시는 길</h6>
+          </a>
+        </li>
+        <li class="kakao">
+          <a href="//pf.kakao.com/_xnnWSu" target="_blank">
+            <img src="/img/quick_menu_icon05.png" alt="icon" />
+            <h6>카카오톡상담</h6>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li class="tit02">
+          <img src="/img/quick_menu_icon06.png" alt="icon" />
+          <h6>교육문의</h6>
+        </li>
+        <li>
+          <a href="tel:02-3482-4632">
+            <h5>강남</h5>
+            <p>02-3482-4632</p>
+          </a>
+        </li>
+        <li>
+          <a href="tel:02-336-8546">
+            <h5>강북</h5>
+            <p>02-336-8546</p>
+          </a>
+        </li>
+        <li>
+          <a href="tel:02-2088-8408">
+            <h5>강북 별관</h5>
+            <p>02-2088-8408</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- quick // -->
+
+    <!-- footer -->
+    <div id="footer">
+      <div class="inner">
+        <div class="footer_top">
+          <h4>SIST 고객센터</h4>
+          <h3 class="mont">
+            SIST CUSTOMER CENTER <span>09 : 00 - 18 : 30</span>
+          </h3>
+          <ul class="mont">
+            <li>
+              <h6><span>강남교육센터</span></h6>
+              <a href="tel:0234824632"><p>02.3482.4632</p></a>
+            </li>
+            <li>
+              <h6><span>강북교육센터</span></h6>
+              <a href="tel:023368546"><p>02.336.8546</p></a>
+            </li>
+            <li>
+              <h6><span>강북교육센터 별관</span></h6>
+              <a href="tel:0220888408"><p>02.2088.8408</p></a>
+            </li>
+          </ul>
+          <div class="sns">
+            <a href="https://cafe.naver.com/sist1985" target="_blank"
+              ><img src="/img/footer_icon01.png" alt=""
+            /></a>
+            <a href="https://pf.kakao.com/_xnnWSu" target="_blank"
+              ><img src="/img/footer_icon02.png" alt=""
+            /></a>
+            <a href="https://www.instagram.com/sist3482" target="_blank"
+              ><img src="/img/footer_icon03.png" alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="footer_mid">
+          <h1 class="logo">
+            <a href="/"><img src="/img/footer_logo.png" alt="logo" /></a>
+          </h1>
+          <div class="w40">
+            <h5>강남교육센터 <span class="mont">Gangnam</span></h5>
+            <p>
+              서울특별시 강남구 테헤란로 132(역삼동) 한독약품빌딩 8층
+              쌍용교육센터 <br />
+              Tel_02-3482-4632~5 &nbsp;&nbsp;&nbsp; Fax_02-3482-4636
+            </p>
+          </div>
+          <div class="w38">
+            <h5>강북교육센터 <span class="mont">Gangbuk</span></h5>
+            <p>
+              서울특별시 마포구 월드컵북로 21 풍성빌딩 2,3,4층 쌍용강북교육센터
+              <br />
+              Tel_02-336-8546~8 &nbsp;&nbsp;&nbsp; Fax_02-334-5405
+            </p>
+          </div>
+          <div class="w38">
+            <h5>강북교육센터 별관 <span class="mont">Gangbok</span></h5>
+            <p>
+              서울 서초구 서초대로 74길 45, 엔데버 빌딩 3층<br />
+              Tel_02-2088-8408
+            </p>
+          </div>
+          <div class="w22">
+            <h5 class="mont">Company Info</h5>
+            <p>
+              사업자번호_214-85-29296 <br />
+              대표_노경한 &nbsp;&nbsp;&nbsp; 개인정보처리관리책임자_장일규
+            </p>
+          </div>
+        </div>
+        <div class="footer_bot">
+          <p class="mont">
+            Copyright(C) 2020 SSangyong Institute of System Technology, All
+            Right Reserved.
+          </p>
+          <ul>
+            <li><a href="/member/agree.jsp">회원 약관</a></li>
+            <li><a href="/member/policy.jsp">개인정보취급방침</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- footer // -->
+    <!-- Mirae Script Ver 2.0 -->
+    <script
+      async="true"
+      src="//log1.toup.net/mirae_log_chat_common.js?adkey=siscm"
+      charset="UTF-8"
+    ></script>
+    <!-- Mirae Script END Ver 2.0 -->
+  </body>
+</html>

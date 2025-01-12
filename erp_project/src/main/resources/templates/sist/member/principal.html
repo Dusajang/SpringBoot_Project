@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>사용자 정보</title>
+</head>
+<body>
+
+    <!-- 사용자 기본 정보 -->
+    <p>안녕하세요, <span th:text="${#authentication.principal.member.name}">사용자 이름</span>님!</p>
+    <p>이메일: <span th:text="${#authentication.principal.member.email}">이메일</span></p>
+    <p>생년월일: <span th:text="${#authentication.principal.member.birthDate}">생일</span></p>
+    <p>성별: <span th:text="${#authentication.principal.member.gender}">성별</span></p>
+    
+    <!-- 권한 정보 -->
+    <p th:each="authority : ${#authentication.principal.member.authorities}">
+        권한: <span th:text="${authority.roleName}">권한 이름</span>
+    </p>
+    
+    
+    <!-- 컨트롤러 반환 -->  
+    <!-- 사용자 기본 정보 -->
+    <p>안녕하세요, <span th:text="${member.name}">사용자 이름</span>님!</p>
+    <p>이메일: <span th:text="${member.email}">이메일</span></p>
+    <p>생년월일: <span th:text="${member.birthDate}">생일</span></p>
+    <p>성별: <span th:text="${member.gender}">성별</span></p>
+
+    <!-- 권한 정보 -->
+    <p th:each="authority : ${authorities}">
+        권한: <span th:text="${authority.authority}">권한 이름</span>
+    </p>
+   
+    
+</body>
+</html>

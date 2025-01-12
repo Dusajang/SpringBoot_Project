@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/basic.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/board.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/layout.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/main.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/content.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/montserrat.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/notosanskr.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/mobile.css}" type="text/css" />
+    <!-- JavaScript -->
+    <script th:src="@{/resources/js/scripts.js}" defer></script>
+    <style>
+        .login_wrap .login_tit {
+            color: #04264c;
+        }
+        .loginCon li .login_btn {
+            background-color: #04264c;
+        }
+    </style>
+    
+        <script>
+       
+        function showAlert(errorType) {
+            if (errorType === 'username') {
+                alert('아이디가 존재하지 않습니다.');
+            } else if (errorType === 'password') {
+                alert('비밀번호가 틀렸습니다.');
+            } else if (errorType === 'unknown') {
+                alert('알 수 없는 오류가 발생했습니다.');
+            }
+        }
+    </script>
+    
+</head>
+<body>
+
+<div class="programCon">
+    <div class="login_wrap">
+        <!-- 로그인 폼 -->
+        <form id="login" method="post" th:action="@{/login}">
+        
+            <fieldset class="login">
+                <p class="login_tit"><span>LOGIN</span>회원전용서비스</p>
+                <p class="login_subtit">로그인 후 확인하실 수 있습니다.</p>
+                <p class="login_txt">아이디와 비밀번호를 입력해주세요.<br>아직 회원이 아니신 분들은 회원가입 후 서비스를 이용하실 수 있습니다.</p>
+                <ul class="loginCon">
+                    <li>
+                        <div class="linp_wrap">
+                            <dl>
+                                <dt>
+                                    <label for="username">
+                                        <img th:src="@{/img/id_icon.png}" alt="아이디 아이콘" />
+                                    </label>
+                                </dt>
+                                <dd>
+                                    <input type="text" id="username" name="username" placeholder="아이디" required />
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>
+                                    <label for="password">
+                                        <img class="password_icon" th:src="@{/img/password_icon.png}" alt="비밀번호 아이콘" />
+                                    </label>
+                                </dt>
+                                <dd>
+                                    <input type="password" id="password" name="password" placeholder="비밀번호" required />
+                                </dd>
+                            </dl>
+                        </div>
+                        <button type="submit" class="login_btn">로그인</button>
+                    </li>
+                    <li class="last">
+                        <div>
+                            <span>아직 회원이 아니신가요?</span>
+                            <a th:href="@{/join}">회원가입</a>
+                        </div>
+                        <div>
+                            <span>아이디/비밀번호를 분실하셨나요?</span>
+                            <a th:href="@{/find}">아이디/비밀번호 찾기</a>
+                        </div>
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</div>
+    <script th:inline="javascript">
+        var errorType = /*[[${param.error}]]*/ '';
+        showAlert(errorType);
+    </script>
+</body>
+</html>

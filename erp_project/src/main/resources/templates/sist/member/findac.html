@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+    <!-- CSS -->
+	<link th:href="@{/css/basic.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/board.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/layout.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/main.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/content.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/custom.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/montserrat.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/notosanskr.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/jquery.datetimepicker.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/mobile.css}" rel="stylesheet" media="all" />
+
+</head>
+<style>
+.login_wrap .login_tit {
+    color: #04264c;
+}
+
+.under_btn .login_btn {
+    background-color: #04264c;
+}
+</style>
+<body>
+
+<div class="programCon">
+		<div class="login_wrap pd640">
+			
+				<fieldset class="login">
+					<p class="login_tit"><span>SEARCH</span>아이디/비밀번호 찾기</p>
+
+					<div class="findCon_wrap no01">
+						
+						<div>
+					    
+					    <form name="board1" id="board1" method="post" th:action="@{/findid}" th:object="${findIdForm}" onsubmit="">
+					    				    
+					    <div class="in_hei">
+					    
+					        <div class="up_txt">
+					            <p>아이디 찾기</p>
+					            <span>회원님의 이름과 이메일을 입력해주세요.</span>
+					        </div>
+					        
+					        <ul class="findCon">
+					            <li>
+					                <dl>
+					                    <dt><label for="name"><img class="name_icon" src="/img/name_icon.png" alt=""></label></dt>
+					                    <dd><input type="text" id="name" th:field="*{name}" placeholder="이름" required></dd>
+					                </dl>
+					                <dl>
+					                    <dt><label for="email"><img class="email_icon" src="/img/email_icon.png" alt=""></label></dt>
+					                    <dd><input type="email" id="email" th:field="*{email}" placeholder="이메일" required></dd>
+					                </dl>
+					            </li>
+					        </ul>
+					    </div>
+					    
+					    <div class="under_btn">
+					        <button type="submit" class="login_btn">확인</button>
+					    </div>
+					    
+					</form>
+					    											
+						</div>
+						
+						
+						<div>
+						
+							<form name="board2" id="board2" method="post" th:action="@{/findpw}" th:object="${findPwForm}" onsubmit="">
+							
+							<div class="in_hei">
+								<div class="up_txt">
+									<p>비밀번호 찾기</p>								
+									 <span>회원님의 이름과 아이디, 이메일을 입력해주세요.</span>
+								</div>
+								<ul class="findCon">
+									<li>
+										<dl>
+											<dt><label for="name"><img class="name_icon" src="/img/name_icon.png" alt=""></label></dt>
+											<dd><input type="text" id="name" th:field="*{name}" placeholder="이름"></dd>
+										</dl>
+										<dl>
+											<dt><label for="id"><img src="/img/id_icon.png" alt=""></label></dt>
+											<dd><input type="text" id="id" th:field="*{username}" placeholder="아이디" ></dd>
+										</dl>
+										<dl>
+											<dt><label for="email"><img class="email_icon" src="/img/email_icon.png" alt=""></label></dt>
+											<dd><input type="text" id="email" th:field="*{email}" placeholder="이메일" ></dd>
+										</dl>
+									</li>
+								</ul>
+							</div>
+							<div class="under_btn">
+								 <button type="submit" class="login_btn">확인</button>
+							</div>
+							
+						</form>
+						</div>
+						
+					</div>
+				</fieldset>
+				
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    
+	<!-- CSS -->
+	<link th:href="@{/css/basic.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/board.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/layout.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/main.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/content.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/custom.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/montserrat.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/notosanskr.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/jquery.datetimepicker.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" media="all" />
+	<link th:href="@{/css/mobile.css}" rel="stylesheet" media="all" />
+	
+	<!-- jQuery (최신 안정 버전) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	
+	<!-- Bootstrap -->
+	<script th:src="@{/summernote/bootstrap-3.3.2-dist/js/bootstrap.js}"></script>
+	
+	<!-- 기타 JavaScript -->
+	<script th:src="@{/js/jquery.bxslider.min.js}"></script>
+	<script th:src="@{/smarteditor/js/HuskyEZCreator.js}"></script>	
+	<script th:src="@{/js/function.js}"></script>
+	<script th:src="@{/js/function_jquery.js}"></script>
+	<script th:src="@{/js/dev.js}"></script>
+	<script th:src="@{/js/vizenweblog.js}"></script>
+	<script th:src="@{/js/vizen_calendar.js}"></script>
+	<script th:src="@{/js/jquery.datetimepicker.full.js}"></script>
+	<script th:src="|//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js|"></script>	
+	<script th:src="@{/summernote/summernote.js}"></script>
+	<script th:src="@{/summernote/lang/summernote-ko-KR.js}"></script>
+	
+
+    <script type="text/javascript">
+    
+        $(window).on("load", function () {
+            jQuery.datetimepicker.setLocale('ko'); // 달력 언어 설정
+
+            // 생일 달력 설정
+            $('#birthday').datetimepicker({ timepicker: false, format: "Y-m-d" });
+            $("#button").click(function () {
+                $('#birthday').datetimepicker('show');
+            });
+        });
+
+        function zipcodeapi() {
+            new daum.Postcode({
+                oncomplete: function (data) {
+                    var fullAddr = ''; // 최종 주소 변수
+                    var extraAddr = ''; // 조합형 주소 변수
+
+                    // 주소 타입에 따른 처리
+                    if (data.userSelectedType === 'R') {
+                        fullAddr = data.roadAddress;
+                    } else {
+                        fullAddr = data.jibunAddress;
+                    }
+
+                    // 상세 주소 추가
+                    if (data.userSelectedType === 'R') {
+                        if (data.bname !== '') {
+                            extraAddr += data.bname;
+                        }
+                        if (data.buildingName !== '') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        fullAddr += (extraAddr !== '' ? ' (' + extraAddr + ')' : '');
+                    }
+
+                    // 값 설정
+                    $('#zipcode').val(data.zonecode);
+                    $('#addr0').val(fullAddr);
+                    $('#addr1').focus();
+                }
+            }).open();
+        }
+        
+		        function validatePassword() {
+		    const password = document.getElementById('password').value;
+		    const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,12}$/;
+		    if (!regex.test(password)) {
+		        alert('비밀번호는 6~12자의 영문, 숫자, 특수문자를 포함해야 합니다.');
+		        return false;
+		    }
+		    return true;
+		    }
+		    
+		    function validatePasswordMatch() {
+		    const password = document.getElementById('password').value;
+		    const password2 = document.getElementById('password2').value;
+		    if (password !== password2) {
+		        alert('비밀번호가 일치하지 않습니다.');
+		        return false;
+		    }
+		    return true;
+		}
+		    	    		    	    		    	    		    	    		    
+        function validateGenderAndArea() {
+	    const gender = document.querySelector('input[name="gender"]:checked');
+	    const area = document.getElementById('area').value;
+	    if (!gender) {
+	        alert('성별을 선택해주세요.');
+	        return false;
+	    }
+	    return true;
+	}
+	
+	function validateAgreement() {
+    const agree00 = document.getElementById('agree00').checked;
+    const agree02 = document.getElementById('agree02').checked;
+    if (!agree00 || !agree02) {
+        alert('약관에 모두 동의해야 가입이 가능합니다.');
+        return false;
+    }
+    return true;
+}
+       
+       function validateForm() {
+	    // 약관 동의 확인
+	    if (!validateAgreement()) return false;
+	    
+	    // 비밀번호 유효성 검사
+	     if (!validatePassword()) return false;
+	    
+	    //비밀번호 일치
+	    if (!validatePasswordMatch()) return false;
+	    
+	    // 성별 확인
+	    if (!validateGenderAndArea()) return false;
+	   
+	
+	    // 모든 검증 통과
+	    return true;
+	}
+       
+
+    function resetForm() {
+        document.getElementById('wform').reset(); // 폼 초기화
+        
+        
+	    // 체크박스와 라디오 버튼 초기화
+	    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	    const radios = document.querySelectorAll('input[type="radio"]');
+	
+	    checkboxes.forEach(checkbox => checkbox.checked = false);
+	    radios.forEach(radio => radio.checked = false);
+    }
+    
+    function submitForm() {
+    
+        if (validateForm()) {
+        // 이메일 결합 로직
+        const email1 = document.getElementById('email1').value;
+        const email2 = document.getElementById('email2').value;
+        const emailHidden = document.getElementById('email');
+
+        if (!email1) {
+            alert('이메일 아이디를 입력해주세요.');
+            return; // 폼 제출 중단
+        }
+
+        if (!email2) {
+            alert('이메일 도메인을 선택해주세요.');
+            return; // 폼 제출 중단
+        }
+
+        // 결합된 이메일을 히든 필드에 설정
+        emailHidden.value = `${email1}@${email2}`;
+
+        // 폼 제출
+        document.getElementById('wform').submit();
+    }
+    
+}
+    
+   		     
+    </script>
+    
+    <style type="text/css">
+    
+	    .writeForm_btn a {
+	    background-color: #04264c;
+	    }
+	
+    </style>
+    
+</head>
+    
+<body>
+    <div class="programCon">
+       <form name="wform" id="wform" method="post" th:action="@{/join}" onsubmit="return validateForm();">
+            <div class="join">
+                <!-- 약관 동의 -->
+                <div class="joinTop">
+                    <div class="ScrollLy">                       
+                        <p>
+							<h5 class="marno" style="font-family: 돋움, Dotum, Helvetica, sans-serif;"><p class="MsoNormal" align="left" style="margin: 7.5pt 0cm; word-break: keep-all;"><span style="font-size: 10.5pt; font-family: 돋움; color: rgb(68, 68, 68);">제<span lang="EN-US" style="">1</span>장
+							총칙<span lang="EN-US" style=""><o:p></o:p></span></span></p>
+							<p class="MsoNormal" align="left" style="margin: 7.5pt 0cm; word-break: keep-all;"><span style="font-size: 10.5pt; font-family: 돋움; color: rgb(68, 68, 68);">제<span lang="EN-US" style="">1</span>조
+							목적<span lang="EN-US" style="font-weight: normal;"><o:p></o:p></span></span></p>
+							<p class="MsoNormal" align="left" style="word-break: keep-all;"><span style="font-size: 9pt; font-family: 돋움; color: rgb(68, 68, 68); font-weight: normal;">이 약관은 쌍용교육센터에서 제공하는 서비스 이용조건 및 절차에 관한 사항과 기타 필요한 사항을 쌍용교육센터과<span lang="EN-US">(</span>와<span lang="EN-US">) </span>이용자의 권리<span lang="EN-US">, </span>의미
+							및 책임사항 등을 규정함을 목적으로 합니다<span lang="EN-US">.<o:p></o:p></span></span></p>
+							<p class="MsoNormal" align="left" style="margin: 7.5pt 0cm; word-break: keep-all;"><span style="font-size: 10.5pt; font-family: 돋움; color: rgb(68, 68, 68);">제<span lang="EN-US" style="">2</span>조
+							약관의 효력과 변경<span lang="EN-US" style="font-weight: normal;"><o:p></o:p></span></span></p>
+
+							<p class="MsoNormal" align="left" style="word-break: keep-all;"><span style="font-weight: normal;"><span lang="EN-US" style="font-size:9.0pt;font-family:돋움;mso-bidi-font-family:굴림;
+							color:#444444;mso-font-kerning:0pt">(1) </span><span style="font-size:9.0pt;
+							font-family:돋움;mso-bidi-font-family:굴림;color:#444444;mso-font-kerning:0pt">이 약관은
+							이용자에게 공시함으로서 효력이 발생합니다<span lang="EN-US">.<o:p></o:p></span></span></span></p>
+
+							<p class="MsoNormal" align="left" style="word-break: keep-all;"><span style="font-weight: normal;"><span lang="EN-US" style="font-size:9.0pt;font-family:돋움;mso-bidi-font-family:굴림;
+							color:#444444;mso-font-kerning:0pt">(2) </span><span style="font-size:9.0pt;
+							font-family:돋움;mso-bidi-font-family:굴림;color:#444444;mso-font-kerning:0pt">쌍용교육센터는
+							사정 변경의 경우와 영업상 중요사유가 있을 때 약관을 변경할 수 있으며<span lang="EN-US">, </span>변경된 약관은 전항과 같은
+							방법으로 효력이 발생합니다<span lang="EN-US">.<o:p></o:p></span></span></span></p>
+							
+							<p class="MsoNormal" align="left" style="margin: 7.5pt 0cm; word-break: keep-all;"><span style="font-size: 10.5pt; font-family: 돋움; color: rgb(68, 68, 68);">제<span lang="EN-US" style="">3</span>조
+							약관 외 준칙<span lang="EN-US" style="font-weight: normal;"><o:p></o:p></span></span></p>
+
+							<p class="MsoNormal" align="left" style="word-break: keep-all;"><span style="font-size: 9pt; font-family: 돋움; color: rgb(68, 68, 68); font-weight: normal;">이 약관에 명시되지 않은 사항이 관계법령에 규정되어 있을 경우에는 그 규정에 따릅니다<span lang="EN-US">.<o:p></o:p></span></span></p>
+
+							<p class="MsoNormal" align="left" style="margin: 7.5pt 0cm; word-break: keep-all;"><span style="font-size: 10.5pt; font-family: 돋움; color: rgb(68, 68, 68);">제<span lang="EN-US" style="">2</span>장
+							회원 가입과 서비스 이용<span lang="EN-US" style=""><o:p></o:p></span></span></p>
+
+							<p class="MsoNormal" align="left" style="margin: 7.5pt 0cm; word-break: keep-all;"><span style="font-size: 10.5pt; font-family: 돋움; color: rgb(68, 68, 68);">제<span lang="EN-US" style="">1</span>조
+							회원의 정의<span lang="EN-US" style="font-weight: normal;"><o:p></o:p></span></span></p>
+							
+                        </p>
+                    </div>
+                    <div class="jcheck">
+                        <input type="checkbox" id="agree00" name="agree00" title="회원가입약관에 동의합니다 체크해주세요." />
+                        <label for="agree00">회원가입약관에 동의합니다.</label>
+                    </div>
+                </div>
+
+                <!-- 개인정보 동의 -->
+                <div class="joinTop">
+                    <div class="ScrollLy">
+						<h5 style="font-family: '돋움', Dotum, Helvetica, sans-serif; font-weight: 300; margin: 0; color: #444;">
+						    쌍용교육센터는 귀하의 개인정보보호를 매우 중요시하며, 개인정보보호방침을 통하여 귀하께서 제공하시는 개인정보가 
+						    어떠한 용도와 방식으로 이용되고 있으며 개인정보보호를 위해 어떠한 조치가 취해지고 있는지 알려드립니다.
+						</h5>
+
+						<h6 style="margin: 7.5pt 0; font-family: '돋움', Dotum; font-size: 10.5pt; color: #444;">
+						    [개인정보 수집에 대한 동의]
+						</h6>
+
+						<h5 style="font-family: '돋움', Dotum, Helvetica, sans-serif; font-weight: 300; margin: 0; color: #444;">
+						    쌍용교육센터는 귀하께 회원가입 시 개인정보보호방침 또는 이용약관의 내용을 공지하며 
+						    회원가입 버튼을 클릭하면 개인정보 수집에 대해 동의하신 것으로 봅니다.
+						</h5>
+
+						<h6 style="margin: 7.5pt 0; font-family: '돋움', Dotum; font-size: 10.5pt; color: #444;">
+						    [개인정보의 수집목적 및 이용목적]
+						</h6>
+
+						<h5 style="font-family: '돋움', Dotum, Helvetica, sans-serif; font-weight: 300; margin: 0; color: #444;">
+						    쌍용교육센터는 다음과 같은 목적을 위하여 개인정보를 수집하고 있습니다.
+						</h5>
+
+						<ul style="font-family: '돋움', Dotum; font-size: 9pt; color: #444; margin-top: 5px; padding-left: 20px;">
+						    <li>회원관리 및 서비스 제공</li>
+						    <li>맞춤형 서비스 제공</li>
+						    <li>통계 분석 및 서비스 개선</li>
+						</ul>
+
+                          
+                    </div>
+                    <div class="jcheck">
+                        <input type="checkbox" id="agree02" name="agree02" title="개인정보취급방침에 동의합니다 체크해주세요." />
+                        <label for="agree02">개인정보취급방침에 동의합니다.</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 입력 폼 -->
+            <div class="writeForm">
+				<table>
+								<colgroup>
+									<col class="writeForm_col01" />
+									<col width="*" />
+								</colgroup>
+								<tr>
+									<th>
+										<span class="col01">*</span>
+										<label for="id">
+											아이디
+										</label>
+									</th>
+									<td>
+										<input data-value="아이디를 입력해주세요." name="username" id="id" class="inputTxt inputIdtype" type="text" maxlength="20"  />
+										<!-- <a class="id_ch" href="javascript:checkId();">ID 중복확인</a> -->
+									</td>
+								</tr>
+								<tr>
+									<th><span class="col01">*</span>
+										<label for="password">비밀번호</label></th>
+									<td>
+										<input data-value="비밀번호를 입력해주세요." name="password" id="password" class="inputPass size02" type="password"  />
+										<span class="password_ch"><label for="password2">비밀번호 확인</label></span>
+										<input data-value="비밀번호를 입력해주세요." name="password2" id="password2" class="inputPass size02 mmarT10" type="password"  />
+										<span>*6~12자의 영문, 숫자, 특수문자 3가지를 조합하여 입력</span>
+									</td>
+								</tr>
+								<tr>
+									<th><span class="col01">*</span><label for="name">이름</label></th>
+									<td>
+										<input data-value="이름을 입력해주세요." id="name" name="name" class="inputTxt inputName" type="text"  />
+									</td>
+								</tr>
+								<tr>
+									<th scope="row"><span class="col01">*</span><label for="">생일</label></th>
+									<td >
+										<input type="text" name="birthDate" id="birthday" data-value="생년월일을 입력해 주세요."/>
+										<span id="CalregistdateIcon">
+										<button type="button" id="button"><img src="img/calendar_icon.png" id="CalregistdateIconImg" style="cursor:pointer;"></button>
+										</span>
+									</td>
+								</tr>
+								<tr>
+									<th>연락처</th>
+									<td>
+										
+										<input type="text" name="contect" id="tel" value="" onkeyup="isNumberOrHyphen(this);" onblur="cvtUserPhoneNumber(this)" data-value=""  />
+																	
+									</td>
+								</tr>
+								<tr>
+									
+									<th><span class="col01">*</span>
+										휴대폰</th>
+									<td>
+										
+										<input type="text" name="phone" id="cell" value="" onkeyup="isNumberOrHyphen(this);" onblur="cvtUserPhoneNumber(this)" data-value="휴대폰 번호를 입력해주세요."  />
+										
+										<span class="label_wrap"><input type="checkbox" id="Num_check" name="smsOptIn" value="1" /><label for="Num_check">수신</label></span>
+									</td>
+								</tr>
+								
+								<tr>
+									<th><span class="col01">*</span>
+										<label for="email">이메일</label></th>
+									<td class="mail_type">
+									    <input type="hidden" id="email" name="email" />
+										<input data-value="이메일을 입력해주세요." name="email1" id="email1" class="inputEmail" type="text" maxlength="100"  />
+										<span class="email_txt">@</span>
+										<select class="selecEmail" name="email2" id="email2" data-value="이메일을 선택해주세요.">
+											<option value="">선택해주세요.</option>
+											<option value='naver.com'   >naver.com</option>
+											<option value='daum.net'>daum.net</option>
+											<option value='gmail.com'   >gmail.com</option>
+											<option value='hotmail.com'   >hotmail.com</option>
+											<option value='nate.com'   >nate.com</option>
+											<option value='korea.com'   >korea.com</option>
+										</select>
+										<span class="label_wrap"><input type="checkbox" id="Email_check" name="emailOptIn" value="1" />
+										<label for="Email_check">수신</label></span>
+									</td>
+								</tr>
+								
+								
+								<tr>
+									<th><span class="col01">*</span>
+										<label for="gender">성별</label></th>
+				 					<td> 
+										<input data-value="성별을 선택하세요." name="gender" type="radio" id="radio_check01" value="1" /><label for="radio_check01">남자</label>
+				 						<input name="gender" type="radio" id="radio_check02"  value="2"/><label for="radio_check02">여자</label>
+				 					</td> 
+								</tr> 
+								<tr>
+									<th><label for="area">소재지</label></th>
+									<td>
+										<select id="area" name="location">
+											<option value="">선택해주세요.</option>
+											<option value='1' >강원</option><option value='2' >경기</option><option value='3' >경남</option><option value='4' >경북</option><option value='5' >광주</option><option value='6' >대구</option><option value='7' >대전</option><option value='8' >부산</option><option value='9' >서울</option><option value='10' >울산</option><option value='11' >인천</option><option value='12' >전남</option><option value='13' >전북</option><option value='14' >제주</option><option value='15' >충남</option><option value='16' >충북</option><option value='17' >해외</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th><span class="col01">*</span>
+										<label for="zipcode">우편번호</label></th>
+									<td>
+										<input data-value="우편번호를 입력해주세요." type="text" class="zipcode" id="zipcode" name="postalCode" value="" readonly="readonly" onclick="zipcodeapi();"  /><a class="zip_ch" href="javascript:zipcodeapi();" >우편번호검색</a>
+									</td>
+								</tr>
+								<tr>
+									<th><span class="col01">*</span>
+										<label for="addr0">주소</label></th>
+									<td class="addr_td">
+										<input data-value="주소를 입력해주세요." type="text" id="addr0" class="addr" name="address" value="" readonly="readonly"  /><br />
+										<input data-value="상세주소를 입력해주세요." type="text" id="addr1" class="addr" name="addressDetail" value="" style="margin-top:7px;"  />
+									</td>
+								</tr>
+							</table>
+            </div>
+            <!-- 버튼 -->
+		    <div class="writeForm_btn">
+		        <a href="javascript:;" id="w_btn" onclick="submitForm();">확인</a>
+		        <a href="#" onclick="resetForm();">취소</a>
+		    </div>
+	    
+        </form>
+    </div>
+</body>
+</html>
+
+
